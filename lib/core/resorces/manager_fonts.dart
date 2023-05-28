@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nuntium/core/util/size_util.dart';
 
-class ManagerFontsFamily {
+class ManagerFontFamily {
   static const String fontFamily = "SP_Pro";
 }
 
