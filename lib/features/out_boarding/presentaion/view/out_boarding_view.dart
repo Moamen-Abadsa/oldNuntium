@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nuntium/core/resorces/manager_assets.dart';
 import 'package:nuntium/core/resorces/manager_fonts.dart';
 import 'package:nuntium/core/resorces/manager_sizes.dart';
-import 'package:nuntium/core/resorces/manager_strings.dart';
 import 'package:nuntium/features/out_boarding/presentaion/view/widget/rect_button.dart';
-import 'package:nuntium/routes/routes.dart';
 
 import '../../../../config/constants.dart';
+import '../../../../core/resorces/manager_assets.dart';
 import '../../../../core/resorces/manager_colors.dart';
+import '../../../../core/resorces/manager_strings.dart';
+import '../../../../routes/routes.dart';
 
 class OutBoardingView extends StatelessWidget {
   const OutBoardingView({Key? key}) : super(key: key);

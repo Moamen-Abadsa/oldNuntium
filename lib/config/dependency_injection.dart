@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
@@ -9,7 +8,7 @@ import 'package:nuntium/core/network/app_api.dart';
 import 'package:nuntium/core/network/dio_factory.dart';
 import 'package:nuntium/core/storage/local/appSettingsSharedPreferences.dart';
 import 'package:nuntium/features/auth/data/data_source/remote_data_source.dart';
-import 'package:nuntium/firebase_options.dart';
+import 'package:nuntium/features/out_boarding/presentaion/controller/out_boarding_controller.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../features/splash/controller/splash_controller.dart';
@@ -17,9 +16,9 @@ import '../features/splash/controller/splash_controller.dart';
 final instance = GetIt.instance;
 
 initModule() async {
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  // await Firebase.initializeApp(
+  //   options: DefaultFirebaseOptions.currentPlatform,
+  // );
   WidgetsFlutterBinding.ensureInitialized();
   final SharedPreferences sharedPreferences =
       await SharedPreferences.getInstance();
@@ -52,6 +51,7 @@ initModule() async {
 
 initSplash() {
   Get.put<SplashController>(SplashController());
+  print("Get.put<SplashController>(SplashController());");
 }
 
 disposeSplash() {
@@ -60,14 +60,17 @@ disposeSplash() {
 
 initOutBoarding() {
   disposeSplash();
-  // Get.put<OutBoardingController>(OutBoardingController());
+  Get.put<OutBoardingController>(OutBoardingController());
+  print("Get.put<OutBoardingController>(OutBoardingController());");
 }
 
 disposeOutBoarding() {
-  // Get.delete<OutBoardingController>();
+  Get.delete<OutBoardingController>();
 }
 
 initLoginModule() {
+  disposeSplash();
+  disposeOutBoarding();
   if (!GetIt.I.isRegistered<RemoteLoginDataSource>()) {
     instance.registerLazySingleton<RemoteLoginDataSource>(
       () => RemoteLoginDataSourceImplement(
