@@ -5,7 +5,10 @@ import 'package:nuntium/config/constants.dart';
 import 'package:nuntium/core/service/theme_service.dart';
 import 'package:nuntium/routes/routes.dart';
 
+import 'config/dependency_injection.dart';
+
 void main() {
+  initModule();
   runApp(MyApp());
 }
 
