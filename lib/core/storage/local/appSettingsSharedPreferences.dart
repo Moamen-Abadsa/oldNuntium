@@ -1,3 +1,4 @@
+import 'package:nuntium/config/constants.dart';
 import 'package:nuntium/core/extensions/extensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -10,7 +11,33 @@ class AppSettingsSharedPreferences {
     await _preferences.setBool("out_boarding_viewed", true);
   }
 
-  bool getOutBoadringViewed() {
-    return _preferences.getBool("out_boarding_viewed").onNull();
+  bool getOutBoardingViewed() {
+    return _preferences
+        .getBool(
+          ConstantsPrefsKeys.outBoardingViewedKey,
+        )
+        .onNull();
+  }
+
+  //----------------------------------------------------------------------------
+
+  Future<void> setToken(String token) async {
+    await _preferences.setString(ConstantsPrefsKeys.tokenKey, token);
+  }
+
+  String getToken() {
+    return _preferences.getString(ConstantsPrefsKeys.tokenKey).onNull();
+  }
+
+  void clear() {
+    _preferences.clear();
+  }
+
+  Future<void> setLoggedIn() async {
+    await _preferences.setBool(ConstantsPrefsKeys.loggedIn, true);
+  }
+
+  bool loggedIn() {
+    return _preferences.getBool(ConstantsPrefsKeys.loggedIn).onNull();
   }
 }

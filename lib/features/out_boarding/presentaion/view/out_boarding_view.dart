@@ -1,8 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:nuntium/core/resorces/manager_assets.dart';
 import 'package:nuntium/core/resorces/manager_fonts.dart';
 import 'package:nuntium/core/resorces/manager_sizes.dart';
+import 'package:nuntium/core/resorces/manager_strings.dart';
+import 'package:nuntium/features/out_boarding/presentaion/view/widget/rect_button.dart';
+import 'package:nuntium/routes/routes.dart';
 
 import '../../../../config/constants.dart';
 import '../../../../core/resorces/manager_colors.dart';
@@ -95,7 +98,7 @@ class OutBoardingView extends StatelessWidget {
                 height: ManagerHeight.h34,
               ),
               Text(
-                "First to know",
+                ManagerStrings.firstToKnow,
                 style: TextStyle(
                     fontWeight: ManagerFontWeight.semi_bold,
                     fontSize: ManagerFontSize.s24,
@@ -106,7 +109,7 @@ class OutBoardingView extends StatelessWidget {
                 height: ManagerHeight.h24,
               ),
               Text(
-                "All news in one place, be the\nfirst to know last news",
+                ManagerStrings.paragraph,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     fontWeight: ManagerFontWeight.regular,
@@ -124,13 +127,11 @@ class OutBoardingView extends StatelessWidget {
                     topRight: Radius.circular(12),
                   ),
                 ),
-                child: ElevatedButton(
-                  onPressed: () {},
-                  child: Text("Next"),
-                  style: ElevatedButton.styleFrom(
-                    primary: ManagerColors.purplePrimary,
-                  ),
-                ),
+                child: rectButton(
+                    onPressed: () {
+                      Get.offAllNamed(Routes.welcome);
+                    },
+                    text: ManagerStrings.next),
               )
             ],
           ),
