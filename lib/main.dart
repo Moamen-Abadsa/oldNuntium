@@ -7,8 +7,8 @@ import 'package:nuntium/routes/routes.dart';
 
 import 'config/dependency_injection.dart';
 
-void main() {
-  initModule();
+void main() async {
+  await initModule();
   runApp(MyApp());
 }
 

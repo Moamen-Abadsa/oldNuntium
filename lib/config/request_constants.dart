@@ -3,4 +3,5 @@ class RequestConstants {
   static const String loginRequest = "m";
   static const String email = "m";
   static const String password = "m";
+  static const String register = "m";
 }

@@ -23,4 +23,10 @@ class ApiConstants {
   static const int receiveTimeOutDuration = 120;
   static const String message = "message";
   static const String token = 'token';
+  static const String status = 'status';
+  static const String noInternetConnection = 'No Internet connection';
+  static const String name = 'name';
+  static const String email = 'email';
+  static const String password = 'password';
+  static const String passwordConfirmation = 'password_confirmation';
 }
