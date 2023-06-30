@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:nuntium/core/resorces/manager_colors.dart';
 import 'package:nuntium/core/resorces/manager_fonts.dart';
 import 'package:nuntium/core/resorces/manager_sizes.dart';
@@ -8,6 +9,7 @@ import 'package:nuntium/core/resorces/manager_styles.dart';
 import 'package:nuntium/core/widgets/rect_button.dart';
 import 'package:nuntium/core/widgets/text_field.dart';
 import 'package:nuntium/features/auth/presentation/view/widgets/social_media_btn.dart';
+import 'package:nuntium/routes/routes.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -78,7 +80,11 @@ class _LoginViewState extends State<LoginView> {
               SizedBox(
                 height: ManagerHeight.h24,
               ),
-              rectButton(onPressed: () {}, text: "Sign In"),
+              rectButton(
+                  onPressed: () {
+                    Get.offAllNamed(Routes.register);
+                  },
+                  text: "Sign In"),
               SizedBox(
                 height: ManagerHeight.h48,
               ),

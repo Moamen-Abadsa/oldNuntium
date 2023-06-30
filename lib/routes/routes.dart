@@ -3,6 +3,7 @@ import 'package:nuntium/core/resorces/manager_strings.dart';
 import 'package:nuntium/features/auth/presentation/view/login_view.dart';
 import 'package:nuntium/features/home/presentation/view/home_view.dart';
 import 'package:nuntium/features/out_boarding/presentaion/view/out_boarding_view.dart';
+import 'package:nuntium/features/out_boarding/presentaion/view/sign_up_view.dart';
 import 'package:nuntium/features/out_boarding/presentaion/view/welcome_screen.dart';
 import 'package:nuntium/features/splash/presentaion/view/splash_view.dart';
 
@@ -14,7 +15,7 @@ class Routes {
   static const String homeView = '/home_view';
   static const String loginView = '/login_view';
   static const String welcome = '/welcome_view';
-  static const String signUp = '/sign_up';
+  static const String register = '/register';
 }
 
 class RouteGenerator {
@@ -36,10 +37,11 @@ class RouteGenerator {
         initWelcome();
         return MaterialPageRoute(builder: (_) => const WelcomeScreen());
       case Routes.loginView:
-        initLoginModule();
+        initRegisterModule();
         return MaterialPageRoute(builder: (_) => const LoginView());
-      case Routes.signUp:
-
+      case Routes.register:
+        initRegisterModule();
+        return MaterialPageRoute(builder: (_) => const RegisterView());
       default:
         return unDefinedRoute();
     }

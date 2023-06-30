@@ -4,7 +4,7 @@ import 'package:nuntium/core/error_handler/response_code.dart';
 import 'package:nuntium/core/internet_checker/internet_checker.dart';
 import 'package:nuntium/core/resorces/manager_strings.dart';
 import 'package:nuntium/features/auth/data/data_source/login_mapper.dart';
-import 'package:nuntium/features/auth/data/data_source/remote_data_source.dart';
+import 'package:nuntium/features/auth/data/data_source/remote_login_data_source.dart';
 import 'package:nuntium/features/auth/data/request/login_request.dart';
 import 'package:nuntium/features/auth/domain/model/login_model.dart';
 import 'package:nuntium/features/auth/domain/repository/login_repository.dart';
