@@ -5,6 +5,8 @@ class ManagerAssets {
   static const String logo = '$baseVectorPath/Vector.svg';
   static const String outboarding = '$baseImagePath/outboarding.png';
   static const String illustration = '$baseImagePath/3d-illustration.png';
+  static const String facebook = '$baseImagePath/facebook-logo.png';
+  static const String google = '$baseImagePath/google-logo.png';
 }
 
 class ManagerJson {

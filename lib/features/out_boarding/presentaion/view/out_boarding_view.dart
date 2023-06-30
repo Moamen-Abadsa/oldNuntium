@@ -1,17 +1,32 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nuntium/core/resorces/manager_fonts.dart';
 import 'package:nuntium/core/resorces/manager_sizes.dart';
-import 'package:nuntium/features/out_boarding/presentaion/view/widget/rect_button.dart';
+import 'package:nuntium/core/widgets/rect_button.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import '../../../../config/constants.dart';
-import '../../../../core/resorces/manager_assets.dart';
 import '../../../../core/resorces/manager_colors.dart';
 import '../../../../core/resorces/manager_strings.dart';
 import '../../../../routes/routes.dart';
 
-class OutBoardingView extends StatelessWidget {
-  const OutBoardingView({Key? key}) : super(key: key);
+class OutBoardingView extends StatefulWidget {
+  @override
+  State<OutBoardingView> createState() => _OutBoardingViewState();
+}
+
+class _OutBoardingViewState extends State<OutBoardingView> {
+  final images = [
+    'assets/images/outboarding.png',
+    'assets/images/outboarding.png',
+    'assets/images/outboarding.png'
+  ];
+
+  int activePage = 0;
+
+  PageController _controller = PageController();
+
+  CarouselController _carouselController = CarouselController();
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +37,8 @@ class OutBoardingView extends StatelessWidget {
           margin: EdgeInsetsDirectional.only(
             top: ManagerHeight.h76,
             bottom: ManagerHeight.h16,
-            start: ManagerWidth.w20,
-            end: ManagerWidth.w20,
+            // start: ManagerWidth.w20,
+            // end: ManagerWidth.w20,
           ),
           decoration: BoxDecoration(
               // color: ManagerColors.purpleLight,
@@ -32,68 +47,37 @@ class OutBoardingView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
-                width: ManagerWidth.w288,
+                // width: ManagerWidth.w288,
                 height: ManagerHeight.h336,
-                child: PageView(
-                  children: [
-                    Column(
-                      children: [
-                        Image.asset(
-                          ManagerAssets.outboarding,
-                          height: ManagerHeight.h336,
-                          width: ManagerWidth.w288,
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+                child: CarouselSlider.builder(
+                    carouselController: _carouselController,
+                    itemCount: images.length,
+                    itemBuilder: (context, index, realIndex) {
+                      final image = images[index];
+                      return buildImage(image, index);
+                    },
+                    options: CarouselOptions(
+                      height: ManagerHeight.h336,
+                      enlargeCenterPage: true,
+                      pageSnapping: true,
+                      enlargeStrategy: CenterPageEnlargeStrategy.zoom,
+                      autoPlay: false,
+                      reverse: false,
+                      autoPlayInterval: Duration(seconds: 2),
+                      enableInfiniteScroll: false,
+                      animateToClosest: true,
+                      onPageChanged: (index, reason) {
+                        setState(() {
+                          activePage = index;
+                        });
+                      },
+                      // viewportFraction: 1,
+                    )),
               ),
               SizedBox(
                 height: ManagerHeight.h40,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  AnimatedContainer(
-                    duration: Duration(seconds: Constants.containerDuration),
-                    curve: Curves.easeInOut,
-                    width: ManagerWidth.w24,
-                    height: ManagerHeight.h8,
-                    decoration: BoxDecoration(
-                      color: ManagerColors.purplePrimary,
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(ManagerRadius.r4),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: ManagerWidth.w8,
-                  ),
-                  AnimatedContainer(
-                    duration: Duration(seconds: Constants.containerDuration),
-                    curve: Curves.easeInOut,
-                    width: ManagerWidth.w8,
-                    height: ManagerHeight.h8,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: ManagerColors.greyLighter,
-                    ),
-                  ),
-                  SizedBox(
-                    width: ManagerWidth.w8,
-                  ),
-                  AnimatedContainer(
-                    duration: Duration(seconds: Constants.containerDuration),
-                    curve: Curves.easeInOut,
-                    width: ManagerWidth.w8,
-                    height: ManagerHeight.h8,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: ManagerColors.greyLighter,
-                    ),
-                  ),
-                ],
-              ),
+              buildIndex(),
               SizedBox(
                 height: ManagerHeight.h34,
               ),
@@ -120,18 +104,26 @@ class OutBoardingView extends StatelessWidget {
               SizedBox(
                 height: ManagerHeight.h64,
               ),
-              Container(
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(12),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: ManagerWidth.w20),
+                child: Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(12),
+                    ),
                   ),
+                  child: rectButton(
+                      onPressed: () {
+                        if (activePage < 2) {
+                          ++activePage;
+                          _carouselController.animateToPage(activePage);
+                        } else {
+                          Get.offAllNamed(Routes.welcome);
+                        }
+                      },
+                      text: ManagerStrings.next),
                 ),
-                child: rectButton(
-                    onPressed: () {
-                      Get.offAllNamed(Routes.welcome);
-                    },
-                    text: ManagerStrings.next),
               )
             ],
           ),
@@ -139,4 +131,29 @@ class OutBoardingView extends StatelessWidget {
       ),
     );
   }
+
+  Widget buildImage(String image, int index) {
+    return Container(
+      // margin: EdgeInsetsDirectional.symmetric(horizontal: ManagerWidth.w28),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(ManagerRadius.r12)),
+        color: Colors.grey,
+      ),
+      child: Image.asset(
+        images[index],
+        fit: BoxFit.cover,
+      ),
+    );
+  }
+
+  Widget buildIndex() => AnimatedSmoothIndicator(
+        activeIndex: activePage,
+        count: images.length,
+        effect: ExpandingDotsEffect(
+            dotWidth: 8,
+            dotHeight: 8,
+            dotColor: ManagerColors.greyLighter,
+            activeDotColor: ManagerColors.purplePrimary,
+            expansionFactor: 3),
+      );
 }

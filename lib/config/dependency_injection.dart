@@ -8,7 +8,12 @@ import 'package:nuntium/core/network/app_api.dart';
 import 'package:nuntium/core/network/dio_factory.dart';
 import 'package:nuntium/core/storage/local/appSettingsSharedPreferences.dart';
 import 'package:nuntium/features/auth/data/data_source/remote_data_source.dart';
+import 'package:nuntium/features/auth/domain/repository/login_repository.dart';
+import 'package:nuntium/features/auth/domain/use_case/login_use_case.dart';
+import 'package:nuntium/features/auth/presentation/controller/login_controller.dart';
+import 'package:nuntium/features/home/presentation/controller/home_controller.dart';
 import 'package:nuntium/features/out_boarding/presentaion/controller/out_boarding_controller.dart';
+import 'package:nuntium/features/out_boarding/presentaion/controller/welcome_controller.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../features/splash/controller/splash_controller.dart';
@@ -68,9 +73,28 @@ disposeOutBoarding() {
   Get.delete<OutBoardingController>();
 }
 
+initHome() {
+  disposeWelcome();
+  Get.put<HomeController>(HomeController());
+}
+
+disposeHome() {
+  Get.delete<HomeController>();
+}
+
+initWelcome() {
+  disposeOutBoarding();
+  Get.put<WelcomeController>(WelcomeController());
+}
+
+disposeWelcome() {
+  disposeOutBoarding();
+}
+
 initLoginModule() {
   disposeSplash();
   disposeOutBoarding();
+  disposeWelcome();
   if (!GetIt.I.isRegistered<RemoteLoginDataSource>()) {
     instance.registerLazySingleton<RemoteLoginDataSource>(
       () => RemoteLoginDataSourceImplement(
@@ -79,6 +103,70 @@ initLoginModule() {
     );
   }
 }
+
+disposeLoginModule() {
+  // disposeFcmToken();
+
+  if (GetIt.I.isRegistered<RemoteLoginDataSource>()) {
+    instance.unregister<RemoteLoginDataSource>();
+  }
+
+  if (GetIt.I.isRegistered<LoginRepository>()) {
+    instance.unregister<LoginRepository>();
+  }
+
+  if (GetIt.I.isRegistered<LoginUseCase>()) {
+    instance.unregister<LoginUseCase>();
+  }
+
+  Get.delete<LoginController>();
+}
+
+// initRegisterModule() {
+//   disposeLoginModule();
+//   if (!GetIt.I.isRegistered<RemoteRegisterDataSource>()) {
+//     instance.registerLazySingleton<RemoteRegisterDataSource>(
+//           () => RemoteRegisterDataSourceImplement(
+//         instance<AppApi>(),
+//       ),
+//     );
+//   }
+//
+//   if (!GetIt.I.isRegistered<RegisterRepository>()) {
+//     instance.registerLazySingleton<RegisterRepository>(
+//           () => RegisterRepositoryImpl(
+//         instance<RemoteRegisterDataSource>(),
+//         instance<NetworkInfo>(),
+//       ),
+//     );
+//   }
+//
+//   if (!GetIt.I.isRegistered<RegisterUseCase>()) {
+//     instance.registerLazySingleton<RegisterUseCase>(
+//           () => RegisterUseCase(
+//         instance<RegisterRepository>(),
+//       ),
+//     );
+//   }
+//
+//   Get.put<RegisterController>(RegisterController());
+// }
+//
+// disposeRegisterModule() {
+//   if (GetIt.I.isRegistered<RemoteRegisterDataSource>()) {
+//     instance.unregister<RemoteRegisterDataSource>();
+//   }
+//
+//   if (GetIt.I.isRegistered<RegisterRepository>()) {
+//     instance.unregister<RegisterRepository>();
+//   }
+//
+//   if (GetIt.I.isRegistered<RegisterUseCase>()) {
+//     instance.unregister<RegisterUseCase>();
+//   }
+//
+//   Get.delete<RegisterController>();
+// }
 
 initWelcomeModule() {
   if (!GetIt.I.isRegistered<RemoteLoginDataSource>()) {
