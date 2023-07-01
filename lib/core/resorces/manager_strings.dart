@@ -8,11 +8,12 @@ class ManagerStrings {
   static const String next = "Next";
   static const String paragraph =
       "All news in one place, be the\nfirst to know last news";
-  static const String welcomeParagraph = "Welcome Back 👋";
+  static const String welcomeTitle = "Welcome Back 👋";
   static const String loginParagraph =
       "I am happy to see you again. You can \n continue where you left off by logging in";
   static const String google = "Sign In With Google";
   static const String facebook = "Sign In with Facebook";
+  static const String signIn = "Sign In";
 
 //TODO
 }
