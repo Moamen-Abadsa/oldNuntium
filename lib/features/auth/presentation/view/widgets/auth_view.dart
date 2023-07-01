@@ -112,7 +112,7 @@ Widget authView(
                   Get.offAllNamed(Routes.register);
                 },
                 text: buttonText),
-            child ?? SizedBox()
+            Expanded(child: child ?? const SizedBox())
           ],
         ),
       ),

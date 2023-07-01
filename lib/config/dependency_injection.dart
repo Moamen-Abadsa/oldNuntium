@@ -9,6 +9,7 @@ import 'package:nuntium/core/network/dio_factory.dart';
 import 'package:nuntium/core/storage/local/appSettingsSharedPreferences.dart';
 import 'package:nuntium/features/auth/data/data_source/remote_login_data_source.dart';
 import 'package:nuntium/features/auth/data/data_source/remote_register_data_source.dart';
+import 'package:nuntium/features/auth/data/repository_impl/login_repository_impl.dart';
 import 'package:nuntium/features/auth/data/repository_impl/register_repository_impl.dart';
 import 'package:nuntium/features/auth/domain/repository/login_repository.dart';
 import 'package:nuntium/features/auth/domain/repository/register_repository.dart';
@@ -100,6 +101,9 @@ initLoginModule() {
   disposeSplash();
   disposeOutBoarding();
   disposeWelcome();
+  // initVerificationModule();
+  // initFcmToken();
+
   if (!GetIt.I.isRegistered<RemoteLoginDataSource>()) {
     instance.registerLazySingleton<RemoteLoginDataSource>(
       () => RemoteLoginDataSourceImplement(
@@ -107,6 +111,25 @@ initLoginModule() {
       ),
     );
   }
+
+  if (!GetIt.I.isRegistered<LoginRepository>()) {
+    instance.registerLazySingleton<LoginRepository>(
+      () => LoginRepositoryImplement(
+        instance(),
+        instance(),
+      ),
+    );
+  }
+
+  if (!GetIt.I.isRegistered<LoginUseCase>()) {
+    instance.registerFactory<LoginUseCase>(
+      () => LoginUseCase(
+        instance<LoginRepository>(),
+      ),
+    );
+  }
+
+  Get.put<LoginController>(LoginController());
 }
 
 disposeLoginModule() {
