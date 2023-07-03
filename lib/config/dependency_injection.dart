@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
@@ -9,9 +10,8 @@ import 'package:nuntium/core/network/dio_factory.dart';
 import 'package:nuntium/core/storage/local/appSettingsSharedPreferences.dart';
 import 'package:nuntium/features/auth/data/data_source/remote_login_data_source.dart';
 import 'package:nuntium/features/auth/data/data_source/remote_register_data_source.dart';
-import 'package:nuntium/features/auth/data/repository_impl/register_repository_impl.dart';
-import 'package:nuntium/features/auth/domain/repository/login_repository.dart';
-import 'package:nuntium/features/auth/domain/repository/register_repository.dart';
+import 'package:nuntium/features/auth/data/repository/login_repository.dart';
+import 'package:nuntium/features/auth/data/repository/register_repository.dart';
 import 'package:nuntium/features/auth/domain/use_case/login_use_case.dart';
 import 'package:nuntium/features/auth/domain/use_case/register_use_case.dart';
 import 'package:nuntium/features/auth/presentation/controller/login_controller.dart';
@@ -26,19 +26,17 @@ import '../features/splash/controller/splash_controller.dart';
 final instance = GetIt.instance;
 
 initModule() async {
-  // await Firebase.initializeApp(
-  //   options: DefaultFirebaseOptions.currentPlatform,
-  // );
   WidgetsFlutterBinding.ensureInitialized();
-  final SharedPreferences sharedPreferences =
-      await SharedPreferences.getInstance();
+  await Firebase.initializeApp();
+
+  final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
 
   instance.registerLazySingleton<SharedPreferences>(
     () => sharedPreferences,
   );
 
-  instance.registerLazySingleton<AppSettingsSharedPreferences>(
-      () => AppSettingsSharedPreferences(instance()));
+  instance
+      .registerLazySingleton<AppSettingsSharedPreferences>(() => AppSettingsSharedPreferences(instance()));
 
   // TODO: ONLY FOR TEST
   // AppSettingsPreferences appSettingsPreferences =
@@ -55,8 +53,7 @@ initModule() async {
     () => AppApi(dio),
   );
 
-  instance.registerLazySingleton<NetworkInfo>(
-      () => NetworkInfoImpl(InternetConnectionCheckerPlus()));
+  instance.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(InternetConnectionCheckerPlus()));
 }
 
 initSplash() {
@@ -102,9 +99,7 @@ initLoginModule() {
   disposeWelcome();
   if (!GetIt.I.isRegistered<RemoteLoginDataSource>()) {
     instance.registerLazySingleton<RemoteLoginDataSource>(
-      () => RemoteLoginDataSourceImplement(
-        instance<AppApi>(),
-      ),
+      () => RemoteLoginDataSourceImplement(),
     );
   }
 }
@@ -132,7 +127,6 @@ initRegisterModule() {
   if (!GetIt.I.isRegistered<RemoteRegisterDataSource>()) {
     instance.registerLazySingleton<RemoteRegisterDataSource>(
       () => RemoteRegisterDataSourceImplement(
-        instance<AppApi>(),
       ),
     );
   }
@@ -176,9 +170,7 @@ disposeRegisterModule() {
 initWelcomeModule() {
   if (!GetIt.I.isRegistered<RemoteLoginDataSource>()) {
     instance.registerLazySingleton<RemoteLoginDataSource>(
-      () => RemoteLoginDataSourceImplement(
-        instance<AppApi>(),
-      ),
+      () => RemoteLoginDataSourceImplement(),
     );
   }
 }

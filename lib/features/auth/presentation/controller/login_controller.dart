@@ -11,6 +11,14 @@ class LoginController extends GetxController {
 
   Future<void> login() async {
     (await _loginUseCase.execute(
-        LoginUseCaseInput(email: email.text, password: password.text)));
+      LoginUseCaseInput(
+        email: email.text,
+        password: password.text,
+      ),
+    ))
+        .fold(
+      (l) => null,
+      (r) => null,
+    );
   }
 }
