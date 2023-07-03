@@ -8,7 +8,7 @@ import 'package:nuntium/features/forget_password/data/data_source/remote_forget_
 import 'package:nuntium/features/forget_password/data/request/forget_password_request.dart';
 
 abstract class ForgetPasswordRepository {
-  Future<Either<Failure, void>> forgetPassword(ForgetPasswordRequest loginRequest);
+  Future<Either<Failure, void>> forgetPassword(ForgetPasswordRequest forgetPasswordRequest);
 }
 
 class ForgetPasswordRepositoryImplement implements ForgetPasswordRepository {
