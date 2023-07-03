@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "874708803379",
+    "project_id": "nuntium-d05d5",
+    "storage_bucket": "nuntium-d05d5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:874708803379:android:371efb3040d1feffebe846",
+        "android_client_info": {
+          "package_name": "com.example.nuntium"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "874708803379-9h1diuagg7cva425sh0knv5d7egrp9rr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYl-TXO9-ZhgvEjU6Chi_Qg71VIwq2gAI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "874708803379-9h1diuagg7cva425sh0knv5d7egrp9rr.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "874708803379-vtdehefjrnel2jt0r7d7lcmfm9dqop26.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.nuntium"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
