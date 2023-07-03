@@ -10,15 +10,8 @@ import 'package:nuntium/core/network/dio_factory.dart';
 import 'package:nuntium/core/storage/local/appSettingsSharedPreferences.dart';
 import 'package:nuntium/features/auth/data/data_source/remote_login_data_source.dart';
 import 'package:nuntium/features/auth/data/data_source/remote_register_data_source.dart';
-<<<<<<< HEAD
 import 'package:nuntium/features/auth/data/repository/login_repository.dart';
 import 'package:nuntium/features/auth/data/repository/register_repository.dart';
-=======
-import 'package:nuntium/features/auth/data/repository_impl/login_repository_impl.dart';
-import 'package:nuntium/features/auth/data/repository_impl/register_repository_impl.dart';
-import 'package:nuntium/features/auth/domain/repository/login_repository.dart';
-import 'package:nuntium/features/auth/domain/repository/register_repository.dart';
->>>>>>> main
 import 'package:nuntium/features/auth/domain/use_case/login_use_case.dart';
 import 'package:nuntium/features/auth/domain/use_case/register_use_case.dart';
 import 'package:nuntium/features/auth/presentation/controller/login_controller.dart';
@@ -102,7 +95,6 @@ initWelcomeModule() {
   if (!GetIt.I.isRegistered<RemoteLoginDataSource>()) {
     instance.registerLazySingleton<RemoteLoginDataSource>(
       () => RemoteLoginDataSourceImplement(
-        instance<AppApi>(),
       ),
     );
   }
@@ -208,14 +200,6 @@ disposeRegisterModule() {
   Get.delete<RegisterController>();
 }
 
-<<<<<<< HEAD
-initWelcomeModule() {
-  if (!GetIt.I.isRegistered<RemoteLoginDataSource>()) {
-    instance.registerLazySingleton<RemoteLoginDataSource>(
-      () => RemoteLoginDataSourceImplement(),
-    );
-  }
-=======
 initForgetPassword() async {
   disposeLoginModule();
   // initSendOtp();
@@ -282,5 +266,4 @@ initVerificationModule() {
   // }
 
   Get.put<VerificationController>(VerificationController());
->>>>>>> main
 }
