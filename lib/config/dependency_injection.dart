@@ -10,15 +10,24 @@ import 'package:nuntium/core/network/dio_factory.dart';
 import 'package:nuntium/core/storage/local/appSettingsSharedPreferences.dart';
 import 'package:nuntium/features/auth/data/data_source/remote_login_data_source.dart';
 import 'package:nuntium/features/auth/data/data_source/remote_register_data_source.dart';
+<<<<<<< HEAD
 import 'package:nuntium/features/auth/data/repository/login_repository.dart';
 import 'package:nuntium/features/auth/data/repository/register_repository.dart';
+=======
+import 'package:nuntium/features/auth/data/repository_impl/login_repository_impl.dart';
+import 'package:nuntium/features/auth/data/repository_impl/register_repository_impl.dart';
+import 'package:nuntium/features/auth/domain/repository/login_repository.dart';
+import 'package:nuntium/features/auth/domain/repository/register_repository.dart';
+>>>>>>> main
 import 'package:nuntium/features/auth/domain/use_case/login_use_case.dart';
 import 'package:nuntium/features/auth/domain/use_case/register_use_case.dart';
 import 'package:nuntium/features/auth/presentation/controller/login_controller.dart';
 import 'package:nuntium/features/auth/presentation/controller/register_controller.dart';
+import 'package:nuntium/features/forget_password/presentation/controller/forget_password_controller.dart';
 import 'package:nuntium/features/home/presentation/controller/home_controller.dart';
 import 'package:nuntium/features/out_boarding/presentaion/controller/out_boarding_controller.dart';
 import 'package:nuntium/features/out_boarding/presentaion/controller/welcome_controller.dart';
+import 'package:nuntium/features/verification/presentation/controller/verification_controller.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../features/splash/controller/splash_controller.dart';
@@ -89,6 +98,16 @@ initWelcome() {
   Get.put<WelcomeController>(WelcomeController());
 }
 
+initWelcomeModule() {
+  if (!GetIt.I.isRegistered<RemoteLoginDataSource>()) {
+    instance.registerLazySingleton<RemoteLoginDataSource>(
+      () => RemoteLoginDataSourceImplement(
+        instance<AppApi>(),
+      ),
+    );
+  }
+}
+
 disposeWelcome() {
   disposeOutBoarding();
 }
@@ -97,11 +116,33 @@ initLoginModule() {
   disposeSplash();
   disposeOutBoarding();
   disposeWelcome();
+  // initVerificationModule();
+  // initFcmToken();
+
   if (!GetIt.I.isRegistered<RemoteLoginDataSource>()) {
     instance.registerLazySingleton<RemoteLoginDataSource>(
       () => RemoteLoginDataSourceImplement(),
     );
   }
+
+  if (!GetIt.I.isRegistered<LoginRepository>()) {
+    instance.registerLazySingleton<LoginRepository>(
+      () => LoginRepositoryImplement(
+        instance(),
+        instance(),
+      ),
+    );
+  }
+
+  if (!GetIt.I.isRegistered<LoginUseCase>()) {
+    instance.registerFactory<LoginUseCase>(
+      () => LoginUseCase(
+        instance<LoginRepository>(),
+      ),
+    );
+  }
+
+  Get.put<LoginController>(LoginController());
 }
 
 disposeLoginModule() {
@@ -167,10 +208,79 @@ disposeRegisterModule() {
   Get.delete<RegisterController>();
 }
 
+<<<<<<< HEAD
 initWelcomeModule() {
   if (!GetIt.I.isRegistered<RemoteLoginDataSource>()) {
     instance.registerLazySingleton<RemoteLoginDataSource>(
       () => RemoteLoginDataSourceImplement(),
     );
   }
+=======
+initForgetPassword() async {
+  disposeLoginModule();
+  // initSendOtp();
+
+  // if (!GetIt.I.isRegistered<ForgetPasswordDataSource>()) {
+  //   instance.registerLazySingleton<ForgetPasswordDataSource>(
+  //           () => RemoteForgetPasswordDataSourceImpl(instance<AppApi>()));
+  // }
+  //
+  // if (!GetIt.I.isRegistered<ForgetPasswordRepository>()) {
+  //   instance.registerLazySingleton<ForgetPasswordRepository>(
+  //           () => ForgetPasswordRepositoryImpl(instance(), instance()));
+  // }
+  //
+  // if (!GetIt.I.isRegistered<ForgetPasswordUseCase>()) {
+  //   instance.registerFactory<ForgetPasswordUseCase>(
+  //           () => ForgetPasswordUseCase(instance<ForgetPasswordRepository>()));
+  // }
+
+  Get.put<ForgetPasswordController>(ForgetPasswordController());
+}
+
+disposeForgetPassword() async {
+  // if (GetIt.I.isRegistered<ForgetPasswordDataSource>()) {
+  //   instance.unregister<ForgetPasswordDataSource>();
+  // }
+  //
+  // if (GetIt.I.isRegistered<ForgetPasswordRepository>()) {
+  //   instance.unregister<ForgetPasswordRepository>();
+  // }
+  //
+  // if (GetIt.I.isRegistered<ForgetPasswordUseCase>()) {
+  //   instance.unregister<ForgetPasswordUseCase>();
+  // }
+  Get.delete<ForgetPasswordController>();
+}
+
+initVerificationModule() {
+  // initSendOtp();
+
+  // if (!GetIt.I.isRegistered<RemoteVerificationDataSource>()) {
+  //   instance.registerLazySingleton<RemoteVerificationDataSource>(
+  //     () => RemoteVerificationDataSourceImplementation(
+  //       instance<AppApi>(),
+  //     ),
+  //   );
+  // }
+  //
+  // if (!GetIt.I.isRegistered<VerificationRepository>()) {
+  //   instance.registerLazySingleton<VerificationRepository>(
+  //     () => VerificationRepositoryImpl(
+  //       instance<NetworkInfo>(),
+  //       instance<RemoteVerificationDataSource>(),
+  //     ),
+  //   );
+  // }
+  //
+  // if (!GetIt.I.isRegistered<VerificationUseCase>()) {
+  //   instance.registerLazySingleton<VerificationUseCase>(
+  //     () => VerificationUseCase(
+  //       instance<VerificationRepository>(),
+  //     ),
+  //   );
+  // }
+
+  Get.put<VerificationController>(VerificationController());
+>>>>>>> main
 }
