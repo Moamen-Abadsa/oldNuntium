@@ -18,7 +18,7 @@ class RegisterUseCaseInput {
   });
 }
 
-class RegisterUseCase implements BaseUseCase<RegisterUseCaseInput, void> {
+class RegisterUseCase implements BaseInUseCase<RegisterUseCaseInput> {
   final RegisterRepository _registerRepository;
 
   RegisterUseCase(this._registerRepository);
