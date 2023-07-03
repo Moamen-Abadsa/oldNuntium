@@ -3,11 +3,11 @@ import 'package:nuntium/core/resorces/manager_strings.dart';
 import 'package:nuntium/features/auth/presentation/view/login_view.dart';
 import 'package:nuntium/features/auth/presentation/view/register_view.dart';
 import 'package:nuntium/features/forget_password/presentation/view/forget_password.dart';
+import 'package:nuntium/features/forget_password/presentation/view/verification_view.dart';
 import 'package:nuntium/features/home/presentation/view/home_view.dart';
 import 'package:nuntium/features/out_boarding/presentaion/view/out_boarding_view.dart';
 import 'package:nuntium/features/out_boarding/presentaion/view/welcome_screen.dart';
 import 'package:nuntium/features/splash/presentaion/view/splash_view.dart';
-import 'package:nuntium/features/verification/presentation/view/verification_view.dart';
 
 import '../config/dependency_injection.dart';
 
