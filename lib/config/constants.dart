@@ -5,6 +5,7 @@ class Constants {
 
   static const double deviceWidth = 375;
   static const double deviceHeight = 812;
+  static const int codeVerificationMaxLine = 1;
 }
 
 class ConstantsPrefsKeys {

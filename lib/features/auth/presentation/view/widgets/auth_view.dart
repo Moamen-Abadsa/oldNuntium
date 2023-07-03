@@ -4,9 +4,11 @@ import 'package:nuntium/core/resorces/manager_colors.dart';
 import 'package:nuntium/core/resorces/manager_fonts.dart';
 import 'package:nuntium/core/resorces/manager_icons.dart';
 import 'package:nuntium/core/resorces/manager_sizes.dart';
+import 'package:nuntium/core/resorces/manager_strings.dart';
 import 'package:nuntium/core/resorces/manager_styles.dart';
 import 'package:nuntium/core/widgets/rect_button.dart';
 import 'package:nuntium/core/widgets/text_field.dart';
+import 'package:nuntium/features/verification/presentation/view/widget/verification_widget.dart';
 import 'package:nuntium/routes/routes.dart';
 
 Widget authView(
@@ -17,10 +19,13 @@ Widget authView(
     bool password = false,
     bool confirmPassword = false,
     bool name = false,
+    bool verification = false,
     required String buttonText,
-    String passwordHint = 'Password',
-    String confirmPasswordHint = 'Repeat New Password',
+    String passwordHint = ManagerStrings.password,
+    String confirmPasswordHint = ManagerStrings.confirmPasswordHint,
+    required Function() onPressed,
     required Map<String, TextEditingController> controllers}) {
+  TextEditingController pinController = TextEditingController();
   return Scaffold(
     resizeToAvoidBottomInset: false,
     body: SafeArea(
@@ -50,68 +55,82 @@ Widget authView(
             SizedBox(
               height: ManagerHeight.h32,
             ),
-            Visibility(
-              visible: name,
-              child: myTextField(
-                controller:
-                    controllers['nameController'] ?? TextEditingController(),
-                icon: ManagerIcons.user,
-              ),
-            ),
-            SizedBox(
-              height: name ? ManagerHeight.h16 : 0,
-            ),
-            myTextField(
-              controller:
-                  controllers['emailController'] ?? TextEditingController(),
-              icon: ManagerIcons.email,
-            ),
-            SizedBox(
-              height: ManagerHeight.h16,
-            ),
-            Visibility(
-              visible: password,
-              child: myTextField(
-                  controller: controllers['passwordController']!,
-                  icon: ManagerIcons.password,
-                  hintText: passwordHint),
-            ),
-            SizedBox(
-              height: password ? ManagerHeight.h16 : 0,
-            ),
-            Visibility(
-              visible: confirmPassword,
-              child: myTextField(
-                  controller: controllers['confirmPasswordController'] ??
-                      TextEditingController(),
-                  icon: ManagerIcons.password,
-                  hintText: confirmPasswordHint),
-            ),
-            SizedBox(
-              height: confirmPassword ? ManagerHeight.h16 : 0,
-            ),
-            Visibility(
-              visible: forgotPassword,
-              child: Row(
-                children: [
-                  Spacer(),
-                  Text(
-                    "Forgot Password?",
-                    style: getMediumTextStyle(
-                        fontSize: ManagerFontSize.s16,
-                        color: ManagerColors.greyPrimary),
+            !verification
+                ? Column(
+                    children: [
+                      Visibility(
+                        visible: name,
+                        child: myTextField(
+                          controller: controllers['nameController'] ??
+                              TextEditingController(),
+                          icon: ManagerIcons.user,
+                        ),
+                      ),
+                      SizedBox(
+                        height: name ? ManagerHeight.h16 : 0,
+                      ),
+                      myTextField(
+                        controller: controllers['emailController'] ??
+                            TextEditingController(),
+                        icon: ManagerIcons.email,
+                      ),
+                      SizedBox(
+                        height: ManagerHeight.h16,
+                      ),
+                      Visibility(
+                        visible: password,
+                        child: myTextField(
+                            controller: controllers['passwordController'] ??
+                                TextEditingController(),
+                            icon: ManagerIcons.password,
+                            hintText: passwordHint),
+                      ),
+                      SizedBox(
+                        height: password ? ManagerHeight.h16 : 0,
+                      ),
+                      Visibility(
+                        visible: confirmPassword,
+                        child: myTextField(
+                            controller:
+                                controllers['confirmPasswordController'] ??
+                                    TextEditingController(),
+                            icon: ManagerIcons.password,
+                            hintText: confirmPasswordHint),
+                      ),
+                      SizedBox(
+                        height: confirmPassword ? ManagerHeight.h16 : 0,
+                      ),
+                      Visibility(
+                        visible: forgotPassword,
+                        child: Row(
+                          children: [
+                            Spacer(),
+                            InkWell(
+                              onTap: () => Get.offAllNamed(Routes.forget),
+                              child: Text(
+                                ManagerStrings.forgetPassword,
+                                style: getMediumTextStyle(
+                                    fontSize: ManagerFontSize.s16,
+                                    color: ManagerColors.greyPrimary),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  )
+                : Column(
+                    children: [
+                      verificationNode(),
+                      SizedBox(
+                        height: ManagerHeight.h16,
+                      )
+                    ],
                   ),
-                ],
-              ),
-            ),
             SizedBox(
-              height: ManagerHeight.h24,
+              height: forgotPassword ? ManagerHeight.h24 : 0,
             ),
-            rectButton(
-                onPressed: () {
-                  Get.offAllNamed(Routes.register);
-                },
-                text: buttonText),
+            rectButton(onPressed: onPressed, text: buttonText),
             Expanded(child: child ?? const SizedBox())
           ],
         ),

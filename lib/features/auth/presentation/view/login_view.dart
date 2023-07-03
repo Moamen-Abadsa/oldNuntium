@@ -9,6 +9,7 @@ import 'package:nuntium/features/auth/presentation/controller/login_controller.d
 import 'package:nuntium/features/auth/presentation/view/widgets/auth_view.dart';
 import 'package:nuntium/features/auth/presentation/view/widgets/footer_message.dart';
 import 'package:nuntium/features/auth/presentation/view/widgets/social_media_btn.dart';
+import 'package:nuntium/routes/routes.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -23,6 +24,7 @@ class LoginView extends StatelessWidget {
             buttonText: ManagerStrings.signIn,
             forgotPassword: true,
             password: true,
+            onPressed: () => Get.offAllNamed(Routes.homeView),
             child: loginWidget(),
             controllers: {
               'emailController': controller.emailController,
@@ -63,7 +65,10 @@ class LoginView extends StatelessWidget {
         SizedBox(
           height: ManagerHeight.h50,
         ),
-        footerMessage(),
+        footerMessage(
+            onPressed: () => Get.offAllNamed(
+                  Routes.register,
+                )),
       ],
     );
   }
