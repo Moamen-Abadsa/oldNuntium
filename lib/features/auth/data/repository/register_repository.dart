@@ -2,8 +2,6 @@ import 'package:dartz/dartz.dart';
 import 'package:nuntium/core/error_handler/error_handler.dart';
 import 'package:nuntium/features/auth/data/request/register_request.dart';
 
-import 'dart:ffi';
-
 import 'package:nuntium/config/constants.dart';
 import 'package:nuntium/core/error_handler/response_code.dart';
 import 'package:nuntium/core/internet_checker/internet_checker.dart';
@@ -24,8 +22,7 @@ class RegisterRepositoryImpl implements RegisterRepository {
     if (await networkInfo.isConnected) {
       try {
         await _dataSource.register(registerRequest);
-        // ignore: void_checks
-        return const Right(Void);
+        return const Right(null);
       } catch (e) {
         return Left(
           ErrorHandler.handle(e).failure,
