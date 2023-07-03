@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nuntium/core/resorces/manager_assets.dart';
 import 'package:nuntium/core/resorces/manager_colors.dart';

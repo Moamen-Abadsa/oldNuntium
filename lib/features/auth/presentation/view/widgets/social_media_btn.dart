@@ -6,21 +6,16 @@ import 'package:nuntium/core/resorces/manager_sizes.dart';
 import 'package:nuntium/core/resorces/manager_strings.dart';
 
 Padding socialButton(
-    {required void Function() onPressed,
-    bool isHasMargin = false,
-    required SocialMedia socialMedia}) {
+    {required void Function() onPressed, bool isHasMargin = false, required SocialMedia socialMedia}) {
   return Padding(
-    padding:
-        EdgeInsets.symmetric(horizontal: isHasMargin ? ManagerWidth.w20 : 0),
+    padding: EdgeInsets.symmetric(horizontal: isHasMargin ? ManagerWidth.w20 : 0),
     child: ElevatedButton.icon(
       icon: socialMedia == SocialMedia.Facebook
           ? Image.asset(ManagerAssets.facebook)
           : Image.asset(ManagerAssets.google),
       onPressed: onPressed,
       label: Text(
-        socialMedia == SocialMedia.Google
-            ? ManagerStrings.google
-            : ManagerStrings.facebook,
+        socialMedia == SocialMedia.Google ? ManagerStrings.google : ManagerStrings.facebook,
         style: TextStyle(
             fontSize: ManagerFontSize.s16,
             color: ManagerColors.greyDarker,
@@ -36,7 +31,7 @@ Padding socialButton(
           borderRadius: BorderRadius.all(
             Radius.circular(ManagerRadius.r12),
           ),
-          side: BorderSide(color: ManagerColors.greyLighter),
+          side: const BorderSide(color: ManagerColors.greyLighter),
         ),
       ),
     ),

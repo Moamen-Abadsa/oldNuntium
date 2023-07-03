@@ -38,7 +38,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-void doNothing() {
-  print("You Are A Dummy Man!");
-}

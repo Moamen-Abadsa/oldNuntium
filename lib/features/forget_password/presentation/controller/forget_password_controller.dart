@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:nuntium/config/dependency_injection.dart';
-import 'package:nuntium/features/forget_password/domain/use_case/forget_password_use_case%20copy.dart';
+import 'package:nuntium/features/forget_password/domain/use_case/forget_password_use_case.dart';
 
 class ForgetPasswordController extends GetxController {
   late final TextEditingController emailController;

@@ -25,7 +25,6 @@ Widget authView(
     String confirmPasswordHint = ManagerStrings.confirmPasswordHint,
     required Function() onPressed,
     required Map<String, TextEditingController> controllers}) {
-  TextEditingController pinController = TextEditingController();
   return Scaffold(
     resizeToAvoidBottomInset: false,
     body: SafeArea(
@@ -39,18 +38,14 @@ Widget authView(
             ),
             Text(
               title,
-              style: getSemiBoldTextStyle(
-                  fontSize: ManagerFontSize.s24,
-                  color: ManagerColors.blackPrimary),
+              style: getSemiBoldTextStyle(fontSize: ManagerFontSize.s24, color: ManagerColors.blackPrimary),
             ),
             SizedBox(
               height: ManagerHeight.h8,
             ),
             Text(
               paragraph,
-              style: getRegularTextStyle(
-                  fontSize: ManagerFontSize.s16,
-                  color: ManagerColors.greyPrimary),
+              style: getRegularTextStyle(fontSize: ManagerFontSize.s16, color: ManagerColors.greyPrimary),
             ),
             SizedBox(
               height: ManagerHeight.h32,
@@ -61,8 +56,7 @@ Widget authView(
                       Visibility(
                         visible: name,
                         child: myTextField(
-                          controller: controllers['nameController'] ??
-                              TextEditingController(),
+                          controller: controllers['nameController'] ?? TextEditingController(),
                           icon: ManagerIcons.user,
                         ),
                       ),
@@ -70,8 +64,7 @@ Widget authView(
                         height: name ? ManagerHeight.h16 : 0,
                       ),
                       myTextField(
-                        controller: controllers['emailController'] ??
-                            TextEditingController(),
+                        controller: controllers['emailController'] ?? TextEditingController(),
                         icon: ManagerIcons.email,
                       ),
                       SizedBox(
@@ -80,8 +73,7 @@ Widget authView(
                       Visibility(
                         visible: password,
                         child: myTextField(
-                            controller: controllers['passwordController'] ??
-                                TextEditingController(),
+                            controller: controllers['passwordController'] ?? TextEditingController(),
                             icon: ManagerIcons.password,
                             hintText: passwordHint),
                       ),
@@ -91,9 +83,7 @@ Widget authView(
                       Visibility(
                         visible: confirmPassword,
                         child: myTextField(
-                            controller:
-                                controllers['confirmPasswordController'] ??
-                                    TextEditingController(),
+                            controller: controllers['confirmPasswordController'] ?? TextEditingController(),
                             icon: ManagerIcons.password,
                             hintText: confirmPasswordHint),
                       ),
@@ -104,14 +94,13 @@ Widget authView(
                         visible: forgotPassword,
                         child: Row(
                           children: [
-                            Spacer(),
+                            const Spacer(),
                             InkWell(
                               onTap: () => Get.offAllNamed(Routes.forget),
                               child: Text(
                                 ManagerStrings.forgetPassword,
                                 style: getMediumTextStyle(
-                                    fontSize: ManagerFontSize.s16,
-                                    color: ManagerColors.greyPrimary),
+                                    fontSize: ManagerFontSize.s16, color: ManagerColors.greyPrimary),
                               ),
                             ),
                           ],

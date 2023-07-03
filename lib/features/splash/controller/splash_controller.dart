@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:nuntium/config/constants.dart';
 import 'package:nuntium/config/dependency_injection.dart';
-import 'package:nuntium/core/storage/local/appSettingsSharedPreferences.dart';
+import 'package:nuntium/core/storage/local/app_settings_shared_preferences.dart';
 import 'package:nuntium/routes/routes.dart';
 
 class SplashController extends GetxController {

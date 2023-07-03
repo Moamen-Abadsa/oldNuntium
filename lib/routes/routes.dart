@@ -32,7 +32,7 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const SplashView());
       case Routes.outBoardingView:
         initOutBoarding();
-        return MaterialPageRoute(builder: (_) => OutBoardingView());
+        return MaterialPageRoute(builder: (_) => const OutBoardingView());
       case Routes.homeView:
         initHome();
         return MaterialPageRoute(builder: (_) => const HomeView());
