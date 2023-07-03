@@ -4,7 +4,7 @@ import 'package:nuntium/core/resorces/manager_colors.dart';
 import 'package:nuntium/core/resorces/manager_fonts.dart';
 import 'package:nuntium/core/resorces/manager_sizes.dart';
 import 'package:nuntium/core/resorces/manager_styles.dart';
-import 'package:nuntium/features/verification/presentation/controller/verification_controller.dart';
+import 'package:nuntium/features/forget_password/presentation/controller/verification_controller.dart';
 import 'package:pinput/pinput.dart';
 
 Widget verificationNode() {

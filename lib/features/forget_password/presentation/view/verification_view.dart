@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nuntium/features/auth/presentation/view/widgets/auth_view.dart';
 import 'package:nuntium/features/auth/presentation/view/widgets/footer_message.dart';
-import 'package:nuntium/features/verification/presentation/controller/verification_controller.dart';
+import 'package:nuntium/features/forget_password/presentation/controller/verification_controller.dart';
 
 class VerificationView extends StatelessWidget {
   const VerificationView({Key? key}) : super(key: key);
