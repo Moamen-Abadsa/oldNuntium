@@ -17,7 +17,9 @@ class LoginController extends GetxController {
       ),
     ))
         .fold(
+      // فشل
       (l) => null,
+      // نجح
       (r) => null,
     );
   }
