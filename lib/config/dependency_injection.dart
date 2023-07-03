@@ -20,7 +20,7 @@ import 'package:nuntium/features/forget_password/presentation/controller/forget_
 import 'package:nuntium/features/home/presentation/controller/home_controller.dart';
 import 'package:nuntium/features/out_boarding/presentaion/controller/out_boarding_controller.dart';
 import 'package:nuntium/features/out_boarding/presentaion/controller/welcome_controller.dart';
-import 'package:nuntium/features/verification/presentation/controller/verification_controller.dart';
+import 'package:nuntium/features/forget_password/presentation/controller/verification_controller.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../features/splash/controller/splash_controller.dart';

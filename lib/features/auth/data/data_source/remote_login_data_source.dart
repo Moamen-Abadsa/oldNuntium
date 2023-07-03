@@ -5,13 +5,13 @@ import 'package:nuntium/features/auth/data/request/login_request.dart';
 import 'package:nuntium/features/auth/data/response/login_response.dart';
 
 abstract class RemoteLoginDataSource {
-  Future<LoginResponse> login(LoginRequest loginRequest);
+  Future<LoginResponse> forgetPassword(LoginRequest loginRequest);
 }
 
 class RemoteLoginDataSourceImplement implements RemoteLoginDataSource {
   RemoteLoginDataSourceImplement();
   @override
-  Future<LoginResponse> login(LoginRequest loginRequest) async {
+  Future<LoginResponse> forgetPassword(LoginRequest loginRequest) async {
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: loginRequest.email!,

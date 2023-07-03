@@ -8,7 +8,7 @@ import 'package:nuntium/core/resorces/manager_strings.dart';
 import 'package:nuntium/core/resorces/manager_styles.dart';
 import 'package:nuntium/core/widgets/rect_button.dart';
 import 'package:nuntium/core/widgets/text_field.dart';
-import 'package:nuntium/features/verification/presentation/view/widget/verification_widget.dart';
+import 'package:nuntium/features/forget_password/presentation/view/widget/verification_widget.dart';
 import 'package:nuntium/routes/routes.dart';
 
 Widget authView(
