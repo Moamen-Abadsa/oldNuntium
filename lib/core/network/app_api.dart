@@ -12,16 +12,9 @@ abstract class AppApi {
     Dio dio, {
     String baseUrl,
   }) = _AppApi;
-  // refactor loginRequest , email , password in RequestResponse
   // @POST(RequestConstants.loginRequest)
   // Future<LoginResponse> login(@Field(RequestConstants.email) String email,
   //     @Field(RequestConstants.password) String password);
 
-  @POST(RequestConstants.register)
-  Future<RegisterResponse> register(
-    @Field(ApiConstants.name) name,
-    @Field(ApiConstants.email) email,
-    @Field(ApiConstants.password) password,
-    @Field(ApiConstants.passwordConfirmation) passwordConfirmation,
-  );
+
 }
