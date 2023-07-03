@@ -1,8 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:nuntium/config/dependency_injection.dart';
+import 'package:nuntium/features/forget_password/domain/use_case/forget_password_use_case%20copy.dart';
 
 class ForgetPasswordController extends GetxController {
   late final TextEditingController emailController;
+  late final _forgetPasswordUseCase = instance<ForgetPasswordUseCase>();
+
   @override
   void onInit() {
     emailController = TextEditingController();
@@ -13,5 +17,19 @@ class ForgetPasswordController extends GetxController {
   void onClose() {
     emailController.dispose();
     super.onClose();
+  }
+
+  Future<void> login() async {
+    (await _forgetPasswordUseCase.execute(
+      ForgetPasswordUseCaseInput(
+        email: emailController.text,
+      ),
+    ))
+        .fold(
+      // Todo: حالة الفشل
+      (l) => null,
+      //Todo: حالة النجاح
+      (r) => null,
+    );
   }
 }
