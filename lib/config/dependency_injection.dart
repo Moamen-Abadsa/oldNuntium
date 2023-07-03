@@ -17,6 +17,7 @@ import 'package:nuntium/features/auth/domain/use_case/login_use_case.dart';
 import 'package:nuntium/features/auth/domain/use_case/register_use_case.dart';
 import 'package:nuntium/features/auth/presentation/controller/login_controller.dart';
 import 'package:nuntium/features/auth/presentation/controller/register_controller.dart';
+import 'package:nuntium/features/favourite/presentation/controller/select_favourite_controller.dart';
 import 'package:nuntium/features/forget_password/presentation/controller/forget_password_controller.dart';
 import 'package:nuntium/features/home/presentation/controller/home_controller.dart';
 import 'package:nuntium/features/out_boarding/presentaion/controller/out_boarding_controller.dart';
@@ -274,4 +275,12 @@ initVerificationModule() {
   // }
 
   Get.put<VerificationController>(VerificationController());
+}
+
+initSelectFavouriteModule() {
+  Get.put<SelectFavouriteController>(SelectFavouriteController());
+}
+
+disposeSelectFavouriteModule() {
+  Get.delete<SelectFavouriteController>();
 }
