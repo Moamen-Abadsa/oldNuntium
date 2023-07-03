@@ -4,8 +4,8 @@ import 'package:nuntium/config/dependency_injection.dart';
 import 'package:nuntium/features/auth/domain/use_case/login_use_case.dart';
 
 class LoginController extends GetxController {
-  late TextEditingController emailController = TextEditingController();
-  late TextEditingController passwordController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
   late final LoginUseCase _loginUseCase = instance<LoginUseCase>();
   var formKey = GlobalKey<FormState>();
 
