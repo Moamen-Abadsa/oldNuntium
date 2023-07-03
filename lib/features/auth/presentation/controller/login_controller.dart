@@ -17,9 +17,9 @@ class LoginController extends GetxController {
       ),
     ))
         .fold(
-      // فشل
+      // Todo: حالة الفشل 
       (l) => null,
-      // نجح
+      //Todo: حالة النجاح
       (r) => null,
     );
   }
