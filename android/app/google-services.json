@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "150646309144",
+    "project_id": "nuntium-news-app",
+    "storage_bucket": "nuntium-news-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:150646309144:android:582da7431ce9edd0a8de6d",
+        "android_client_info": {
+          "package_name": "com.example.nuntium"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "150646309144-2jdo0nuoajei4f7munnj2otq0jcs2ike.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLycttb7Mfnyr_Umnc5bSOO6TxTUwgCx0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "150646309144-2jdo0nuoajei4f7munnj2otq0jcs2ike.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

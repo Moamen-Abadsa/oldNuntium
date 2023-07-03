@@ -10,7 +10,17 @@ class LoginController extends GetxController {
   var formKey = GlobalKey<FormState>();
 
   Future<void> login() async {
-    (await _loginUseCase.execute(LoginUseCaseInput(
-        email: emailController.text, password: passwordController.text)));
+    (await _loginUseCase.execute(
+      LoginUseCaseInput(
+        email: emailController.text,
+        password: passwordController.text,
+      ),
+    ))
+        .fold(
+      // فشل
+      (l) => null,
+      // نجح
+      (r) => null,
+    );
   }
 }

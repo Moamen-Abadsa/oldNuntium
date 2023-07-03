@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:nuntium/core/resorces/manager_strings.dart';
 
 class Failure {
@@ -15,10 +16,10 @@ class ErrorHandler implements Exception {
     if (error is DioError) {
       failure = Failure(
         400,
-        error.response?.data['message'] ??
-            error.response?.data['errors'].toString() ??
-            ManagerStrings.error,
+        error.response?.data['message'] ?? error.response?.data['errors'].toString() ?? ManagerStrings.error,
       );
+    } else if (error is FirebaseAuthException) {
+      failure = Failure(400, error.code);
     } else {
       failure = Failure(400, ManagerStrings.badRequest);
     }
