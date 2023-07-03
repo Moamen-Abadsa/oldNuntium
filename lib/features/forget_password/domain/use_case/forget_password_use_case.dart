@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:nuntium/core/error_handler/error_handler.dart';
 import 'package:nuntium/core/use_case/base_usecase.dart';
-import 'package:nuntium/features/forget_password/data/repository/forget_password_repository%20copy.dart';
+import 'package:nuntium/features/forget_password/data/repository/forget_password_repository.dart';
 import 'package:nuntium/features/forget_password/data/request/forget_password_request.dart';
 
 class ForgetPasswordUseCaseInput {

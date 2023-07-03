@@ -1,15 +1,15 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:nuntium/features/forget_password/data/request/verify_code_request%20copy.dart';
+import 'package:nuntium/features/forget_password/data/request/forget_password_request.dart';
 
-abstract class RemoteVerifyCodeDataSource {
-  Future<void> verifyCode(VerifyCodeRequest verifyCodeRequest);
+abstract class RemoteForgetPasswordDataSource {
+  Future<void> forgetPassword(ForgetPasswordRequest loginRequest);
 }
 
-class RemoteForgetPasswordDataSourceImplement implements RemoteVerifyCodeDataSource {
+class RemoteForgetPasswordDataSourceImplement implements RemoteForgetPasswordDataSource {
   @override
-  Future<void> verifyCode(VerifyCodeRequest verifyCodeRequest) async {
-    await FirebaseAuth.instance.verifyPasswordResetCode(
-      verifyCodeRequest.verificationCode!,
+  Future<void> forgetPassword(ForgetPasswordRequest forgetPasswordRequest) async {
+    await FirebaseAuth.instance.sendPasswordResetEmail(
+      email: forgetPasswordRequest.email!,
     );
   }
 }

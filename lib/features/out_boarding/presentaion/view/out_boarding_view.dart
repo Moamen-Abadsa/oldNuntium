@@ -11,6 +11,8 @@ import '../../../../core/resorces/manager_strings.dart';
 import '../../../../routes/routes.dart';
 
 class OutBoardingView extends StatefulWidget {
+  const OutBoardingView({super.key});
+
   @override
   State<OutBoardingView> createState() => _OutBoardingViewState();
 }
@@ -24,9 +26,7 @@ class _OutBoardingViewState extends State<OutBoardingView> {
 
   int activePage = 0;
 
-  PageController _controller = PageController();
-
-  CarouselController _carouselController = CarouselController();
+  final CarouselController _carouselController = CarouselController();
 
   @override
   Widget build(BuildContext context) {
@@ -40,13 +40,13 @@ class _OutBoardingViewState extends State<OutBoardingView> {
             // start: ManagerWidth.w20,
             // end: ManagerWidth.w20,
           ),
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               // color: ManagerColors.purpleLight,
               ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Container(
+              SizedBox(
                 // width: ManagerWidth.w288,
                 height: ManagerHeight.h336,
                 child: CarouselSlider.builder(
@@ -63,7 +63,7 @@ class _OutBoardingViewState extends State<OutBoardingView> {
                       enlargeStrategy: CenterPageEnlargeStrategy.zoom,
                       autoPlay: false,
                       reverse: false,
-                      autoPlayInterval: Duration(seconds: 2),
+                      autoPlayInterval: const Duration(seconds: 2),
                       enableInfiniteScroll: false,
                       animateToClosest: true,
                       onPageChanged: (index, reason) {
@@ -108,7 +108,7 @@ class _OutBoardingViewState extends State<OutBoardingView> {
                 padding: EdgeInsets.symmetric(horizontal: ManagerWidth.w20),
                 child: Container(
                   width: double.infinity,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     borderRadius: BorderRadius.only(
                       topRight: Radius.circular(12),
                     ),
@@ -149,7 +149,7 @@ class _OutBoardingViewState extends State<OutBoardingView> {
   Widget buildIndex() => AnimatedSmoothIndicator(
         activeIndex: activePage,
         count: images.length,
-        effect: ExpandingDotsEffect(
+        effect: const ExpandingDotsEffect(
             dotWidth: 8,
             dotHeight: 8,
             dotColor: ManagerColors.greyLighter,

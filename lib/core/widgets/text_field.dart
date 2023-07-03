@@ -10,10 +10,10 @@ Container myTextField(
     required TextEditingController controller,
     required IconData icon,
     String hintText = "Email Address"}) {
-  FocusNode _focusNode = FocusNode();
-  bool _isFocused = false;
-  _focusNode.addListener(() {
-    _isFocused = _focusNode.hasFocus;
+  FocusNode focusNode = FocusNode();
+  bool isFocused = false;
+  focusNode.addListener(() {
+    isFocused = focusNode.hasFocus;
   });
   return Container(
     width: double.infinity,
@@ -25,29 +25,25 @@ Container myTextField(
         )),
     child: TextField(
       cursorColor: ManagerColors.purplePrimary,
-      style: getMediumTextStyle(
-          fontSize: ManagerFontSize.s16, color: ManagerColors.blackPrimary),
+      style: getMediumTextStyle(fontSize: ManagerFontSize.s16, color: ManagerColors.blackPrimary),
       obscureText: isObscureText,
       controller: controller,
-      focusNode: _focusNode,
+      focusNode: focusNode,
       decoration: InputDecoration(
         filled: true,
         fillColor: ManagerColors.greyLighter,
         focusColor: ManagerColors.white,
         hintText: hintText,
-        hintStyle: getMediumTextStyle(
-            fontSize: ManagerFontSize.s16, color: ManagerColors.greyPrimary),
+        hintStyle: getMediumTextStyle(fontSize: ManagerFontSize.s16, color: ManagerColors.greyPrimary),
         prefixIcon: IconService().getIcon(
           icon: icon,
           iconSize: ManagerFontSize.s24,
-          color: _isFocused
-              ? ManagerColors.purplePrimary
-              : ManagerColors.greyPrimary,
+          color: isFocused ? ManagerColors.purplePrimary : ManagerColors.greyPrimary,
         ),
-        focusedBorder: _focusNode.hasFocus
+        focusedBorder: focusNode.hasFocus
             ? InputBorder.none
             : OutlineInputBorder(
-                borderSide: BorderSide(
+                borderSide: const BorderSide(
                   color: ManagerColors.purplePrimary,
                 ),
                 borderRadius: BorderRadius.all(
@@ -59,7 +55,7 @@ Container myTextField(
         // focusColor: ManagerColors.purplePrimary,
         border: InputBorder.none,
         enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(
+          borderSide: const BorderSide(
             color: ManagerColors.white,
           ),
           borderRadius: BorderRadius.all(

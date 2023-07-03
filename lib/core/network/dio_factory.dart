@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:nuntium/config/constants.dart';
 import 'package:nuntium/config/dependency_injection.dart';
-import 'package:nuntium/core/storage/local/appSettingsSharedPreferences.dart';
+import 'package:nuntium/core/storage/local/app_settings_shared_preferences.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class DioFactory {

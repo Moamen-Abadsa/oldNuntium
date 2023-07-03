@@ -7,7 +7,7 @@ import 'package:internet_connection_checker_plus/internet_connection_checker_plu
 import 'package:nuntium/core/internet_checker/internet_checker.dart';
 import 'package:nuntium/core/network/app_api.dart';
 import 'package:nuntium/core/network/dio_factory.dart';
-import 'package:nuntium/core/storage/local/appSettingsSharedPreferences.dart';
+import 'package:nuntium/core/storage/local/app_settings_shared_preferences.dart';
 import 'package:nuntium/features/auth/data/data_source/remote_login_data_source.dart';
 import 'package:nuntium/features/auth/data/data_source/remote_register_data_source.dart';
 import 'package:nuntium/features/auth/data/repository/login_repository.dart';
@@ -60,7 +60,6 @@ initModule() async {
 
 initSplash() {
   Get.put<SplashController>(SplashController());
-  print("Get.put<SplashController>(SplashController());");
 }
 
 disposeSplash() {
@@ -70,7 +69,6 @@ disposeSplash() {
 initOutBoarding() {
   disposeSplash();
   Get.put<OutBoardingController>(OutBoardingController());
-  print("Get.put<OutBoardingController>(OutBoardingController());");
 }
 
 disposeOutBoarding() {
@@ -94,8 +92,7 @@ initWelcome() {
 initWelcomeModule() {
   if (!GetIt.I.isRegistered<RemoteLoginDataSource>()) {
     instance.registerLazySingleton<RemoteLoginDataSource>(
-      () => RemoteLoginDataSourceImplement(
-      ),
+      () => RemoteLoginDataSourceImplement(),
     );
   }
 }
@@ -159,8 +156,7 @@ initRegisterModule() {
   disposeLoginModule();
   if (!GetIt.I.isRegistered<RemoteRegisterDataSource>()) {
     instance.registerLazySingleton<RemoteRegisterDataSource>(
-      () => RemoteRegisterDataSourceImplement(
-      ),
+      () => RemoteRegisterDataSourceImplement(),
     );
   }
 
