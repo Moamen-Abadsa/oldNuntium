@@ -18,7 +18,15 @@ class ManagerStrings {
   static const String facebook = "Sign In with Facebook";
   static const String signIn = "Sign In";
   static const String signUp = "Sign Up";
+  static const String forget = "Forgot Password 🤔";
+  static const String password = 'Password';
+  static const String forgetPassword = "Forgot Password?";
+  static const String confirmPasswordHint = 'Repeat New Password';
+  static const String forgetParagraph =
+      "We need your email adress so we can send you the password reset code.";
   static const String signUpFooterMessage = "Already have an account?";
+  static const String forgetPasswordFooterMessage = "Didn’t receive an email?";
+  static const String sendAgain = "Send again";
 
 //TODO
 }

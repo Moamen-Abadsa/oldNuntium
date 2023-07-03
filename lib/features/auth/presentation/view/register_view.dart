@@ -12,6 +12,7 @@ class RegisterView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<RegisterController>(
+      init: RegisterController(),
       builder: (controller) {
         return authView(
           title: ManagerStrings.signUpTitle,
@@ -20,8 +21,9 @@ class RegisterView extends StatelessWidget {
           password: true,
           confirmPassword: true,
           name: true,
+          onPressed: () => Get.offAllNamed(Routes.loginView),
           child: footerMessage(
-              destination: Routes.loginView,
+              onPressed: () => Get.offAllNamed(Routes.loginView),
               firstMessage: ManagerStrings.signUpFooterMessage,
               secondMessage: ManagerStrings.signIn),
           controllers: {
