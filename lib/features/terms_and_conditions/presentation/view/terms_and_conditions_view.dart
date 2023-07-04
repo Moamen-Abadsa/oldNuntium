@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nuntium/core/resorces/manager_colors.dart';
 import 'package:nuntium/core/resorces/manager_fonts.dart';
-import 'package:nuntium/core/resorces/manager_strings.dart';
 import 'package:nuntium/core/resorces/manager_styles.dart';
 
 class TermsAndConditionsView extends StatelessWidget {
@@ -22,7 +21,8 @@ class TermsAndConditionsView extends StatelessWidget {
       body: Column(
         children: [
           Text(
-            ManagerStrings.artical,
+            //TODO: add the string to ManagerStrings
+            'ManagerStrings.artical',
             style: getRegularTextStyle(
               fontSize: ManagerFontSize.s16,
               color: ManagerColors.greyPrimary,

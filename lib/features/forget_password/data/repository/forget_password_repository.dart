@@ -23,7 +23,14 @@ class ForgetPasswordRepositoryImplement implements ForgetPasswordRepository {
   @override
   Future<Either<Failure, void>> forgetPassword(ForgetPasswordRequest forgetPasswordRequest) async {
     if (await _networkInfo.isConnected) {
-      await _remoteForgetPasswordDataSource.forgetPassword(forgetPasswordRequest);
+      try {
+        await _remoteForgetPasswordDataSource.forgetPassword(forgetPasswordRequest);
+      } catch (e) {
+        return Left(
+          ErrorHandler.handle(e).failure,
+        );
+      }
+
       return const Right(null);
     } else {
       return Left(
