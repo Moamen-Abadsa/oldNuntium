@@ -9,6 +9,8 @@ Container myTextField(
     {bool isObscureText = false,
     required TextEditingController controller,
     required IconData icon,
+    TextInputType keyboardType = TextInputType.emailAddress,
+    validator,
     String hintText = "Email Address"}) {
   FocusNode focusNode = FocusNode();
   bool isFocused = false;
@@ -23,9 +25,13 @@ Container myTextField(
         borderRadius: BorderRadius.all(
           Radius.circular(ManagerRadius.r12),
         )),
-    child: TextField(
+    child: TextFormField(
+      autovalidateMode: AutovalidateMode.always,
+      validator: validator,
+      keyboardType: keyboardType,
       cursorColor: ManagerColors.purplePrimary,
-      style: getMediumTextStyle(fontSize: ManagerFontSize.s16, color: ManagerColors.blackPrimary),
+      style: getMediumTextStyle(
+          fontSize: ManagerFontSize.s16, color: ManagerColors.blackPrimary),
       obscureText: isObscureText,
       controller: controller,
       focusNode: focusNode,
@@ -34,11 +40,14 @@ Container myTextField(
         fillColor: ManagerColors.greyLighter,
         focusColor: ManagerColors.white,
         hintText: hintText,
-        hintStyle: getMediumTextStyle(fontSize: ManagerFontSize.s16, color: ManagerColors.greyPrimary),
+        hintStyle: getMediumTextStyle(
+            fontSize: ManagerFontSize.s16, color: ManagerColors.greyPrimary),
         prefixIcon: IconService().getIcon(
           icon: icon,
           iconSize: ManagerFontSize.s24,
-          color: isFocused ? ManagerColors.purplePrimary : ManagerColors.greyPrimary,
+          color: isFocused
+              ? ManagerColors.purplePrimary
+              : ManagerColors.greyPrimary,
         ),
         focusedBorder: focusNode.hasFocus
             ? InputBorder.none

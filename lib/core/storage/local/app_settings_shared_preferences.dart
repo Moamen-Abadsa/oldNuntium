@@ -40,4 +40,20 @@ class AppSettingsSharedPreferences {
   bool loggedIn() {
     return _preferences.getBool(ConstantsPrefsKeys.loggedIn).onNull();
   }
+
+  Future<void> setFavouriteViewed() {
+    return _preferences.setBool(ConstantsPrefsKeys.FavouriteViewed, true);
+  }
+
+  bool getFavouriteViewed() {
+    return _preferences.getBool(ConstantsPrefsKeys.FavouriteViewed).onNull();
+  }
+
+  Future<void> setRegisterd() async {
+    await _preferences.setBool(ConstantsPrefsKeys.Registered, true);
+  }
+
+  Future<void> getRegistered() async {
+    await _preferences.getBool(ConstantsPrefsKeys.Registered).onNull();
+  }
 }

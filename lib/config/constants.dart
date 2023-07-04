@@ -13,6 +13,8 @@ class ConstantsPrefsKeys {
   static const String token = 'token';
   static const String tokenKey = 'token_key';
   static const String loggedIn = "loggedIn";
+  static const String FavouriteViewed = "FavouriteViewed";
+  static const String Registered = "Registered";
 }
 
 class ApiConstants {
