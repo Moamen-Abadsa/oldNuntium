@@ -26,10 +26,13 @@ class ForgetPasswordController extends GetxController {
       ),
     ))
         .fold(
-      // Todo: حالة الفشل
-      (l) => null,
+      (l) => {
+        Get.rawSnackbar(message: l.message),
+      },
       //Todo: حالة النجاح
-      (r) => null,
+      (r) => {
+        //TODO: Go to verification code screen
+      },
     );
   }
 }
