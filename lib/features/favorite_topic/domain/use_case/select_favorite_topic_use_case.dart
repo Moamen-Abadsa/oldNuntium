@@ -5,10 +5,10 @@ import 'package:nuntium/features/favorite_topic/data/repository/favorite_topic_r
 import 'package:nuntium/features/favorite_topic/data/request/favorite_topic_request.dart';
 
 class SelectFavoriteTopicUseCaseInput {
-  String topic;
+  List<String> topics;
 
   SelectFavoriteTopicUseCaseInput({
-    required this.topic,
+    required this.topics,
   });
 }
 
