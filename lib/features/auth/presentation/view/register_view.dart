@@ -21,7 +21,7 @@ class RegisterView extends StatelessWidget {
           password: true,
           confirmPassword: true,
           name: true,
-          onPressed: () => Get.offAllNamed(Routes.loginView),
+          onPressed: () => controller.register(),
           child: footerMessage(
               onPressed: () => Get.offAllNamed(Routes.loginView),
               firstMessage: ManagerStrings.signUpFooterMessage,
