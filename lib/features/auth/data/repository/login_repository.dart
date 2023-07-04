@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:nuntium/core/error_handler/error_handler.dart';
 import 'package:nuntium/core/error_handler/response_code.dart';
@@ -22,7 +24,15 @@ class LoginRepositoryImplement implements LoginRepository {
   @override
   Future<Either<Failure, void>> login(LoginRequest loginRequest) async {
     if (await _networkInfo.isConnected) {
-      await _remoteLoginDataSource.login(loginRequest);
+      try {
+        await _remoteLoginDataSource.login(loginRequest);
+      } catch (e) {
+        debugger();
+        return Left(
+          ErrorHandler.handle(e).failure,
+        );
+      }
+
       return const Right(null);
     } else {
       return Left(
