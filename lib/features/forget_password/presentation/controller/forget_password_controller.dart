@@ -4,22 +4,11 @@ import 'package:nuntium/config/dependency_injection.dart';
 import 'package:nuntium/features/forget_password/domain/use_case/forget_password_use_case.dart';
 
 class ForgetPasswordController extends GetxController {
-  late final TextEditingController emailController;
-  late final _forgetPasswordUseCase = instance<ForgetPasswordUseCase>();
+  final TextEditingController emailController = TextEditingController();
+  final _forgetPasswordUseCase = instance<ForgetPasswordUseCase>();
 
-  @override
-  void onInit() {
-    emailController = TextEditingController();
-    super.onInit();
-  }
-
-  @override
-  void onClose() {
-    emailController.dispose();
-    super.onClose();
-  }
-
-  Future<void> login() async {
+  //TODO: call this method when the user presses (Next Button) in Forget password screen
+  Future<void> forgetPassword() async {
     (await _forgetPasswordUseCase.execute(
       ForgetPasswordUseCaseInput(
         email: emailController.text,
@@ -34,5 +23,11 @@ class ForgetPasswordController extends GetxController {
         //TODO: Go to verification code screen
       },
     );
+  }
+
+  @override
+  void onClose() {
+    emailController.dispose();
+    super.onClose();
   }
 }
