@@ -24,7 +24,7 @@ class LoginRepositoryImplement implements LoginRepository {
   Future<Either<Failure, void>> login(LoginRequest loginRequest) async {
     if (await _networkInfo.isConnected) {
       await _remoteLoginDataSource.login(loginRequest);
-      return const Right(void);
+      return const Right(null);
     } else {
       return Left(
         Failure(
