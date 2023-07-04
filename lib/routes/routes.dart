@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nuntium/core/resorces/manager_strings.dart';
 import 'package:nuntium/features/auth/presentation/view/login_view.dart';
 import 'package:nuntium/features/auth/presentation/view/register_view.dart';
-import 'package:nuntium/features/favourite/view/select_favourite_view.dart';
+import 'package:nuntium/features/favourite/presentation/view/select_favourite_view.dart';
 import 'package:nuntium/features/forget_password/presentation/view/forget_password.dart';
 import 'package:nuntium/features/forget_password/presentation/view/verification_view.dart';
 import 'package:nuntium/features/home/presentation/view/home_view.dart';
