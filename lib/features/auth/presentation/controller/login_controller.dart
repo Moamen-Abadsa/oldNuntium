@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:nuntium/config/dependency_injection.dart';
@@ -6,12 +8,10 @@ import 'package:nuntium/features/auth/domain/use_case/login_use_case.dart';
 import 'package:nuntium/routes/routes.dart';
 
 class LoginController extends GetxController {
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-  late final LoginUseCase _loginUseCase = instance<LoginUseCase>();
-  var formKey = GlobalKey<FormState>();
-  final AppSettingsSharedPreferences _appSettingsSharedPreferences =
-      instance<AppSettingsSharedPreferences>();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  final _loginUseCase = instance<LoginUseCase>();
+  final _appSettingsSharedPreferences = instance<AppSettingsSharedPreferences>();
 
   Future<void> login() async {
     (await _loginUseCase.execute(
@@ -21,9 +21,9 @@ class LoginController extends GetxController {
       ),
     ))
         .fold(
-      // Todo: حالة الفشل
-      (l) => {},
-      //Todo: حالة النجاح
+      (l) => {
+        Get.rawSnackbar(message: l.message),
+      },
       (r) {
         _appSettingsSharedPreferences.setLoggedIn();
         if (_appSettingsSharedPreferences.getFavouriteViewed()) {
