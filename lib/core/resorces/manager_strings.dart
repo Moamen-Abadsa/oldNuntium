@@ -6,7 +6,8 @@ class ManagerStrings {
   static const String badRequest = 'badReq';
   static const String firstToKnow = "First to know";
   static const String next = "Next";
-  static const String paragraph = "All news in one place, be the\nfirst to know last news";
+  static const String paragraph =
+      "All news in one place, be the\nfirst to know last news";
   static const String welcomeTitle = "Welcome Back 👋";
   static const String signUpTitle = "Welcome to Nuntium 👋";
   static const String signUpParagraph =
@@ -26,4 +27,29 @@ class ManagerStrings {
   static const String signUpFooterMessage = "Already have an account?";
   static const String forgetPasswordFooterMessage = "Didn’t receive an email?";
   static const String sendAgain = "Send again";
+  static String get invalidEmail => 'invalidEmail';
+  static String get invalidPasswordLength => 'invalidPasswordLength';
+  static String get invalidPasswordUpper => 'invalidPasswordUpper';
+
+  static String get invalidPasswordLower => 'invalidPasswordLower';
+
+  static String get invalidPasswordDigit => 'invalidPasswordDigit';
+
+  static String get invalidConditionAccept => 'invalidConditionAccept';
+
+  static String get passwordNotMatch => 'passwordNotMatch';
+
+  static String get invalidEmptyPhoneNumber => 'invalidEmptyPhoneNumber';
+
+  static String get invalidEmptyCode => 'invalidEmptyCode';
+
+  static String get invalidPhoneNumber => 'invalidPhoneNumber';
+
+  static String get notVerifiedEmail => 'notVerifiedEmail';
+
+  static String get invalidEmptyFullName => 'invalidEmptyFullName';
+
+  static String get invalidFullName => 'invalidFullName';
+
+  static String get requiredFullName => 'requiredFullName';
 }

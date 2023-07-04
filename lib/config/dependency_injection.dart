@@ -16,11 +16,12 @@ import 'package:nuntium/features/auth/domain/use_case/login_use_case.dart';
 import 'package:nuntium/features/auth/domain/use_case/register_use_case.dart';
 import 'package:nuntium/features/auth/presentation/controller/login_controller.dart';
 import 'package:nuntium/features/auth/presentation/controller/register_controller.dart';
+import 'package:nuntium/features/favourite/controller/select_favourite_controller.dart';
 import 'package:nuntium/features/forget_password/presentation/controller/forget_password_controller.dart';
+import 'package:nuntium/features/forget_password/presentation/controller/verification_controller.dart';
 import 'package:nuntium/features/home/presentation/controller/home_controller.dart';
 import 'package:nuntium/features/out_boarding/presentaion/controller/out_boarding_controller.dart';
 import 'package:nuntium/features/out_boarding/presentaion/controller/welcome_controller.dart';
-import 'package:nuntium/features/forget_password/presentation/controller/verification_controller.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../features/splash/controller/splash_controller.dart';
@@ -31,14 +32,15 @@ initModule() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-  final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+  final SharedPreferences sharedPreferences =
+      await SharedPreferences.getInstance();
 
   instance.registerLazySingleton<SharedPreferences>(
     () => sharedPreferences,
   );
 
-  instance
-      .registerLazySingleton<AppSettingsSharedPreferences>(() => AppSettingsSharedPreferences(instance()));
+  instance.registerLazySingleton<AppSettingsSharedPreferences>(
+      () => AppSettingsSharedPreferences(instance()));
 
   // TODO: ONLY FOR TEST
   // AppSettingsPreferences appSettingsPreferences =
@@ -55,7 +57,8 @@ initModule() async {
     () => AppApi(dio),
   );
 
-  instance.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(InternetConnectionCheckerPlus()));
+  instance.registerLazySingleton<NetworkInfo>(
+      () => NetworkInfoImpl(InternetConnectionCheckerPlus()));
 }
 
 initSplash() {
@@ -262,4 +265,12 @@ initVerificationModule() {
   // }
 
   Get.put<VerificationController>(VerificationController());
+}
+
+initSelectFavouriteModule() {
+  Get.put<SelectFavouriteController>(SelectFavouriteController());
+}
+
+disposeSelectFavouriteModule() {
+  Get.delete<SelectFavouriteController>();
 }
