@@ -11,8 +11,7 @@ class LoginController extends GetxController {
   final _loginUseCase = instance<LoginUseCase>();
   final _appSettingsSharedPreferences = instance<AppSettingsSharedPreferences>();
 
-  final AppSettingsSharedPreferences _appSettingsSharedPreferences =
-      instance<AppSettingsSharedPreferences>();
+
 
   Future<void> login() async {
     (await _loginUseCase.execute(
