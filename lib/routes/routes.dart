@@ -6,9 +6,11 @@ import 'package:nuntium/features/favorite_topic/presentation/view/select_favouri
 import 'package:nuntium/features/forget_password/presentation/view/forget_password.dart';
 import 'package:nuntium/features/forget_password/presentation/view/verification_view.dart';
 import 'package:nuntium/features/home/presentation/view/home_view.dart';
+import 'package:nuntium/features/language/presentation/view/language_view.dart';
 import 'package:nuntium/features/out_boarding/presentaion/view/out_boarding_view.dart';
 import 'package:nuntium/features/out_boarding/presentaion/view/welcome_screen.dart';
 import 'package:nuntium/features/splash/presentaion/view/splash_view.dart';
+import 'package:nuntium/features/terms_and_conditions/presentation/view/terms_and_conditions_view.dart';
 
 import '../config/dependency_injection.dart';
 
@@ -22,6 +24,8 @@ class Routes {
   static const String forget = '/forget';
   static const String verification = '/verification';
   static const String favourite = '/favourite';
+  static const String termsAndConditions = '/termsAndConditions';
+  static const String language = '/language';
 }
 
 class RouteGenerator {
@@ -57,6 +61,13 @@ class RouteGenerator {
       case Routes.favourite:
         initSelectFavouriteModule();
         return MaterialPageRoute(builder: (_) => const SelectFavouriteView());
+      case Routes.termsAndConditions:
+        initTermsAndConditionsModule();
+        return MaterialPageRoute(
+            builder: (_) => const TermsAndConditionsView());
+      case Routes.language:
+        initLanguageModule();
+        return MaterialPageRoute(builder: (_) => const LanguageView());
       default:
         return unDefinedRoute();
     }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nuntium/config/dependency_injection.dart';
 import 'package:nuntium/features/forget_password/domain/use_case/verify_code_use_case.dart';
+import 'package:nuntium/routes/routes.dart';
 
 class VerificationController extends GetxController {
   late TextEditingController pinController;
@@ -20,7 +21,7 @@ class VerificationController extends GetxController {
   }
 
   //************        auth الشغل هادا لازم يكون على برانش ال  *********************
-  //TODO: Verify code استدعي هادي الميثود لما المستخدم يضغط على زر في شاشة 
+  //TODO: Verify code استدعي هادي الميثود لما المستخدم يضغط على زر في شاشة
   Future<void> verifyCode() async {
     (await _verifyCodeUseCase.execute(
       VerifyCodeUseCaseInput(
@@ -29,9 +30,9 @@ class VerificationController extends GetxController {
     ))
         .fold(
       // Todo: حالة الفشل
-      (l) => null,
+      (l) => Get.rawSnackbar(message: l.message),
       //Todo: حالة النجاح
-      (r) => null,
+      (r) => Get.offAllNamed(Routes.loginView),
     );
   }
 }
