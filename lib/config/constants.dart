@@ -36,11 +36,16 @@ class ApiConstants {
   static const String passwordConfirmation = 'password_confirmation';
 
   //Home Request
+  static const String pageSize = 'pageSize';
+  static const int homeaPgeSizeValue = 10;
+  static const String page = 'page';
+
+  //Home Response
   static const String status = 'status';
   static const String source = 'source';
   static const String articles = 'articles';
 
-  //article (Home Request)
+  //article (Home Response)
   static const String author = 'author';
   static const String content = 'content';
   static const String publishedAt = 'publishedAt';
@@ -49,8 +54,7 @@ class ApiConstants {
   static const String description = 'description';
   static const String title = 'title';
 
-  
-  //source (Home Request)
+  //source (Home Response)  
   static const String id = 'id';
   static const String name = 'name';
 }

@@ -8,9 +8,10 @@ import 'package:nuntium/features/home/data/mapper/home_response_mapper.dart';
 
 import '../../domain/entity/home_entity.dart';
 import '../data_source/remote_home_data_source.dart';
+import '../request/home_request.dart';
 
 abstract class HomeRepository {
-  Future<Either<Failure, HomeEntity>> home();
+  Future<Either<Failure, HomeEntity>> home(HomeRequest homeRequest);
 }
 
 class HomeRepositoryImplement implements HomeRepository {
@@ -23,10 +24,10 @@ class HomeRepositoryImplement implements HomeRepository {
   );
 
   @override
-  Future<Either<Failure, HomeEntity>> home() async {
+  Future<Either<Failure, HomeEntity>> home(HomeRequest homeRequest) async {
     if (await _networkInfo.isConnected) {
       try {
-        final home = await _remoteHomeDataSource.home();
+        final home = await _remoteHomeDataSource.home(homeRequest);
         return Right(home.toDomain());
       } catch (e) {
         return Left(

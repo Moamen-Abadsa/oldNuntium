@@ -52,7 +52,7 @@ class SelectFavouriteView extends StatelessWidget {
                   );
                 },
               ),
-              SizedBox(
+              const SizedBox(
                 height: 16,
               ),
               rectButton(onPressed: () {}, text: "Next")
