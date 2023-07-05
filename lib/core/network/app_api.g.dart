@@ -64,10 +64,4 @@ class _AppApi implements AppApi {
     }
     return requestOptions;
   }
-
-  @override
-  Future<HomeResopnse> home() {
-    // TODO: implement home
-    throw UnimplementedError();
-  }
 }
