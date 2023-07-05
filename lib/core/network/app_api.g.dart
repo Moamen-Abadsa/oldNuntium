@@ -22,11 +22,19 @@ class _AppApi implements AppApi {
   String? baseUrl;
 
   @override
-  Future<HomeResopnse> home() async {
+  Future<HomeResopnse> home(
+    int? page,
+    int? pageSize,
+  ) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    final _data = {
+      'page': page,
+      'pageSize': pageSize,
+    };
+    _data.removeWhere((k, v) => v == null);
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<HomeResopnse>(Options(
       method: 'POST',

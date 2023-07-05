@@ -14,6 +14,8 @@ abstract class AppApi {
   }) = _AppApi;
 
   @POST(RequestConstants.home)
-  Future<HomeResopnse> home();
-
+  Future<HomeResopnse> home(
+    @Field(ApiConstants.page) int? page,
+    @Field(ApiConstants.pageSize) int? pageSize,
+  );
 }
