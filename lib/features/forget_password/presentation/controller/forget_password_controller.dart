@@ -7,6 +7,7 @@ class ForgetPasswordController extends GetxController {
   final TextEditingController emailController = TextEditingController();
   final _forgetPasswordUseCase = instance<ForgetPasswordUseCase>();
 
+  //************        auth الشغل هادا لازم يكون على برانش ال  *********************
   //TODO: call this method when the user presses (Next Button) in Forget password screen
   Future<void> forgetPassword() async {
     (await _forgetPasswordUseCase.execute(
@@ -18,6 +19,8 @@ class ForgetPasswordController extends GetxController {
       (l) => {
         Get.rawSnackbar(message: l.message),
       },
+
+      //************        auth الشغل هادا لازم يكون على برانش ال  *********************
       //Todo: حالة النجاح
       (r) => {
         //TODO: Go to verification code screen

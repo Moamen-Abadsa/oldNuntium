@@ -19,6 +19,8 @@ class VerificationController extends GetxController {
     super.onClose();
   }
 
+  //************        auth الشغل هادا لازم يكون على برانش ال  *********************
+  //TODO: Verify code استدعي هادي الميثود لما المستخدم يضغط على زر في شاشة 
   Future<void> verifyCode() async {
     (await _verifyCodeUseCase.execute(
       VerifyCodeUseCaseInput(
