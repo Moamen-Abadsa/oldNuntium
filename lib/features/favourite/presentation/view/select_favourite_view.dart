@@ -20,8 +20,7 @@ class SelectFavouriteView extends StatelessWidget {
             children: [
               header(
                 title: 'Select your favorite topics',
-                paragraph:
-                    'Select some of your favorite topics to let us\nsuggest better news for you.',
+                paragraph: 'Select some of your favorite topics to let us\nsuggest better news for you.',
               ),
               GridView.builder(
                 shrinkWrap: true,
@@ -52,7 +51,7 @@ class SelectFavouriteView extends StatelessWidget {
                   );
                 },
               ),
-              SizedBox(
+              const SizedBox(
                 height: 16,
               ),
               rectButton(onPressed: () {}, text: "Next")
