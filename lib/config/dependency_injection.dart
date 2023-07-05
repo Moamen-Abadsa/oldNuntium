@@ -26,8 +26,10 @@ import 'package:nuntium/features/home/data/data_source/remote_home_data_source.d
 import 'package:nuntium/features/home/data/repository/home_repository.dart';
 import 'package:nuntium/features/home/domain/use_case/home_use_case.dart';
 import 'package:nuntium/features/home/presentation/controller/home_controller.dart';
+import 'package:nuntium/features/language/presentation/controller/language_controller.dart';
 import 'package:nuntium/features/out_boarding/presentaion/controller/out_boarding_controller.dart';
 import 'package:nuntium/features/out_boarding/presentaion/controller/welcome_controller.dart';
+import 'package:nuntium/features/terms_and_conditions/presentation/controller/terms_and_conditions_controller.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../features/splash/controller/splash_controller.dart';
@@ -310,4 +312,20 @@ initSelectFavouriteModule() {
 
 disposeSelectFavouriteModule() {
   Get.delete<SelectFavoriteTopicController>();
+}
+
+initTermsAndConditionsModule() {
+  Get.put<TermsAndConditionsController>(TermsAndConditionsController());
+}
+
+disposeTermsAndConditionsModule() {
+  Get.delete<TermsAndConditionsController>();
+}
+
+initLanguageModule() {
+  Get.put<LanguageController>(LanguageController());
+}
+
+disposeLanguageModule() {
+  Get.delete<LanguageController>();
 }
