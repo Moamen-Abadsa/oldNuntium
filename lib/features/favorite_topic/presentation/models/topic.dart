@@ -1,7 +1,4 @@
 class Topic {
   String name;
-
-  Topic({
-    required this.name,
-  });
+  Topic({required this.name});
 }

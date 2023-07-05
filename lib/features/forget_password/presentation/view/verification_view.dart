@@ -9,7 +9,7 @@ class VerificationView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder(
+    return GetBuilder<VerificationController>(
       init: VerificationController(),
       builder: (controller) {
         return authView(
@@ -17,7 +17,9 @@ class VerificationView extends StatelessWidget {
           paragraph:
               "You need to enter 4-digit code we send to\n your email adress.",
           buttonText: "Confirm",
-          onPressed: () {},
+          onPressed: () {
+            controller.verifyCode();
+          },
           verification: true,
           controllers: {},
           child: footerMessage(

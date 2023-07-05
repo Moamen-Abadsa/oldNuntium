@@ -5,4 +5,3 @@ class TopicEntity {
     required this.name,
   });
 }
-

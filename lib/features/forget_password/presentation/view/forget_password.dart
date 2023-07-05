@@ -4,7 +4,6 @@ import 'package:nuntium/core/resorces/manager_strings.dart';
 import 'package:nuntium/features/auth/presentation/view/widgets/auth_view.dart';
 import 'package:nuntium/features/auth/presentation/view/widgets/footer_message.dart';
 import 'package:nuntium/features/forget_password/presentation/controller/forget_password_controller.dart';
-import 'package:nuntium/routes/routes.dart';
 
 class ForgetPasswordView extends StatelessWidget {
   const ForgetPasswordView({Key? key}) : super(key: key);
@@ -17,13 +16,17 @@ class ForgetPasswordView extends StatelessWidget {
           title: ManagerStrings.forget,
           paragraph: ManagerStrings.forgetParagraph,
           buttonText: ManagerStrings.next,
-          onPressed: () => Get.offAllNamed(Routes.verification),
+          onPressed: () {
+            controller.forgetPassword();
+          },
           child: footerMessage(
             firstMessage: ManagerStrings.forgetPasswordFooterMessage,
             secondMessage: ManagerStrings.sendAgain,
             onPressed: () {},
           ),
-          controllers: {'emailController': controller.emailController},
+          controllers: {
+            'emailController': controller.emailController,
+          },
         );
       },
     );
