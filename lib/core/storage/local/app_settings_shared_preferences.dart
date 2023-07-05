@@ -21,6 +21,30 @@ class AppSettingsSharedPreferences {
 
   //----------------------------------------------------------------------------
 
+  Future<void> setName(String name) async {
+    await _preferences.setString("name", name);
+  }
+
+  Future<void> setEmail(String email) async {
+    await _preferences.setString("email", email);
+  }
+
+  String getName() {
+    return _preferences.getString("name").onNull();
+  }
+
+  String getEmail() {
+    return _preferences.getString("email").onNull();
+  }
+
+  Future<void> setNotification(bool isNotificationOn) async {
+    await _preferences.setBool("Notification", isNotificationOn);
+  }
+
+  bool getNotification() {
+    return _preferences.getBool("Notification").onNull();
+  }
+
   Future<void> setToken(String token) async {
     await _preferences.setString(ConstantsPrefsKeys.tokenKey, token);
   }
@@ -55,6 +79,29 @@ class AppSettingsSharedPreferences {
 
   Future<void> getRegistered() async {
     await _preferences.getBool(ConstantsPrefsKeys.Registered).onNull();
-
   }
+
+  Future<void> setTopicsSelected(NewsTopics topic, bool isChecked) async {
+    _preferences.setBool(topic.toString(), isChecked);
+  }
+
+  bool getTopicSelected(NewsTopics topic) {
+    return _preferences.getBool(topic.toString()).onNull();
+  }
+}
+
+enum NewsTopics {
+  Sports,
+  Politics,
+  Life,
+  Gaming,
+  Animals,
+  Nature,
+  Food,
+  Art,
+  History,
+  Fashion,
+  Covid_19,
+  Middle_East,
+  none
 }
