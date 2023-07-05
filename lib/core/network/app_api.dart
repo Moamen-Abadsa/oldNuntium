@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:nuntium/config/constants.dart';
+import 'package:nuntium/config/request_constants.dart';
+import 'package:nuntium/features/home/data/response/home_response.dart';
 import 'package:retrofit/http.dart';
 
 part 'app_api.g.dart';
@@ -10,7 +12,8 @@ abstract class AppApi {
     Dio dio, {
     String baseUrl,
   }) = _AppApi;
-  // @POST(RequestConstants.loginRequest)
-  // Future<LoginResponse> login(@Field(RequestConstants.email) String email,
-  //     @Field(RequestConstants.password) String password);
+
+  @POST(RequestConstants.home)
+  Future<HomeResopnse> home();
+
 }

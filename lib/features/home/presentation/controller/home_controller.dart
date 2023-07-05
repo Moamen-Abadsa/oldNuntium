@@ -1,3 +1,29 @@
 import 'package:get/get.dart';
+import 'package:nuntium/config/dependency_injection.dart';
+import 'package:nuntium/features/home/domain/mapper/home_entity_mapper.dart';
 
-class HomeController extends GetxController {}
+import '../../domain/use_case/home_use_case.dart';
+import '../model/article.dart';
+
+class HomeController extends GetxController {
+  final HomeUseCase _homeUseCase = instance<HomeUseCase>();
+
+  List<Article> articles = [];
+
+  @override
+  void onInit() {
+    super.onInit();
+    home();
+  }
+
+  Future<void> home() async {
+    (await _homeUseCase.execute()).fold(
+      (l) {
+        Get.rawSnackbar(message: l.message);
+      },
+      (r) {
+        articles = r.toPresentation().articles;
+      },
+    );
+  }
+}
