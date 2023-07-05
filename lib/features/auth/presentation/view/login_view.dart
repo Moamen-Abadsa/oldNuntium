@@ -24,7 +24,7 @@ class LoginView extends StatelessWidget {
             buttonText: ManagerStrings.signIn,
             forgotPassword: true,
             password: true,
-            onPressed: () => Get.offAllNamed(Routes.homeView),
+            onPressed: () => controller.login(),
             child: loginWidget(),
             controllers: {
               'emailController': controller.emailController,

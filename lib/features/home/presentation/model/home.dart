@@ -1,4 +1,4 @@
-import 'package:nuntium/features/home/presentation/model/atricle.dart';
+import 'article.dart';
 
 class Home {
   String source;

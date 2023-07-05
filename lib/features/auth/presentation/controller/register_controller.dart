@@ -15,6 +15,7 @@ class RegisterController extends GetxController {
   final AppSettingsSharedPreferences _appSettingsSharedPreferences =
       instance<AppSettingsSharedPreferences>();
 
+
   Future<void> register() async {
     (await _loginUseCase.execute(
       RegisterUseCaseInput(
@@ -25,9 +26,9 @@ class RegisterController extends GetxController {
       ),
     ))
         .fold(
-      // Todo: حالة الفشل
-      (l) => () {},
-      //Todo: حالة النجاح
+      (l) => () {
+        Get.rawSnackbar(message: l.message);
+      },
       (r) {
         _appSettingsSharedPreferences.setRegisterd();
         Get.offAllNamed(Routes.loginView);

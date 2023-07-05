@@ -16,12 +16,12 @@ import 'package:nuntium/features/auth/domain/use_case/login_use_case.dart';
 import 'package:nuntium/features/auth/domain/use_case/register_use_case.dart';
 import 'package:nuntium/features/auth/presentation/controller/login_controller.dart';
 import 'package:nuntium/features/auth/presentation/controller/register_controller.dart';
-import 'package:nuntium/features/favorite_topic/presentation/controller/select_favorite_topic_controller.dart';
+import 'package:nuntium/features/favourite/presentation/controller/select_favourite_controller.dart';
+import 'package:nuntium/features/forget_password/data/data_source/remote_forget_password_data_source.dart';
+import 'package:nuntium/features/forget_password/data/repository/forget_password_repository.dart';
+import 'package:nuntium/features/forget_password/domain/use_case/forget_password_use_case.dart';
 import 'package:nuntium/features/forget_password/presentation/controller/forget_password_controller.dart';
 import 'package:nuntium/features/forget_password/presentation/controller/verification_controller.dart';
-import 'package:nuntium/features/home/data/data_source/remote_home_data_source.dart';
-import 'package:nuntium/features/home/data/repository/home_repository.dart';
-import 'package:nuntium/features/home/domain/use_case/home_use_case.dart';
 import 'package:nuntium/features/home/presentation/controller/home_controller.dart';
 import 'package:nuntium/features/out_boarding/presentaion/controller/out_boarding_controller.dart';
 import 'package:nuntium/features/out_boarding/presentaion/controller/welcome_controller.dart';
@@ -45,7 +45,7 @@ initModule() async {
   instance.registerLazySingleton<AppSettingsSharedPreferences>(
       () => AppSettingsSharedPreferences(instance()));
 
-  // TODO: ONLY FOR TEST
+  //!!!!!!!!!!! ONLY FOR TEST !!!!!!!!!!!!!
   // AppSettingsPreferences appSettingsPreferences =
   //     instance<AppSettingsPreferences>();
   // appSettingsSharedPreferences.clear();
@@ -228,38 +228,45 @@ disposeRegisterModule() {
 
 initForgetPassword() async {
   disposeLoginModule();
-  // initSendOtp();
 
-  // if (!GetIt.I.isRegistered<ForgetPasswordDataSource>()) {
-  //   instance.registerLazySingleton<ForgetPasswordDataSource>(
-  //           () => RemoteForgetPasswordDataSourceImpl(instance<AppApi>()));
-  // }
-  //
-  // if (!GetIt.I.isRegistered<ForgetPasswordRepository>()) {
-  //   instance.registerLazySingleton<ForgetPasswordRepository>(
-  //           () => ForgetPasswordRepositoryImpl(instance(), instance()));
-  // }
-  //
-  // if (!GetIt.I.isRegistered<ForgetPasswordUseCase>()) {
-  //   instance.registerFactory<ForgetPasswordUseCase>(
-  //           () => ForgetPasswordUseCase(instance<ForgetPasswordRepository>()));
-  // }
+  if (!GetIt.I.isRegistered<RemoteForgetPasswordDataSource>()) {
+    instance.registerLazySingleton<RemoteForgetPasswordDataSource>(
+      () => RemoteForgetPasswordDataSourceImplement(),
+    );
+  }
 
-  Get.put<ForgetPasswordController>(ForgetPasswordController());
+  if (!GetIt.I.isRegistered<ForgetPasswordRepository>()) {
+    instance.registerLazySingleton<ForgetPasswordRepository>(
+      () => ForgetPasswordRepositoryImplement(
+        instance<RemoteForgetPasswordDataSource>(),
+        instance<NetworkInfo>(),
+      ),
+    );
+  }
+
+  if (!GetIt.I.isRegistered<ForgetPasswordUseCase>()) {
+    instance.registerLazySingleton<ForgetPasswordUseCase>(
+      () => ForgetPasswordUseCase(
+        instance<ForgetPasswordRepository>(),
+      ),
+    );
+  }
+
+  Get.put(ForgetPasswordController());
 }
 
 disposeForgetPassword() async {
-  // if (GetIt.I.isRegistered<ForgetPasswordDataSource>()) {
-  //   instance.unregister<ForgetPasswordDataSource>();
-  // }
-  //
-  // if (GetIt.I.isRegistered<ForgetPasswordRepository>()) {
-  //   instance.unregister<ForgetPasswordRepository>();
-  // }
-  //
-  // if (GetIt.I.isRegistered<ForgetPasswordUseCase>()) {
-  //   instance.unregister<ForgetPasswordUseCase>();
-  // }
+  if (GetIt.I.isRegistered<RemoteForgetPasswordDataSource>()) {
+    instance.unregister<RemoteForgetPasswordDataSource>();
+  }
+  
+  if (GetIt.I.isRegistered<ForgetPasswordRepository>()) {
+    instance.unregister<ForgetPasswordRepository>();
+  }
+  
+  if (GetIt.I.isRegistered<ForgetPasswordUseCase>()) {
+    instance.unregister<ForgetPasswordUseCase>();
+  }
   Get.delete<ForgetPasswordController>();
 }
 
@@ -295,9 +302,9 @@ initVerificationModule() {
 }
 
 initSelectFavouriteModule() {
-  Get.put<SelectFavoriteTopicController>(SelectFavoriteTopicController());
+  Get.put<SelectFavouriteController>(SelectFavouriteController());
 }
 
 disposeSelectFavouriteModule() {
-  Get.delete<SelectFavoriteTopicController>();
+  Get.delete<SelectFavouriteController>();
 }

@@ -1,6 +1,6 @@
-import 'package:nuntium/features/home/presentation/model/atricle.dart';
 
 import '../../domain/entity/article_entity.dart';
+import '../../presentation/model/article.dart';
 
 extension ArticleEntityMapper on ArticleEntity {
   Article toPresentation() {

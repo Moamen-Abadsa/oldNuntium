@@ -1,4 +1,5 @@
 class ManagerStrings {
+  
   static const String appName = 'Nuntium';
   static const String noRoutFound = 'No Rout Found';
   static const String noInternetConnection = 'No Internet Connection';
@@ -6,7 +7,8 @@ class ManagerStrings {
   static const String badRequest = 'badReq';
   static const String firstToKnow = "First to know";
   static const String next = "Next";
-  static const String paragraph = "All news in one place, be the\nfirst to know last news";
+  static const String paragraph =
+      "All news in one place, be the\nfirst to know last news";
   static const String welcomeTitle = "Welcome Back 👋";
   static const String signUpTitle = "Welcome to Nuntium 👋";
   static const String signUpParagraph =
@@ -26,4 +28,39 @@ class ManagerStrings {
   static const String signUpFooterMessage = "Already have an account?";
   static const String forgetPasswordFooterMessage = "Didn’t receive an email?";
   static const String sendAgain = "Send again";
+  static String get invalidEmail => 'invalidEmail';
+  static String get invalidPasswordLength => 'invalidPasswordLength';
+  static String get invalidPasswordUpper => 'invalidPasswordUpper';
+
+  static String get invalidPasswordLower => 'invalidPasswordLower';
+
+  static String get invalidPasswordDigit => 'invalidPasswordDigit';
+
+  static String get invalidConditionAccept => 'invalidConditionAccept';
+
+  static String get passwordNotMatch => 'passwordNotMatch';
+
+  static String get invalidEmptyPhoneNumber => 'invalidEmptyPhoneNumber';
+
+  static String get invalidEmptyCode => 'invalidEmptyCode';
+
+  static String get invalidPhoneNumber => 'invalidPhoneNumber';
+
+  static String get notVerifiedEmail => 'notVerifiedEmail';
+
+  static String get invalidEmptyFullName => 'invalidEmptyFullName';
+
+  static String get invalidFullName => 'invalidFullName';
+
+  static String get requiredFullName => 'requiredFullName';
+
+  //terms And Condtions screen
+  static const String termsAndConditionsTitle = 'Terms & Conditions';
+  static const String termsAndConditions = '''Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+
+Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. 
+
+Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.''';
 }

@@ -6,6 +6,7 @@ import 'package:nuntium/core/resorces/manager_icons.dart';
 import 'package:nuntium/core/resorces/manager_sizes.dart';
 import 'package:nuntium/core/resorces/manager_strings.dart';
 import 'package:nuntium/core/resorces/manager_styles.dart';
+import 'package:nuntium/core/validator/validator.dart';
 import 'package:nuntium/core/widgets/rect_button.dart';
 import 'package:nuntium/core/widgets/text_field.dart';
 import 'package:nuntium/features/forget_password/presentation/view/widget/verification_widget.dart';
@@ -25,6 +26,8 @@ Widget authView(
     String confirmPasswordHint = ManagerStrings.confirmPasswordHint,
     required Function() onPressed,
     required Map<String, TextEditingController> controllers}) {
+  final FieldValidator failedValidator = FieldValidator();
+
   return Scaffold(
     resizeToAvoidBottomInset: false,
     body: SafeArea(
@@ -58,6 +61,8 @@ Widget authView(
                         child: myTextField(
                           controller: controllers['nameController'] ?? TextEditingController(),
                           icon: ManagerIcons.user,
+                          keyboardType: TextInputType.text,
+                          validator: (value) => failedValidator.validateFullName(value),
                         ),
                       ),
                       SizedBox(
@@ -66,6 +71,8 @@ Widget authView(
                       myTextField(
                         controller: controllers['emailController'] ?? TextEditingController(),
                         icon: ManagerIcons.email,
+                        keyboardType: TextInputType.emailAddress,
+                        validator: (value) => failedValidator.validateEmail(value),
                       ),
                       SizedBox(
                         height: ManagerHeight.h16,
@@ -73,9 +80,13 @@ Widget authView(
                       Visibility(
                         visible: password,
                         child: myTextField(
-                            controller: controllers['passwordController'] ?? TextEditingController(),
-                            icon: ManagerIcons.password,
-                            hintText: passwordHint),
+                          controller: controllers['passwordController'] ?? TextEditingController(),
+                          icon: ManagerIcons.password,
+                          keyboardType: TextInputType.text,
+                          isObscureText: true,
+                          hintText: passwordHint,
+                          validator: (value) => failedValidator.validatePassword(value),
+                        ),
                       ),
                       SizedBox(
                         height: password ? ManagerHeight.h16 : 0,
@@ -83,9 +94,16 @@ Widget authView(
                       Visibility(
                         visible: confirmPassword,
                         child: myTextField(
-                            controller: controllers['confirmPasswordController'] ?? TextEditingController(),
-                            icon: ManagerIcons.password,
-                            hintText: confirmPasswordHint),
+                          controller: controllers['confirmPasswordController'] ?? TextEditingController(),
+                          icon: ManagerIcons.password,
+                          isObscureText: true,
+                          hintText: confirmPasswordHint,
+                          validator: (value) {
+                            if (value == controllers['passwordController']!.text) {
+                              return 'The Two Password is not Matched';
+                            }
+                          },
+                        ),
                       ),
                       SizedBox(
                         height: confirmPassword ? ManagerHeight.h16 : 0,
