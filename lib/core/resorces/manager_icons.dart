@@ -8,4 +8,7 @@ class ManagerIcons {
   static IconData arrow_back_ios = Icons.arrow_back_ios;
   static IconData arrow_back_android = Icons.arrow_back;
   static IconData user = Icons.person_outline;
+  static IconData search = Icons.search;
+  static IconData mic = Icons.mic_none_outlined;
+  static IconData bookmark_border_outlined = Icons.bookmark_border_outlined;
 }
