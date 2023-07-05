@@ -44,7 +44,7 @@ initModule() async {
   instance
       .registerLazySingleton<AppSettingsSharedPreferences>(() => AppSettingsSharedPreferences(instance()));
 
-  // TODO: ONLY FOR TEST
+  //!!!!!!!!!!! ONLY FOR TEST !!!!!!!!!!!!!
   // AppSettingsPreferences appSettingsPreferences =
   //     instance<AppSettingsPreferences>();
   // appSettingsSharedPreferences.clear();

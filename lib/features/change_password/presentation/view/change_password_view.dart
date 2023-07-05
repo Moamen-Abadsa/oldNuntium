@@ -9,7 +9,9 @@ import 'package:nuntium/core/widgets/text_field.dart';
 import 'package:nuntium/features/change_password/presentation/controller/change_password_controller.dart';
 
 class ChangePasswordView extends StatelessWidget {
-  FieldValidator _validator = FieldValidator();
+  final FieldValidator _validator = FieldValidator();
+
+  ChangePasswordView({super.key});
 
   @override
   Widget build(BuildContext context) {
