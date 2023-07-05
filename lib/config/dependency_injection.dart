@@ -16,7 +16,7 @@ import 'package:nuntium/features/auth/domain/use_case/login_use_case.dart';
 import 'package:nuntium/features/auth/domain/use_case/register_use_case.dart';
 import 'package:nuntium/features/auth/presentation/controller/login_controller.dart';
 import 'package:nuntium/features/auth/presentation/controller/register_controller.dart';
-import 'package:nuntium/features/favourite/presentation/controller/select_favourite_controller.dart';
+import 'package:nuntium/features/favorite_topic/presentation/controller/select_favorite_topic_controller.dart';
 import 'package:nuntium/features/forget_password/data/data_source/remote_forget_password_data_source.dart';
 import 'package:nuntium/features/forget_password/data/repository/forget_password_repository.dart';
 import 'package:nuntium/features/forget_password/domain/use_case/forget_password_use_case.dart';
@@ -275,10 +275,11 @@ initVerificationModule() {
   Get.put<VerificationController>(VerificationController());
 }
 
+
 initSelectFavouriteModule() {
-  Get.put<SelectFavouriteController>(SelectFavouriteController());
+  Get.put<SelectFavoriteTopicController>(SelectFavoriteTopicController());
 }
 
 disposeSelectFavouriteModule() {
-  Get.delete<SelectFavouriteController>();
+  Get.delete<SelectFavoriteTopicController>();
 }
