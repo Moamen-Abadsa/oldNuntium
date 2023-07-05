@@ -41,14 +41,18 @@ Widget authView(
             ),
             Text(
               title,
-              style: getSemiBoldTextStyle(fontSize: ManagerFontSize.s24, color: ManagerColors.blackPrimary),
+              style: getSemiBoldTextStyle(
+                  fontSize: ManagerFontSize.s24,
+                  color: ManagerColors.blackPrimary),
             ),
             SizedBox(
               height: ManagerHeight.h8,
             ),
             Text(
               paragraph,
-              style: getRegularTextStyle(fontSize: ManagerFontSize.s16, color: ManagerColors.greyPrimary),
+              style: getRegularTextStyle(
+                  fontSize: ManagerFontSize.s16,
+                  color: ManagerColors.greyPrimary),
             ),
             SizedBox(
               height: ManagerHeight.h32,
@@ -59,20 +63,24 @@ Widget authView(
                       Visibility(
                         visible: name,
                         child: myTextField(
-                          controller: controllers['nameController'] ?? TextEditingController(),
+                          controller: controllers['nameController'] ??
+                              TextEditingController(),
                           icon: ManagerIcons.user,
                           keyboardType: TextInputType.text,
-                          validator: (value) => failedValidator.validateFullName(value),
+                          validator: (value) =>
+                              failedValidator.validateFullName(value),
                         ),
                       ),
                       SizedBox(
                         height: name ? ManagerHeight.h16 : 0,
                       ),
                       myTextField(
-                        controller: controllers['emailController'] ?? TextEditingController(),
+                        controller: controllers['emailController'] ??
+                            TextEditingController(),
                         icon: ManagerIcons.email,
                         keyboardType: TextInputType.emailAddress,
-                        validator: (value) => failedValidator.validateEmail(value),
+                        validator: (value) =>
+                            failedValidator.validateEmail(value),
                       ),
                       SizedBox(
                         height: ManagerHeight.h16,
@@ -80,12 +88,14 @@ Widget authView(
                       Visibility(
                         visible: password,
                         child: myTextField(
-                          controller: controllers['passwordController'] ?? TextEditingController(),
+                          controller: controllers['passwordController'] ??
+                              TextEditingController(),
                           icon: ManagerIcons.password,
                           keyboardType: TextInputType.text,
                           isObscureText: true,
                           hintText: passwordHint,
-                          validator: (value) => failedValidator.validatePassword(value),
+                          validator: (value) =>
+                              failedValidator.validatePassword(value),
                         ),
                       ),
                       SizedBox(
@@ -94,12 +104,15 @@ Widget authView(
                       Visibility(
                         visible: confirmPassword,
                         child: myTextField(
-                          controller: controllers['confirmPasswordController'] ?? TextEditingController(),
+                          controller:
+                              controllers['confirmPasswordController'] ??
+                                  TextEditingController(),
                           icon: ManagerIcons.password,
                           isObscureText: true,
                           hintText: confirmPasswordHint,
                           validator: (value) {
-                            if (value == controllers['passwordController']!.text) {
+                            if (value ==
+                                controllers['passwordController']!.text) {
                               return 'The Two Password is not Matched';
                             }
                           },
@@ -118,7 +131,8 @@ Widget authView(
                               child: Text(
                                 ManagerStrings.forgetPassword,
                                 style: getMediumTextStyle(
-                                    fontSize: ManagerFontSize.s16, color: ManagerColors.greyPrimary),
+                                    fontSize: ManagerFontSize.s16,
+                                    color: ManagerColors.greyPrimary),
                               ),
                             ),
                           ],
@@ -138,7 +152,8 @@ Widget authView(
               height: forgotPassword ? ManagerHeight.h24 : 0,
             ),
             rectButton(onPressed: onPressed, text: buttonText),
-            Expanded(child: child ?? const SizedBox())
+            // Expanded(child: child ?? const SizedBox())
+            child ?? const SizedBox()
           ],
         ),
       ),

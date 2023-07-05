@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:nuntium/config/dependency_injection.dart';
 import 'package:nuntium/features/forget_password/domain/use_case/forget_password_use_case.dart';
+import 'package:nuntium/routes/routes.dart';
 
 class ForgetPasswordController extends GetxController {
   final TextEditingController emailController = TextEditingController();
@@ -22,9 +23,7 @@ class ForgetPasswordController extends GetxController {
 
       //************        auth الشغل هادا لازم يكون على برانش ال  *********************
       //Todo: حالة النجاح
-      (r) => {
-        //TODO: Go to verification code screen
-      },
+      (r) => {Get.offAllNamed(Routes.verification)},
     );
   }
 

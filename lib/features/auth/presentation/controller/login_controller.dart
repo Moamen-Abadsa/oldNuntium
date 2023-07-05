@@ -9,9 +9,8 @@ class LoginController extends GetxController {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final _loginUseCase = instance<LoginUseCase>();
-  final _appSettingsSharedPreferences = instance<AppSettingsSharedPreferences>();
-
-
+  final _appSettingsSharedPreferences =
+      instance<AppSettingsSharedPreferences>();
 
   Future<void> login() async {
     (await _loginUseCase.execute(
