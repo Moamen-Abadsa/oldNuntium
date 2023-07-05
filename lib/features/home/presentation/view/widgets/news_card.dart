@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nuntium/core/resorces/manager_assets.dart';
 import 'package:nuntium/core/resorces/manager_colors.dart';
 import 'package:nuntium/core/resorces/manager_fonts.dart';
 import 'package:nuntium/core/resorces/manager_icons.dart';
@@ -6,7 +7,7 @@ import 'package:nuntium/core/resorces/manager_sizes.dart';
 import 'package:nuntium/core/resorces/manager_styles.dart';
 
 Column newsCard({
-  required String image,
+  required String? image,
   required String text,
 }) {
   return Column(
@@ -23,8 +24,9 @@ Column newsCard({
                 ),
               ),
             ),
-            child: Image.network(
-              image,
+            child: Image(
+              image: (image == null ? const AssetImage(ManagerAssets.news_placeholder) : NetworkImage(image))
+                  as ImageProvider,
               fit: BoxFit.cover,
               width: ManagerWidth.w336,
               height: ManagerHeight.h272,
@@ -55,8 +57,7 @@ Column newsCard({
                   title: Text(
                     text,
                     style: getSemiBoldTextStyle(
-                        fontSize: ManagerFontSize.s16,
-                        color: ManagerColors.blackPrimary),
+                        fontSize: ManagerFontSize.s16, color: ManagerColors.blackPrimary),
                   ),
                   trailing: IconButton(
                     onPressed: () {},

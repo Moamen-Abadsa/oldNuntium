@@ -7,7 +7,7 @@ part 'source_response.g.dart';
 @JsonSerializable()
 class SourceResponse {
   @JsonKey(name: ApiConstants.id)
-  String id;
+  String? id;
 
   @JsonKey(name: ApiConstants.name)
   String name;

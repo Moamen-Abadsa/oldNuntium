@@ -1,11 +1,11 @@
 class ArticleEntity {
-  String author;
-  String publishedAt;
-  String content;
-  String imageUrl;
-  String url;
-  String description;
-  String title;
+  String? author;
+  String? publishedAt;
+  String? content;
+  String? imageUrl;
+  String? url;
+  String? description;
+  String? title;
 
   ArticleEntity({
     required this.author,

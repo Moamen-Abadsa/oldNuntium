@@ -7,25 +7,25 @@ part 'article_response.g.dart';
 @JsonSerializable()
 class ArticleResponse {
   @JsonKey(name: ApiConstants.author)
-  String author;
+  String? author;
 
   @JsonKey(name: ApiConstants.publishedAt)
-  String publishedAt;
+  String? publishedAt;
 
   @JsonKey(name: ApiConstants.content)
-  String content;
+  String? content;
 
   @JsonKey(name: ApiConstants.urlToImage)
-  String imageUrl;
+  String? imageUrl;
 
   @JsonKey(name: ApiConstants.url)
-  String url;
+  String? url;
 
   @JsonKey(name: ApiConstants.description)
-  String description;
+  String? description;
 
   @JsonKey(name: ApiConstants.title)
-  String title;
+  String? title;
 
   ArticleResponse({
     required this.author,

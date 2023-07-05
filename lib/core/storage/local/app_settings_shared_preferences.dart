@@ -21,14 +21,6 @@ class AppSettingsSharedPreferences {
 
   //----------------------------------------------------------------------------
 
-  Future<void> setToken(String token) async {
-    await _preferences.setString(ConstantsPrefsKeys.tokenKey, token);
-  }
-
-  String getToken() {
-    return _preferences.getString(ConstantsPrefsKeys.tokenKey).onNull();
-  }
-
   void clear() {
     _preferences.clear();
   }
@@ -54,7 +46,6 @@ class AppSettingsSharedPreferences {
   }
 
   Future<void> getRegistered() async {
-    await _preferences.getBool(ConstantsPrefsKeys.Registered).onNull();
-
+    _preferences.getBool(ConstantsPrefsKeys.Registered).onNull();
   }
 }
