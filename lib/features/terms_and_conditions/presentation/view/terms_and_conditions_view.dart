@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nuntium/core/resorces/manager_colors.dart';
 import 'package:nuntium/core/resorces/manager_fonts.dart';
+import 'package:nuntium/core/resorces/manager_strings.dart';
 import 'package:nuntium/core/resorces/manager_styles.dart';
 
 class TermsAndConditionsView extends StatelessWidget {
@@ -11,7 +12,7 @@ class TermsAndConditionsView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Terms & Conditions",
+          ManagerStrings.termsAndConditionsTitle,
           style: getSemiBoldTextStyle(
             fontSize: ManagerFontSize.s24,
             color: ManagerColors.blackPrimary,
@@ -21,8 +22,7 @@ class TermsAndConditionsView extends StatelessWidget {
       body: Column(
         children: [
           Text(
-            //TODO: add the string to ManagerStrings
-            'ManagerStrings.artical',
+            ManagerStrings.termsAndConditions,
             style: getRegularTextStyle(
               fontSize: ManagerFontSize.s16,
               color: ManagerColors.greyPrimary,
