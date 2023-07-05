@@ -13,6 +13,8 @@ class ConstantsPrefsKeys {
   static const String token = 'token';
   static const String tokenKey = 'token_key';
   static const String loggedIn = "loggedIn";
+  static const String FavouriteViewed = "FavouriteViewed";
+  static const String Registered = "Registered";
 }
 
 class FirestoreConstants {
@@ -28,10 +30,26 @@ class ApiConstants {
   static const int receiveTimeOutDuration = 120;
   static const String message = "message";
   static const String token = 'token';
-  static const String status = 'status';
   static const String noInternetConnection = 'No Internet connection';
-  static const String name = 'name';
   static const String email = 'email';
   static const String password = 'password';
   static const String passwordConfirmation = 'password_confirmation';
+
+  //Home Request
+  static const String status = 'status';
+  static const String source = 'source';
+  static const String articles = 'articles';
+
+  //article (Home Request)
+  static const String author = 'author';
+  static const String content = 'content';
+  static const String publishedAt = 'publishedAt';
+  static const String urlToImage = 'urlToImage';
+  static const String url = 'url';
+  static const String description = 'description';
+  static const String title = 'title';
+
+  //source (Home Request)
+  static const String id = 'id';
+  static const String name = 'name';
 }

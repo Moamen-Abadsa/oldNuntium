@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nuntium/core/resorces/manager_strings.dart';
 import 'package:nuntium/features/auth/presentation/view/login_view.dart';
 import 'package:nuntium/features/auth/presentation/view/register_view.dart';
+import 'package:nuntium/features/favorite_topic/presentation/view/select_favourite_view.dart';
 import 'package:nuntium/features/forget_password/presentation/view/forget_password.dart';
 import 'package:nuntium/features/forget_password/presentation/view/verification_view.dart';
 import 'package:nuntium/features/home/presentation/view/home_view.dart';
@@ -20,6 +21,7 @@ class Routes {
   static const String register = '/register';
   static const String forget = '/forget';
   static const String verification = '/verification';
+  static const String favourite = '/favourite';
 }
 
 class RouteGenerator {
@@ -52,6 +54,9 @@ class RouteGenerator {
       case Routes.verification:
         initVerificationModule();
         return MaterialPageRoute(builder: (_) => const VerificationView());
+      case Routes.favourite:
+        initSelectFavouriteModule();
+        return MaterialPageRoute(builder: (_) => const SelectFavouriteView());
       default:
         return unDefinedRoute();
     }
