@@ -262,11 +262,11 @@ disposeForgetPassword() async {
   if (GetIt.I.isRegistered<RemoteForgetPasswordDataSource>()) {
     instance.unregister<RemoteForgetPasswordDataSource>();
   }
-  
+
   if (GetIt.I.isRegistered<ForgetPasswordRepository>()) {
     instance.unregister<ForgetPasswordRepository>();
   }
-  
+
   if (GetIt.I.isRegistered<ForgetPasswordUseCase>()) {
     instance.unregister<ForgetPasswordUseCase>();
   }
@@ -303,7 +303,6 @@ initVerificationModule() {
 
   Get.put<VerificationController>(VerificationController());
 }
-
 
 initSelectFavouriteModule() {
   Get.put<SelectFavoriteTopicController>(SelectFavoriteTopicController());
