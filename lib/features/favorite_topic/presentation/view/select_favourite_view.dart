@@ -20,7 +20,8 @@ class SelectFavouriteView extends StatelessWidget {
             children: [
               header(
                 title: 'Select your favorite topics',
-                paragraph: 'Select some of your favorite topics to let us\nsuggest better news for you.',
+                paragraph:
+                    'Select some of your favorite topics to let us\nsuggest better news for you.',
               ),
               GridView.builder(
                 shrinkWrap: true,

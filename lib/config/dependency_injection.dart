@@ -16,7 +16,7 @@ import 'package:nuntium/features/auth/domain/use_case/login_use_case.dart';
 import 'package:nuntium/features/auth/domain/use_case/register_use_case.dart';
 import 'package:nuntium/features/auth/presentation/controller/login_controller.dart';
 import 'package:nuntium/features/auth/presentation/controller/register_controller.dart';
-import 'package:nuntium/features/favourite/presentation/controller/select_favourite_controller.dart';
+import 'package:nuntium/features/favorite_topic/presentation/controller/select_favorite_topic_controller.dart';
 import 'package:nuntium/features/forget_password/data/data_source/remote_forget_password_data_source.dart';
 import 'package:nuntium/features/forget_password/data/repository/forget_password_repository.dart';
 import 'package:nuntium/features/forget_password/domain/use_case/forget_password_use_case.dart';
@@ -35,14 +35,15 @@ initModule() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-  final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+  final SharedPreferences sharedPreferences =
+      await SharedPreferences.getInstance();
 
   instance.registerLazySingleton<SharedPreferences>(
     () => sharedPreferences,
   );
 
-  instance
-      .registerLazySingleton<AppSettingsSharedPreferences>(() => AppSettingsSharedPreferences(instance()));
+  instance.registerLazySingleton<AppSettingsSharedPreferences>(
+      () => AppSettingsSharedPreferences(instance()));
 
   //!!!!!!!!!!! ONLY FOR TEST !!!!!!!!!!!!!
   // AppSettingsPreferences appSettingsPreferences =
@@ -59,7 +60,8 @@ initModule() async {
     () => AppApi(dio),
   );
 
-  instance.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(InternetConnectionCheckerPlus()));
+  instance.registerLazySingleton<NetworkInfo>(
+      () => NetworkInfoImpl(InternetConnectionCheckerPlus()));
 }
 
 initSplash() {
@@ -81,6 +83,30 @@ disposeOutBoarding() {
 
 initHome() {
   disposeWelcome();
+  if (!GetIt.I.isRegistered<RemoteHomeDataSource>()) {
+    instance.registerLazySingleton<RemoteHomeDataSource>(
+      () => RemoteHomeDataSourceImplement(
+        instance<AppApi>(),
+      ),
+    );
+  }
+
+  if (!GetIt.I.isRegistered<HomeRepository>()) {
+    instance.registerLazySingleton<HomeRepository>(
+      () => HomeRepositoryImplement(
+        instance<RemoteHomeDataSource>(),
+        instance<NetworkInfo>(),
+      ),
+    );
+  }
+
+  if (!GetIt.I.isRegistered<HomeUseCase>()) {
+    instance.registerLazySingleton<HomeUseCase>(
+      () => HomeUseCase(
+        instance<HomeRepository>(),
+      ),
+    );
+  }
   Get.put<HomeController>(HomeController());
 }
 
@@ -275,10 +301,11 @@ initVerificationModule() {
   Get.put<VerificationController>(VerificationController());
 }
 
+
 initSelectFavouriteModule() {
-  Get.put<SelectFavouriteController>(SelectFavouriteController());
+  Get.put<SelectFavoriteTopicController>(SelectFavoriteTopicController());
 }
 
 disposeSelectFavouriteModule() {
-  Get.delete<SelectFavouriteController>();
+  Get.delete<SelectFavoriteTopicController>();
 }

@@ -54,6 +54,7 @@ class AppSettingsSharedPreferences {
   }
 
   Future<void> getRegistered() async {
-    _preferences.getBool(ConstantsPrefsKeys.Registered).onNull();
+    await _preferences.getBool(ConstantsPrefsKeys.Registered).onNull();
+
   }
 }
