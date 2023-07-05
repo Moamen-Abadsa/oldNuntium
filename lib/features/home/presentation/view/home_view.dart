@@ -105,11 +105,11 @@ class HomeView extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: ManagerWidth.w20),
                 child: ListView.builder(
                   shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   itemCount: controller.articles.length,
                   itemBuilder: (context, index) => newsCard(
                     image: controller.articles[index].imageUrl,
-                    text: controller.articles[index].description,
+                    text: controller.articles[index].title ?? controller.articles[index].description ?? '',
                   ),
                 ),
               ),

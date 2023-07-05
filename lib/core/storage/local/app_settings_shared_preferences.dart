@@ -21,30 +21,6 @@ class AppSettingsSharedPreferences {
 
   //----------------------------------------------------------------------------
 
-  Future<void> setName(String name) async {
-    await _preferences.setString("name", name);
-  }
-
-  Future<void> setEmail(String email) async {
-    await _preferences.setString("email", email);
-  }
-
-  String getName() {
-    return _preferences.getString("name").onNull();
-  }
-
-  String getEmail() {
-    return _preferences.getString("email").onNull();
-  }
-
-  Future<void> setNotification(bool isNotificationOn) async {
-    await _preferences.setBool("Notification", isNotificationOn);
-  }
-
-  bool getNotification() {
-    return _preferences.getBool("Notification").onNull();
-  }
-
   Future<void> setToken(String token) async {
     await _preferences.setString(ConstantsPrefsKeys.tokenKey, token);
   }

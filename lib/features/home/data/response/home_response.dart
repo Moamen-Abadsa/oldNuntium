@@ -10,13 +10,13 @@ part 'home_response.g.dart';
 @JsonSerializable()
 class HomeResopnse {
   @JsonKey(name: ApiConstants.status)
-  SourceResponse status;
+  String status;
 
   @JsonKey(name: ApiConstants.source)
-  String source;
+  SourceResponse? source;
 
   @JsonKey(name: ApiConstants.articles)
-  List<ArticleResponse> articles;
+  List<ArticleResponse>? articles;
 
   HomeResopnse({
     required this.status,
