@@ -22,7 +22,7 @@ class TermsAndConditionsView extends StatelessWidget {
       body: Column(
         children: [
           Text(
-            ManagerStrings.termsAndConditions,
+            ManagerStrings.termsAndConditionsPolicy,
             style: getRegularTextStyle(
               fontSize: ManagerFontSize.s16,
               color: ManagerColors.greyPrimary,
