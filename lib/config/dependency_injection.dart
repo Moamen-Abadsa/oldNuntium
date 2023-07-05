@@ -35,14 +35,15 @@ initModule() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-  final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+  final SharedPreferences sharedPreferences =
+      await SharedPreferences.getInstance();
 
   instance.registerLazySingleton<SharedPreferences>(
     () => sharedPreferences,
   );
 
-  instance
-      .registerLazySingleton<AppSettingsSharedPreferences>(() => AppSettingsSharedPreferences(instance()));
+  instance.registerLazySingleton<AppSettingsSharedPreferences>(
+      () => AppSettingsSharedPreferences(instance()));
 
   //!!!!!!!!!!! ONLY FOR TEST !!!!!!!!!!!!!
   // AppSettingsPreferences appSettingsPreferences =
@@ -59,7 +60,8 @@ initModule() async {
     () => AppApi(dio),
   );
 
-  instance.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(InternetConnectionCheckerPlus()));
+  instance.registerLazySingleton<NetworkInfo>(
+      () => NetworkInfoImpl(InternetConnectionCheckerPlus()));
 }
 
 initSplash() {
@@ -81,6 +83,30 @@ disposeOutBoarding() {
 
 initHome() {
   disposeWelcome();
+  if (!GetIt.I.isRegistered<RemoteHomeDataSource>()) {
+    instance.registerLazySingleton<RemoteHomeDataSource>(
+      () => RemoteHomeDataSourceImplement(
+        instance<AppApi>(),
+      ),
+    );
+  }
+
+  if (!GetIt.I.isRegistered<HomeRepository>()) {
+    instance.registerLazySingleton<HomeRepository>(
+      () => HomeRepositoryImplement(
+        instance<RemoteHomeDataSource>(),
+        instance<NetworkInfo>(),
+      ),
+    );
+  }
+
+  if (!GetIt.I.isRegistered<HomeUseCase>()) {
+    instance.registerLazySingleton<HomeUseCase>(
+      () => HomeUseCase(
+        instance<HomeRepository>(),
+      ),
+    );
+  }
   Get.put<HomeController>(HomeController());
 }
 

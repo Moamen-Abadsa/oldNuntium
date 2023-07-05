@@ -12,7 +12,9 @@ class RegisterController extends GetxController {
   TextEditingController nameController = TextEditingController();
   late final RegisterUseCase _loginUseCase = instance<RegisterUseCase>();
 
-  final AppSettingsSharedPreferences _appSettingsSharedPreferences = instance<AppSettingsSharedPreferences>();
+  final AppSettingsSharedPreferences _appSettingsSharedPreferences =
+      instance<AppSettingsSharedPreferences>();
+
 
   Future<void> register() async {
     (await _loginUseCase.execute(
