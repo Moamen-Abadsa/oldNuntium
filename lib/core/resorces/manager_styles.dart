@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:nuntium/core/resorces/manager_fonts.dart';
 
+import 'manager_colors.dart';
+
 TextStyle _textStyle({
   required double fontSize,
   required String fontFamily,
@@ -61,7 +63,7 @@ TextStyle getMediumTextStyle({
 
 TextStyle getSemiBoldTextStyle({
   required double fontSize,
-  required Color color,
+  Color color = ManagerColors.blackPrimary,
   TextDecoration decoration = TextDecoration.none,
 }) {
   return _textStyle(
