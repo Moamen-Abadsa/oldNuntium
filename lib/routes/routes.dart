@@ -15,7 +15,6 @@ import 'package:nuntium/features/splash/presentaion/view/splash_view.dart';
 import 'package:nuntium/features/terms_and_conditions/presentation/view/terms_and_conditions_view.dart';
 
 import '../config/dependency_injection.dart';
-import '../features/main/presentation/view/main_view.dart';
 
 class Routes {
   static const String splashView = '/splash_view';
@@ -43,9 +42,9 @@ class RouteGenerator {
       case Routes.outBoardingView:
         initOutBoarding();
         return MaterialPageRoute(builder: (_) => const OutBoardingView());
-      case Routes.mainView:
-        initMainModule();
-        return MaterialPageRoute(builder: (_) => const MainView());
+      // case Routes.mainView:
+      //   initMainModule();
+      //   return MaterialPageRoute(builder: (_) => const MainView());
       case Routes.homeView:
         initHome();
         return MaterialPageRoute(builder: (_) => const HomeView());
@@ -66,7 +65,7 @@ class RouteGenerator {
 
       case Routes.loginView:
         initLoginModule();
-        return MaterialPageRoute(builder: (_) => const LoginView());
+        return MaterialPageRoute(builder: (_) => LoginView());
       case Routes.register:
         initRegisterModule();
         return MaterialPageRoute(builder: (_) => const RegisterView());
@@ -81,10 +80,15 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const SelectFavouriteView());
       case Routes.termsAndConditions:
         initTermsAndConditionsModule();
-        return MaterialPageRoute(builder: (_) => const TermsAndConditionsView());
+        return MaterialPageRoute(
+            builder: (_) => const TermsAndConditionsView());
       case Routes.language:
         initLanguageModule();
         return MaterialPageRoute(builder: (_) => const LanguageView());
+
+      case Routes.article:
+        initArticleModule();
+        return MaterialPageRoute(builder: (_) => const ArticleView());
       default:
         return unDefinedRoute();
     }
@@ -94,10 +98,10 @@ class RouteGenerator {
     return MaterialPageRoute(
       builder: (_) => Scaffold(
         appBar: AppBar(
-          title: const Text(ManagerStrings.noRoutFound),
+          title: Text(ManagerStrings.noRouteFound),
         ),
-        body: const Center(
-          child: Text(ManagerStrings.noRoutFound),
+        body: Center(
+          child: Text(ManagerStrings.noRouteFound),
         ),
       ),
     );

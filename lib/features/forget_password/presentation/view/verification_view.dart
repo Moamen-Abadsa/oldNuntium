@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nuntium/core/resorces/manager_strings.dart';
 import 'package:nuntium/features/auth/presentation/view/widgets/auth_view.dart';
 import 'package:nuntium/features/auth/presentation/view/widgets/footer_message.dart';
 import 'package:nuntium/features/forget_password/presentation/controller/verification_controller.dart';
@@ -13,10 +14,9 @@ class VerificationView extends StatelessWidget {
       init: VerificationController(),
       builder: (controller) {
         return authView(
-          title: "Verification Code ✅",
-          paragraph:
-              "You need to enter 4-digit code we send to\n your email adress.",
-          buttonText: "Confirm",
+          title: ManagerStrings.verificationCodeTitle,
+          paragraph: ManagerStrings.verificationCodeParagraph,
+          buttonText: ManagerStrings.confirm,
           onPressed: () {
             controller.verifyCode();
           },
@@ -24,8 +24,8 @@ class VerificationView extends StatelessWidget {
           controllers: {},
           child: footerMessage(
               onPressed: () {},
-              firstMessage: 'Didn’t receive an email?',
-              secondMessage: 'Send again'),
+              firstMessage: ManagerStrings.dontReceive,
+              secondMessage: ManagerStrings.sendAgain),
         );
       },
     );

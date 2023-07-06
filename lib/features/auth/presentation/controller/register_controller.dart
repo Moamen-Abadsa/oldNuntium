@@ -12,7 +12,8 @@ class RegisterController extends GetxController {
   TextEditingController nameController = TextEditingController();
   late final RegisterUseCase _loginUseCase = instance<RegisterUseCase>();
 
-  final AppSettingsSharedPreferences _appSettingsSharedPreferences = instance<AppSettingsSharedPreferences>();
+  final AppSettingsSharedPreferences _appSettingsSharedPreferences =
+      instance<AppSettingsSharedPreferences>();
 
   Future<void> register() async {
     (await _loginUseCase.execute(
@@ -28,10 +29,9 @@ class RegisterController extends GetxController {
         Get.rawSnackbar(message: l.message);
       },
       (r) {
-        _appSettingsSharedPreferences
-          ..setRegisterd()
-          ..setEmail(emailController.text)
-          ..setName(nameController.text);
+        _appSettingsSharedPreferences.setRegisterd();
+        _appSettingsSharedPreferences.setEmail(emailController.text);
+        _appSettingsSharedPreferences.setName(nameController.text);
         Get.offAllNamed(Routes.loginView);
       },
     );

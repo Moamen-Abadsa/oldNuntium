@@ -51,7 +51,7 @@ class WelcomeScreen extends StatelessWidget {
               onPressed: () {
                 Get.offAllNamed(Routes.loginView);
               },
-              text: "Get Started",
+              text: ManagerStrings.getStarted,
               isHasMargin: true)
         ],
       )),

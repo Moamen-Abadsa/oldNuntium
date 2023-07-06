@@ -1,15 +1,26 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:nuntium/config/constants.dart';
+import 'package:nuntium/config/localization/locale_settings.dart';
+import 'package:nuntium/core/resorces/manager_assets.dart';
 import 'package:nuntium/core/service/theme_service.dart';
+import 'package:nuntium/routes/routes.dart';
 
 import 'config/dependency_injection.dart';
-import 'routes/routes.dart';
 
 void main() async {
   await initModule();
-  runApp(MyApp());
+  runApp(
+    EasyLocalization(
+      supportedLocales: localeSettings.supportedLocales,
+      path: translationPath,
+      fallbackLocale: localeSettings.defaultLocale,
+      startLocale: localeSettings.defaultLocale,
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -28,9 +39,12 @@ class MyApp extends StatelessWidget {
       ),
       builder: (context, child) {
         return GetMaterialApp(
+          localizationsDelegates: context.localizationDelegates,
+          locale: context.locale,
+          supportedLocales: context.supportedLocales,
           debugShowCheckedModeBanner: false,
           onGenerateRoute: RouteGenerator.getRoute,
-          initialRoute: Routes.splashView,
+          initialRoute: Routes.loginView,
           theme: _themeService.getThemeData(),
           themeMode: _themeService.getThemeMode(),
         );
