@@ -19,7 +19,7 @@ class ErrorHandler implements Exception {
         error.response?.data['message'] ?? error.response?.data['errors'].toString() ?? ManagerStrings.error,
       );
     } else if (error is FirebaseAuthException) {
-      failure = Failure(400, error.code);
+      failure = Failure(error.code.compareTo('400'), error.message ?? 'Bad Request');
     } else {
       failure = Failure(400, ManagerStrings.badRequest);
     }
