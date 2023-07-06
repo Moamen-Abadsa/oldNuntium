@@ -54,7 +54,7 @@ class AppSettingsSharedPreferences {
   }
 
   Future<void> getRegistered() async {
-    await _preferences.getBool(ConstantsPrefsKeys.Registered).onNull();
+    _preferences.getBool(ConstantsPrefsKeys.Registered).onNull();
   }
 
   Future<void> setTopicsSelected(NewsTopics topic, bool isChecked) async {
