@@ -21,6 +21,13 @@ class AppSettingsSharedPreferences {
 
   //----------------------------------------------------------------------------
 
+  String get locale =>
+      _preferences.getString(ConstantsPrefsKeys.locale).parseToLocale();
+
+  Future<void> setLocale(String locale) async {
+    await _preferences.setString(ConstantsPrefsKeys.locale, locale);
+  }
+
   Future<void> setName(String name) async {
     await _preferences.setString("name", name);
   }

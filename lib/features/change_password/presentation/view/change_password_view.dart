@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:nuntium/core/resorces/manager_colors.dart';
 import 'package:nuntium/core/resorces/manager_fonts.dart';
 import 'package:nuntium/core/resorces/manager_icons.dart';
+import 'package:nuntium/core/resorces/manager_strings.dart';
 import 'package:nuntium/core/resorces/manager_styles.dart';
 import 'package:nuntium/core/validator/validator.dart';
 import 'package:nuntium/core/widgets/text_field.dart';
@@ -18,7 +19,7 @@ class ChangePasswordView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Terms & Conditions",
+          ManagerStrings.termsAndConditions,
           style: getSemiBoldTextStyle(
             fontSize: ManagerFontSize.s24,
             color: ManagerColors.blackPrimary,
@@ -39,7 +40,7 @@ class ChangePasswordView extends StatelessWidget {
             myTextField(
               controller: controller.currentPasswordController,
               icon: ManagerIcons.password,
-              hintText: 'New Password',
+              hintText: ManagerStrings.newPasswordHint,
               validator: (value) => _validator.validatePassword(value),
               keyboardType: TextInputType.text,
               isObscureText: true,
@@ -47,7 +48,7 @@ class ChangePasswordView extends StatelessWidget {
             myTextField(
               controller: controller.currentPasswordController,
               icon: ManagerIcons.password,
-              hintText: 'Repeat New Password',
+              hintText: ManagerStrings.repeatNewPassword,
               validator: (value) => _validator.validatePassword(value),
               keyboardType: TextInputType.text,
               isObscureText: true,

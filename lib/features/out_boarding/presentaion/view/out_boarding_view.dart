@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nuntium/core/resorces/manager_assets.dart';
 import 'package:nuntium/core/resorces/manager_fonts.dart';
 import 'package:nuntium/core/resorces/manager_sizes.dart';
 import 'package:nuntium/core/widgets/rect_button.dart';
@@ -19,9 +20,9 @@ class OutBoardingView extends StatefulWidget {
 
 class _OutBoardingViewState extends State<OutBoardingView> {
   final images = [
-    'assets/images/outboarding.png',
-    'assets/images/outboarding.png',
-    'assets/images/outboarding.png'
+    ManagerAssets.outboarding,
+    ManagerAssets.outboarding,
+    ManagerAssets.outboarding
   ];
 
   int activePage = 0;

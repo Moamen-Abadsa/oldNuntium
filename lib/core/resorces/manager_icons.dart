@@ -11,4 +11,5 @@ class ManagerIcons {
   static IconData search = Icons.search;
   static IconData mic = Icons.mic_none_outlined;
   static IconData bookmark_border_outlined = Icons.bookmark_border_outlined;
+  static IconData check = Icons.check;
 }

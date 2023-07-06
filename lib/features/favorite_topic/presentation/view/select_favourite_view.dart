@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nuntium/core/resorces/manager_colors.dart';
 import 'package:nuntium/core/resorces/manager_fonts.dart';
 import 'package:nuntium/core/resorces/manager_sizes.dart';
+import 'package:nuntium/core/resorces/manager_strings.dart';
 import 'package:nuntium/core/resorces/manager_styles.dart';
 import 'package:nuntium/core/widgets/rect_button.dart';
 import 'package:nuntium/core/widgets/screen_header.dart';
@@ -19,9 +20,8 @@ class SelectFavouriteView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               header(
-                title: 'Select your favorite topics',
-                paragraph:
-                    'Select some of your favorite topics to let us\nsuggest better news for you.',
+                title: ManagerStrings.selectYourFavouriteTopics,
+                paragraph: ManagerStrings.selectYourFavouriteTopicsParagraph,
               ),
               GridView.builder(
                 shrinkWrap: true,
@@ -42,7 +42,7 @@ class SelectFavouriteView extends StatelessWidget {
                         )),
                     child: Center(
                       child: Text(
-                        "🏈 Sports",
+                        ManagerStrings.sports,
                         style: getSemiBoldTextStyle(
                           fontSize: ManagerFontSize.s16,
                           color: ManagerColors.greyDarker,
@@ -55,7 +55,7 @@ class SelectFavouriteView extends StatelessWidget {
               const SizedBox(
                 height: 16,
               ),
-              rectButton(onPressed: () {}, text: "Next")
+              rectButton(onPressed: () {}, text: ManagerStrings.next)
             ],
           ),
         ),

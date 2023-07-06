@@ -11,6 +11,7 @@ class LoginController extends GetxController {
   final _loginUseCase = instance<LoginUseCase>();
   final _appSettingsSharedPreferences =
       instance<AppSettingsSharedPreferences>();
+  var formKey = GlobalKey<FormState>();
 
   Future<void> login() async {
     (await _loginUseCase.execute(
@@ -22,6 +23,7 @@ class LoginController extends GetxController {
         .fold(
       (l) => {
         Get.rawSnackbar(message: l.message),
+        update(),
       },
       (r) {
         _appSettingsSharedPreferences.setLoggedIn();

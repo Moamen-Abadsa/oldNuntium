@@ -11,12 +11,9 @@ Container myTextField(
     required IconData icon,
     TextInputType keyboardType = TextInputType.emailAddress,
     validator,
-    String hintText = "Email Address"}) {
-  FocusNode focusNode = FocusNode();
-  bool isFocused = false;
-  focusNode.addListener(() {
-    isFocused = focusNode.hasFocus;
-  });
+    String hintText = "Email Address",
+    FocusNode? focusNode,
+    onChange}) {
   return Container(
     width: double.infinity,
     height: ManagerHeight.h56,
@@ -26,8 +23,9 @@ Container myTextField(
           Radius.circular(ManagerRadius.r12),
         )),
     child: TextFormField(
-      autovalidateMode: AutovalidateMode.always,
+      // autovalidateMode: AutovalidateMode.always,
       validator: validator,
+      onChanged: onChange ?? (val) {},
       keyboardType: keyboardType,
       cursorColor: ManagerColors.purplePrimary,
       style: getMediumTextStyle(
@@ -43,24 +41,19 @@ Container myTextField(
         hintStyle: getMediumTextStyle(
             fontSize: ManagerFontSize.s16, color: ManagerColors.greyPrimary),
         prefixIcon: IconService().getIcon(
-          icon: icon,
-          iconSize: ManagerFontSize.s24,
-          color: isFocused
-              ? ManagerColors.purplePrimary
-              : ManagerColors.greyPrimary,
+            icon: icon,
+            iconSize: ManagerFontSize.s24,
+            color: ManagerColors.greyPrimary),
+        focusedBorder: OutlineInputBorder(
+          borderSide: const BorderSide(
+            color: ManagerColors.purplePrimary,
+          ),
+          borderRadius: BorderRadius.all(
+            Radius.circular(
+              ManagerRadius.r12,
+            ),
+          ),
         ),
-        focusedBorder: focusNode.hasFocus
-            ? InputBorder.none
-            : OutlineInputBorder(
-                borderSide: const BorderSide(
-                  color: ManagerColors.purplePrimary,
-                ),
-                borderRadius: BorderRadius.all(
-                  Radius.circular(
-                    ManagerRadius.r12,
-                  ),
-                ),
-              ),
         // focusColor: ManagerColors.purplePrimary,
         border: InputBorder.none,
         enabledBorder: OutlineInputBorder(
