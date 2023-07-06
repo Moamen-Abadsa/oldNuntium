@@ -31,7 +31,7 @@ class RegisterController extends GetxController {
       },
       (r) {
         _appSettingsSharedPreferences.setRegisterd();
-        Get.offAllNamed(Routes.loginView);
+        Get.offAllNamed(Routes.mainView);
       },
     );
   }

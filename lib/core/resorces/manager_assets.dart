@@ -1,5 +1,6 @@
 const String baseImagePath = 'assets/images';
 const String baseVectorPath = 'assets/images/vectors';
+const String baseIconPath = 'assets/icons';
 
 class ManagerAssets {
   static const String logo = '$baseVectorPath/Vector.svg';
@@ -16,4 +17,10 @@ class ManagerJson {
   // static const String loading = '$jsonPath/loading.json';
   // static const String error = '$jsonPath/error.json';
   // static const String success = '$jsonPath/success.json';
+}
+class ManagerIcons {
+  static const String home = '$baseIconPath/home.svg';
+  static const String user = '$baseIconPath/user.svg';
+  static const String category = '$baseIconPath/category.svg';
+  static const String bookmark = '$baseIconPath/bookmark.svg';
 }

@@ -13,11 +13,13 @@ import 'package:nuntium/features/splash/presentaion/view/splash_view.dart';
 import 'package:nuntium/features/terms_and_conditions/presentation/view/terms_and_conditions_view.dart';
 
 import '../config/dependency_injection.dart';
+import '../features/main/presentation/view/main_view.dart';
 
 class Routes {
   static const String splashView = '/splash_view';
   static const String outBoardingView = '/out_boarding_view';
   static const String homeView = '/home_view';
+  static const String mainView = '/main_view';
   static const String loginView = '/login_view';
   static const String welcome = '/welcome_view';
   static const String register = '/register';
@@ -37,6 +39,9 @@ class RouteGenerator {
       case Routes.outBoardingView:
         initOutBoarding();
         return MaterialPageRoute(builder: (_) => const OutBoardingView());
+      case Routes.mainView:
+        initMainModule();
+        return MaterialPageRoute(builder: (_) => const MainView());
       case Routes.homeView:
         initHome();
         return MaterialPageRoute(builder: (_) => const HomeView());
@@ -63,8 +68,7 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const SelectFavouriteView());
       case Routes.termsAndConditions:
         initTermsAndConditionsModule();
-        return MaterialPageRoute(
-            builder: (_) => const TermsAndConditionsView());
+        return MaterialPageRoute(builder: (_) => const TermsAndConditionsView());
       case Routes.language:
         initLanguageModule();
         return MaterialPageRoute(builder: (_) => const LanguageView());

@@ -27,6 +27,7 @@ import 'package:nuntium/features/home/data/repository/home_repository.dart';
 import 'package:nuntium/features/home/domain/use_case/home_use_case.dart';
 import 'package:nuntium/features/home/presentation/controller/home_controller.dart';
 import 'package:nuntium/features/language/presentation/controller/language_controller.dart';
+import 'package:nuntium/features/main/presentation/controller/main_controller.dart';
 import 'package:nuntium/features/out_boarding/presentaion/controller/out_boarding_controller.dart';
 import 'package:nuntium/features/out_boarding/presentaion/controller/welcome_controller.dart';
 import 'package:nuntium/features/terms_and_conditions/presentation/controller/terms_and_conditions_controller.dart';
@@ -40,15 +41,14 @@ initModule() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-  final SharedPreferences sharedPreferences =
-      await SharedPreferences.getInstance();
+  final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
 
   instance.registerLazySingleton<SharedPreferences>(
     () => sharedPreferences,
   );
 
-  instance.registerLazySingleton<AppSettingsSharedPreferences>(
-      () => AppSettingsSharedPreferences(instance()));
+  instance
+      .registerLazySingleton<AppSettingsSharedPreferences>(() => AppSettingsSharedPreferences(instance()));
 
   //!!!!!!!!!!! ONLY FOR TEST !!!!!!!!!!!!!
   // AppSettingsPreferences appSettingsPreferences =
@@ -65,8 +65,7 @@ initModule() async {
     () => AppApi(dio),
   );
 
-  instance.registerLazySingleton<NetworkInfo>(
-      () => NetworkInfoImpl(InternetConnectionCheckerPlus()));
+  instance.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(InternetConnectionCheckerPlus()));
 }
 
 initSplash() {
@@ -84,6 +83,11 @@ initOutBoarding() {
 
 disposeOutBoarding() {
   Get.delete<OutBoardingController>();
+}
+
+initMainModule() {
+  Get.put(MainController());
+  initHome();
 }
 
 initHome() {

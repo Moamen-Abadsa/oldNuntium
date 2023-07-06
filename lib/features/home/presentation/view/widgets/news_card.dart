@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:nuntium/core/resorces/manager_assets.dart';
 import 'package:nuntium/core/resorces/manager_colors.dart';
 import 'package:nuntium/core/resorces/manager_fonts.dart';
-import 'package:nuntium/core/resorces/manager_icons.dart';
 import 'package:nuntium/core/resorces/manager_sizes.dart';
 import 'package:nuntium/core/resorces/manager_styles.dart';
 
@@ -62,7 +61,7 @@ Column newsCard({
                   trailing: IconButton(
                     onPressed: () {},
                     icon: Icon(
-                      ManagerIcons.bookmark_border_outlined,
+                      Icons.bookmark_border_outlined,
                       size: ManagerFontSize.s30,
                     ),
                   ),

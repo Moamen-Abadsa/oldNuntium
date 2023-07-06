@@ -3,14 +3,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:nuntium/config/constants.dart';
 import 'package:nuntium/core/service/theme_service.dart';
-import 'package:nuntium/features/article/presentation/controller/select_favorite_topic_controller.dart';
 import 'package:nuntium/features/article/presentation/view/article_view.dart';
 
 import 'config/dependency_injection.dart';
+import 'routes/routes.dart';
 
 void main() async {
   await initModule();
-  Get.put(ArticleController());
   runApp(MyApp());
 }
 
@@ -31,11 +30,10 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
-          // onGenerateRoute: RouteGenerator.getRoute,
-          // initialRoute: Routes.homeView,
+          onGenerateRoute: RouteGenerator.getRoute,
+          initialRoute: Routes.mainView,
           theme: _themeService.getThemeData(),
           themeMode: _themeService.getThemeMode(),
-          home: const ArticleView(),
         );
       },
     );
