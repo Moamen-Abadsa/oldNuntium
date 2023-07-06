@@ -13,14 +13,20 @@ class ErrorHandler implements Exception {
   late Failure failure;
 
   ErrorHandler.handle(dynamic error) {
-    if (error is DioError) {
-      failure = Failure(
-        400,
-        error.response?.data['message'] ?? error.response?.data['errors'].toString() ?? ManagerStrings.error,
-      );
-    } else if (error is FirebaseAuthException) {
-      failure = Failure(error.code.compareTo('400'), error.message ?? 'Bad Request');
-    } else {
+    try {
+      if (error is DioError) {
+        failure = Failure(
+          400,
+          error.response?.data['message'] ??
+              error.response?.data['errors'].toString() ?? ManagerStrings.error,
+        );
+      } else if (error is FirebaseAuthException) {
+        failure = Failure(
+            error.code.compareTo('400'), error.message ?? 'Bad Request');
+      } else {
+        failure = Failure(400, ManagerStrings.badRequest);
+      }
+    } catch (e){
       failure = Failure(400, ManagerStrings.badRequest);
     }
   }
