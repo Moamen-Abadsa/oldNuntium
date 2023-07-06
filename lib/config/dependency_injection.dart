@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -8,7 +9,8 @@ import 'package:nuntium/core/internet_checker/internet_checker.dart';
 import 'package:nuntium/core/network/app_api.dart';
 import 'package:nuntium/core/network/dio_factory.dart';
 import 'package:nuntium/core/storage/local/app_settings_shared_preferences.dart';
-import 'package:nuntium/features/article/presentation/controller/select_favorite_topic_controller.dart';
+import 'package:nuntium/features/article/presentation/controller/article_controller.dart';
+
 import 'package:nuntium/features/auth/data/data_source/remote_login_data_source.dart';
 import 'package:nuntium/features/auth/data/data_source/remote_register_data_source.dart';
 import 'package:nuntium/features/auth/data/repository/login_repository.dart';
@@ -41,6 +43,8 @@ final instance = GetIt.instance;
 
 initModule() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
+
   await Firebase.initializeApp();
 
   final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
@@ -341,8 +345,8 @@ disposeLanguageModule() {
 }
 
 initArticleModule() {
-  Get.put(ArticleController());
-}
+  Get.put<ArticleController>(ArticleController());
+
 
 disposeArticleModule() {
   Get.delete<ArticleController>();

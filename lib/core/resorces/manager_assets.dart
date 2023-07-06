@@ -1,6 +1,8 @@
 const String baseImagePath = 'assets/images';
 const String baseVectorPath = 'assets/images/vectors';
+const String translationPath = 'assets/translation';
 const String baseIconPath = 'assets/icons';
+
 
 class ManagerAssets {
   static const String logo = '$baseVectorPath/Vector.svg';

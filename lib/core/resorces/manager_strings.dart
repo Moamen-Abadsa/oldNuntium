@@ -1,75 +1,119 @@
+import 'package:easy_localization/easy_localization.dart';
+
 class ManagerStrings {
-  static const String appName = 'Nuntium';
-  static const String noRoutFound = 'No Rout Found';
-  static const String noInternetConnection = 'No Internet Connection';
-  static const String error = 'Error';
-  static const String badRequest = 'badReq';
-  static const String firstToKnow = "First to know";
-  static const String next = "Next";
-  static const String paragraph = "All news in one place, be the\nfirst to know last news";
-  static const String welcomeTitle = "Welcome Back 👋";
-  static const String signUpTitle = "Welcome to Nuntium 👋";
-  static const String signUpParagraph =
-      "Hello, I guess you are new around here. You\ncan start using the application after sign up.";
-  static const String loginParagraph =
-      "I am happy to see you again. You can \ncontinue where you left off by logging in";
-  static const String google = "Sign In With Google";
-  static const String facebook = "Sign In with Facebook";
-  static const String signIn = "Sign In";
-  static const String signUp = "Sign Up";
-  static const String forget = "Forgot Password 🤔";
-  static const String password = 'Password';
-  static const String forgetPassword = "Forgot Password?";
-  static const String confirmPasswordHint = 'Repeat New Password';
-  static const String forgetParagraph =
-      "We need your email adress so we can send you the password reset code.";
-  static const String signUpFooterMessage = "Already have an account?";
-  static const String forgetPasswordFooterMessage = "Didn’t receive an email?";
-  static const String sendAgain = "Send again";
+  static String get appName => 'Nuntium';
+  static String get noInternetConnection => tr('noInternetConnection');
 
-  static String get invalidEmail => 'invalidEmail';
-  static String get invalidPasswordLength => 'invalidPasswordLength';
-  static String get invalidPasswordUpper => 'invalidPasswordUpper';
+  static String get error => tr('error');
 
-  static String get invalidPasswordLower => 'invalidPasswordLower';
+  static String get badRequest => tr('badRequest');
 
-  static String get invalidPasswordDigit => 'invalidPasswordDigit';
+  static String get firstToKnow => tr('firstToKnow');
 
-  static String get invalidConditionAccept => 'invalidConditionAccept';
+  static String get next => tr('next');
 
-  static String get passwordNotMatch => 'passwordNotMatch';
+  static String get paragraph => tr('paragraph');
 
-  static String get invalidEmptyPhoneNumber => 'invalidEmptyPhoneNumber';
+  static String get welcomeTitle => tr('welcomeTitle');
 
-  static String get invalidEmptyCode => 'invalidEmptyCode';
+  static String get signUpTitle => tr('signUpTitle');
 
-  static String get invalidPhoneNumber => 'invalidPhoneNumber';
+  static String get signUpParagraph => tr('signUpParagraph');
 
-  static String get notVerifiedEmail => 'notVerifiedEmail';
+  static String get loginParagraph => tr('loginParagraph');
 
-  static String get invalidEmptyFullName => 'invalidEmptyFullName';
+  static String get google => tr('google');
 
-  static String get invalidFullName => 'invalidFullName';
+  static String get facebook => tr('facebook');
 
-  static String get requiredFullName => 'requiredFullName';
+  static String get signIn => tr('signIn');
 
-  //terms And Condtions screen
-  static const String termsAndConditionsTitle = 'Terms & Conditions';
-  static const String termsAndConditionsPolicy =
-      '''Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  static String get signUp => tr('signUp');
 
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+  static String get forget => tr('forget');
 
-Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. 
+  static String get password => tr('password');
 
-Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.''';
+  static String get forgetPassword => tr('forgetPassword');
 
-  // Profile screen
-  static const String profile = 'Profile';
-  static const String notifications = 'Notifications';
-  static const String language = 'Language';
-  static const String changePassword = 'Change Password';
-  static const String privacy = 'Privacy';
-  static const String termsAndConditions = 'Terms & Conditions';
-  static const String signout = 'Sign Out';
+  static String get confirmPasswordHint => tr('confirmPasswordHint');
+  static String get currentPasswordHint => tr('currentPasswordHint');
+
+  static String get forgetParagraph => tr('forgetParagraph');
+
+  static String get signUpFooterMessage => tr('signUpFooterMessage');
+
+  static String get forgetPasswordFooterMessage =>
+      tr('forgetPasswordFooterMessage');
+
+  static String get sendAgain => tr('sendAgain');
+
+  static String get noRouteFound => tr('noRouteFound');
+
+//---------------------------------------------------
+  static String get outBoardingTitle3 => tr('outBoardingTitle3');
+
+  static String get invalidEmail => tr('invalidEmail');
+  static String get invalidPasswordLength => tr('invalidPasswordLength');
+  static String get invalidPasswordUpper => tr('invalidPasswordUpper');
+  static String get invalidPasswordLower => tr('invalidPasswordLower');
+  static String get invalidPasswordDigit => tr('invalidPasswordDigit');
+  static String get invalidConditionAccept => tr('invalidConditionAccept');
+  static String get passwordNotMatch => tr('passwordNotMatch');
+  static String get invalidEmptyPhoneNumber => tr('invalidEmptyPhoneNumber');
+  static String get invalidEmptyCode => tr('invalidEmptyCode');
+  static String get invalidPhoneNumber => tr('invalidPhoneNumber');
+  static String get notVerifiedEmail => tr('notVerifiedEmail');
+  static String get invalidEmptyFullName => tr('invalidEmptyFullName');
+  static String get invalidFullName => tr('invalidFullName');
+  static String get requiredFullName => tr('requiredFullName');
+  static String get termsAndConditionsTitle => tr('termsAndConditionsTitle');
+  static String get termsAndConditionsPolicy => tr('termsAndConditionsPolicy');
+  static String get profile => tr('profile');
+  static String get notifications => tr('notifications');
+  static String get language => tr('language');
+  static String get changePassword => tr('changePassword');
+  static String get privacy => tr('privacy');
+  static String get termsAndConditions => tr('termsAndConditions');
+  static String get signout => tr('signout');
+
+  static String get newPasswordHint => tr('newPasswordHint');
+  static String get selectYourFavouriteTopicsParagraph =>
+      tr('selectYourFavouriteTopicsParagraph');
+  static String get repeatNewPassword => tr('repeatNewPassword');
+  static String get selectYourFavouriteTopics =>
+      tr('selectYourFavouriteTopics');
+  static String get verificationCodeTitle => tr('verificationCodeTitle');
+  static String get dontReceive => tr('dontReceive');
+  static String get confirm => tr('confirm');
+  static String get browse => tr('browse');
+  static String get homeParagraph => tr('homeParagraph');
+  static String get search => tr('search');
+  static String get english => tr('english');
+  static String get arabic => tr('arabic');
+  static String get german => tr('german');
+  static String get spanish => tr('spanish');
+  static String get getStarted => tr('getStarted');
+  static String get verificationCodeParagraph =>
+      tr('verificationCodeParagraph');
+  static String get sportsText => tr('sportsText');
+  static String get randomText => tr('randomText');
+  static String get gamingText => tr('gamingText');
+  static String get politicsText => tr('politicsText');
+  static String get historyText => tr('historyText');
+  static String get lifeText => tr('lifeText');
+  static String get animalsText => tr('animalsText');
+  static String get natureText => tr('natureText');
+  static String get foodText => tr('foodText');
+  static String get artText => tr('artText');
+  static String get sports => tr('sports');
+  static String get politics => tr('politics');
+  static String get life => tr('life');
+  static String get gaming => tr('gaming');
+  static String get animals => tr('animals');
+  static String get food => tr('food');
+  static String get art => tr('art');
+  static String get history => tr('history');
+  static String get fashion => tr('fashion');
+  static String get nature => tr('nature');
 }
