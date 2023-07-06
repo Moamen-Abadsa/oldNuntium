@@ -6,6 +6,10 @@ class Constants {
   static const double deviceWidth = 375;
   static const double deviceHeight = 812;
   static const int codeVerificationMaxLine = 1;
+  static const String arabicKey = 'ar';
+  static const String englishKey = 'en';
+  static const String arabic = 'العربية';
+  static const String english = 'English';
 }
 
 class ConstantsPrefsKeys {
@@ -15,6 +19,7 @@ class ConstantsPrefsKeys {
   static const String loggedIn = "loggedIn";
   static const String FavouriteViewed = "FavouriteViewed";
   static const String Registered = "Registered";
+  static const String locale = 'locale';
 }
 
 class FirestoreConstants {
@@ -39,6 +44,10 @@ class ApiConstants {
   static const String pageSize = 'pageSize';
   static const int homeaPgeSizeValue = 10;
   static const String page = 'page';
+  static const String country = 'country';
+  static const String category = 'category';
+  static const String sources = 'sources';
+  static const String search = 'q';
 
   //Home Response
   static const String status = 'status';

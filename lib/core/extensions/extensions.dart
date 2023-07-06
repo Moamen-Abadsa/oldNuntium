@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:nuntium/config/constants.dart';
 import 'package:nuntium/core/resorces/manager_colors.dart';
 import 'package:nuntium/core/storage/local/app_settings_shared_preferences.dart';
 
@@ -6,6 +7,16 @@ extension NonNullString on String? {
   String onNull() {
     if (this == null) {
       return '';
+    } else {
+      return this!;
+    }
+  }
+}
+
+extension NonNullLocale on String? {
+  String parseToLocale() {
+    if (this == null) {
+      return Constants.englishKey;
     } else {
       return this!;
     }
