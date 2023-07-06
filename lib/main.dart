@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:nuntium/config/constants.dart';
 import 'package:nuntium/core/service/theme_service.dart';
+import 'package:nuntium/core/storage/local/app_settings_shared_preferences.dart';
 
 import 'config/dependency_injection.dart';
 import 'routes/routes.dart';

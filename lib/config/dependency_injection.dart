@@ -53,9 +53,9 @@ initModule() async {
       .registerLazySingleton<AppSettingsSharedPreferences>(() => AppSettingsSharedPreferences(instance()));
 
   //!!!!!!!!!!! ONLY FOR TEST !!!!!!!!!!!!!
-  // AppSettingsPreferences appSettingsPreferences =
-  //     instance<AppSettingsPreferences>();
-  // appSettingsSharedPreferences.clear();
+  AppSettingsSharedPreferences appSettingsPreferences =
+      instance<AppSettingsSharedPreferences>();
+  appSettingsPreferences.clear();
 
   //why ? you dont use generic type in bellow!
   instance.registerLazySingleton(() => DioFactory());
