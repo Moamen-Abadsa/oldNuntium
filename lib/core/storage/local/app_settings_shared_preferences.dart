@@ -37,22 +37,6 @@ class AppSettingsSharedPreferences {
     return _preferences.getString("email").onNull();
   }
 
-  Future<void> setNotification(bool isNotificationOn) async {
-    await _preferences.setBool("Notification", isNotificationOn);
-  }
-
-  bool getNotification() {
-    return _preferences.getBool("Notification").onNull();
-  }
-
-  Future<void> setToken(String token) async {
-    await _preferences.setString(ConstantsPrefsKeys.tokenKey, token);
-  }
-
-  String getToken() {
-    return _preferences.getString(ConstantsPrefsKeys.tokenKey).onNull();
-  }
-
   void clear() {
     _preferences.clear();
   }
@@ -78,7 +62,7 @@ class AppSettingsSharedPreferences {
   }
 
   Future<void> getRegistered() async {
-    await _preferences.getBool(ConstantsPrefsKeys.Registered).onNull();
+    _preferences.getBool(ConstantsPrefsKeys.Registered).onNull();
   }
 
   Future<void> setTopicsSelected(NewsTopics topic, bool isChecked) async {

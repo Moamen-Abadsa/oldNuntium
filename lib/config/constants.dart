@@ -28,8 +28,7 @@ class FirestoreConstants {
 
 class ApiConstants {
   static const String API_KEY = "8afe77481e534d1ab76a4dbf5d533508";
-  static const String baseUrl =
-      "https://newsapi.org/v2/everything?q=tesla&from=2023-04-18&sortBy=publishedAt&apiKey=$API_KEY";
+  static const String baseUrl = "https://newsapi.org/v2";
   static const String authorization = 'authorization';
   static const int sendTimeOutDuration = 120;
   static const int receiveTimeOutDuration = 120;

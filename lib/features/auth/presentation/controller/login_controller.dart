@@ -26,7 +26,7 @@ class LoginController extends GetxController {
       (r) {
         _appSettingsSharedPreferences.setLoggedIn();
         if (_appSettingsSharedPreferences.getFavouriteViewed()) {
-          Get.offAllNamed(Routes.homeView);
+          Get.offAllNamed(Routes.mainView);
         } else {
           Get.offAllNamed(Routes.favourite);
         }

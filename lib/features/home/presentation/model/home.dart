@@ -1,7 +1,7 @@
 import 'article.dart';
 
 class Home {
-  String source;
+  String? source;
   List<Article> articles;
 
   Home({

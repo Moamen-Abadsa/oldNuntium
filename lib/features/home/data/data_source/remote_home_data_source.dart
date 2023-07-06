@@ -18,6 +18,10 @@ class RemoteHomeDataSourceImplement implements RemoteHomeDataSource {
     return await _appApi.home(
       homeRequest.page,
       homeRequest.pageSize,
+      homeRequest.country,
+      homeRequest.category,
+      homeRequest.sources,
+      homeRequest.search,
     );
   }
 }

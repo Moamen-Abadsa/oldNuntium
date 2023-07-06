@@ -6,17 +6,6 @@ import 'package:retrofit/http.dart';
 
 part 'app_api.g.dart';
 
-// @RestApi(baseUrl: ApiConstants.baseUrl)
-// abstract class AppApi {
-//   factory AppApi(
-//     Dio dio, {
-//     String baseUrl,
-//   }) = _AppApi;
-//   // @POST(RequestConstants.loginRequest)
-//   // Future<LoginResponse> login(@Field(RequestConstants.email) String email,
-//   //     @Field(RequestConstants.password) String password);
-// }
-
 @RestApi(baseUrl: ApiConstants.baseUrl)
 abstract class AppApi {
   factory AppApi(
@@ -24,10 +13,13 @@ abstract class AppApi {
     String baseUrl,
   }) = _AppApi;
 
-  @POST(RequestConstants.home)
+  @GET(RequestConstants.home)
   Future<HomeResopnse> home(
-    @Field(ApiConstants.page) int? page,
-    @Field(ApiConstants.pageSize) int? pageSize,
+    @Query(ApiConstants.page) int? page,
+    @Query(ApiConstants.pageSize) int? pageSize,
+    @Query(ApiConstants.country) String? country,
+    @Query(ApiConstants.category) String? category,
+    @Query(ApiConstants.sources) String? sources,
+    @Query(ApiConstants.search) String? search,
   );
-
 }

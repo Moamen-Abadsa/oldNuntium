@@ -6,9 +6,9 @@ import '../response/home_response.dart';
 extension HomeResopnseMapper on HomeResopnse {
   HomeEntity toDomain() {
     return HomeEntity(
-      source: source,
+      source: source?.name,
       articles: articles
-          .map(
+          ?.map(
             (article) => article.toDomain(),
           )
           .toList(),

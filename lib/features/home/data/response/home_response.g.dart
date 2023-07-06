@@ -7,11 +7,13 @@ part of 'home_response.dart';
 // **************************************************************************
 
 HomeResopnse _$HomeResopnseFromJson(Map<String, dynamic> json) => HomeResopnse(
-      status: SourceResponse.fromJson(json['status'] as Map<String, dynamic>),
-      articles: (json['articles'] as List<dynamic>)
-          .map((e) => ArticleResponse.fromJson(e as Map<String, dynamic>))
+      status: json['status'] as String,
+      articles: (json['articles'] as List<dynamic>?)
+          ?.map((e) => ArticleResponse.fromJson(e as Map<String, dynamic>))
           .toList(),
-      source: json['source'] as String,
+      source: json['source'] == null
+          ? null
+          : SourceResponse.fromJson(json['source'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$HomeResopnseToJson(HomeResopnse instance) =>
