@@ -13,8 +13,7 @@ class _AppApi implements AppApi {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??=
-        'https://newsapi.org/v2/everything?q=tesla&from=2023-04-18&sortBy=publishedAt&apiKey=8afe77481e534d1ab76a4dbf5d533508';
+    baseUrl ??= 'https://newsapi.org/v2';
   }
 
   final Dio _dio;
@@ -25,19 +24,26 @@ class _AppApi implements AppApi {
   Future<HomeResopnse> home(
     int? page,
     int? pageSize,
+    String? country,
+    String? category,
+    String? sources,
+    String? search,
   ) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'page': page,
+      r'pageSize': pageSize,
+      r'country': country,
+      r'category': category,
+      r'sources': sources,
+      r'q': search,
+    };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    final _data = {
-      'page': page,
-      'pageSize': pageSize,
-    };
-    _data.removeWhere((k, v) => v == null);
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<HomeResopnse>(Options(
-      method: 'POST',
+      method: 'GET',
       headers: _headers,
       extra: _extra,
     )

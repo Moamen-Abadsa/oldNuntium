@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:get/get.dart';
 import 'package:nuntium/core/error_handler/error_handler.dart';
 
 import 'package:nuntium/core/error_handler/response_code.dart';
@@ -29,7 +30,8 @@ class HomeRepositoryImplement implements HomeRepository {
       try {
         final home = await _remoteHomeDataSource.home(homeRequest);
         return Right(home.toDomain());
-      } catch (e) {
+      } on Exception catch (e) {
+        e.printError();
         return Left(
           ErrorHandler.handle(e).failure,
         );

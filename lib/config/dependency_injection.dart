@@ -10,6 +10,7 @@ import 'package:nuntium/core/network/app_api.dart';
 import 'package:nuntium/core/network/dio_factory.dart';
 import 'package:nuntium/core/storage/local/app_settings_shared_preferences.dart';
 import 'package:nuntium/features/article/presentation/controller/article_controller.dart';
+
 import 'package:nuntium/features/auth/data/data_source/remote_login_data_source.dart';
 import 'package:nuntium/features/auth/data/data_source/remote_register_data_source.dart';
 import 'package:nuntium/features/auth/data/repository/login_repository.dart';
@@ -18,6 +19,7 @@ import 'package:nuntium/features/auth/domain/use_case/login_use_case.dart';
 import 'package:nuntium/features/auth/domain/use_case/register_use_case.dart';
 import 'package:nuntium/features/auth/presentation/controller/login_controller.dart';
 import 'package:nuntium/features/auth/presentation/controller/register_controller.dart';
+import 'package:nuntium/features/category/presentation/controller/categories_controller.dart';
 import 'package:nuntium/features/favorite_topic/presentation/controller/select_favorite_topic_controller.dart';
 import 'package:nuntium/features/forget_password/data/data_source/remote_forget_password_data_source.dart';
 import 'package:nuntium/features/forget_password/data/repository/forget_password_repository.dart';
@@ -29,6 +31,7 @@ import 'package:nuntium/features/home/data/repository/home_repository.dart';
 import 'package:nuntium/features/home/domain/use_case/home_use_case.dart';
 import 'package:nuntium/features/home/presentation/controller/home_controller.dart';
 import 'package:nuntium/features/language/presentation/controller/language_controller.dart';
+import 'package:nuntium/features/main/presentation/controller/main_controller.dart';
 import 'package:nuntium/features/out_boarding/presentaion/controller/out_boarding_controller.dart';
 import 'package:nuntium/features/out_boarding/presentaion/controller/welcome_controller.dart';
 import 'package:nuntium/features/terms_and_conditions/presentation/controller/terms_and_conditions_controller.dart';
@@ -44,15 +47,14 @@ initModule() async {
 
   await Firebase.initializeApp();
 
-  final SharedPreferences sharedPreferences =
-      await SharedPreferences.getInstance();
+  final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
 
   instance.registerLazySingleton<SharedPreferences>(
     () => sharedPreferences,
   );
 
-  instance.registerLazySingleton<AppSettingsSharedPreferences>(
-      () => AppSettingsSharedPreferences(instance()));
+  instance
+      .registerLazySingleton<AppSettingsSharedPreferences>(() => AppSettingsSharedPreferences(instance()));
 
   //!!!!!!!!!!! ONLY FOR TEST !!!!!!!!!!!!!
   // AppSettingsPreferences appSettingsPreferences =
@@ -69,8 +71,7 @@ initModule() async {
     () => AppApi(dio),
   );
 
-  instance.registerLazySingleton<NetworkInfo>(
-      () => NetworkInfoImpl(InternetConnectionCheckerPlus()));
+  instance.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(InternetConnectionCheckerPlus()));
 }
 
 initSplash() {
@@ -88,6 +89,11 @@ initOutBoarding() {
 
 disposeOutBoarding() {
   Get.delete<OutBoardingController>();
+}
+
+initMainModule() {
+  Get.put(MainController());
+  initHome();
 }
 
 initHome() {
@@ -314,6 +320,10 @@ initSelectFavouriteModule() {
   Get.put<SelectFavoriteTopicController>(SelectFavoriteTopicController());
 }
 
+initCategoreisModule() {
+  Get.put(CategoriesController());
+}
+
 disposeSelectFavouriteModule() {
   Get.delete<SelectFavoriteTopicController>();
 }
@@ -336,7 +346,7 @@ disposeLanguageModule() {
 
 initArticleModule() {
   Get.put<ArticleController>(ArticleController());
-}
+
 
 disposeArticleModule() {
   Get.delete<ArticleController>();

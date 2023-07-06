@@ -7,12 +7,18 @@ import '../../data/request/home_request.dart';
 import '../entity/home_entity.dart';
 
 class HomeUseCaseInput {
-  int? pageSize;
   int? page;
+  String? country;
+  String? category;
+  String? sources;
+  String? search;
 
   HomeUseCaseInput({
     required this.page,
-    required this.pageSize,
+    this.country,
+    this.category,
+    this.sources,
+    this.search,
   });
 }
 
@@ -26,7 +32,10 @@ class HomeUseCase implements BaseUseCase<HomeUseCaseInput, HomeEntity> {
     return await _homeRepository.home(
       HomeRequest(
         page: input.page,
-        pageSize: input.pageSize,
+        category: input.category,
+        country: input.country,
+        search: input.search,
+        sources: input.sources,
       ),
     );
   }
