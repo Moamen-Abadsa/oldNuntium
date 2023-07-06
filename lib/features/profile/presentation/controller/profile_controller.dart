@@ -23,9 +23,9 @@ class ProfileController extends GetxController {
     super.onInit();
     //Todo: get user data from storage
     // I've done!
-    name = _appSettingsSharedPreferences.getName();
-    email = _appSettingsSharedPreferences.getEmail();
-    isNotificationOn = _appSettingsSharedPreferences.getNotification();
+    // name = _appSettingsSharedPreferences.getName();
+    // email = _appSettingsSharedPreferences.getEmail();
+    // isNotificationOn = _appSettingsSharedPreferences.getNotification();
 
     userImage = const AssetImage('assets/images/user_image.png');
   }

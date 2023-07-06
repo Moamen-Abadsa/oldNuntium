@@ -39,6 +39,7 @@ class HomeController extends GetxController {
       },
       (r) {
         articles = r.toPresentation().articles;
+        update();
       },
     );
   }
