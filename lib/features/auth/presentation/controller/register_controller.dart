@@ -14,26 +14,6 @@ class RegisterController extends GetxController {
 
   final AppSettingsSharedPreferences _appSettingsSharedPreferences = instance<AppSettingsSharedPreferences>();
 
-  // Future<void> register() async {
-  //   (await _loginUseCase.execute(
-  //     RegisterUseCaseInput(
-  //       name: nameController.text,
-  //       email: emailController.text,
-  //       password: passwordController.text,
-  //       confirmationPassword: confirmPasswordController.text,
-  //     ),
-  //   ))
-  //       .fold(
-  //     (l) => () {
-  //       Get.rawSnackbar(message: l.message);
-  //     },
-  //     (r) {
-  //       _appSettingsSharedPreferences.setRegisterd();
-  //       Get.offAllNamed(Routes.mainView);
-  //     },
-  //   );
-  // }
-
   Future<void> register() async {
     (await _loginUseCase.execute(
       RegisterUseCaseInput(
