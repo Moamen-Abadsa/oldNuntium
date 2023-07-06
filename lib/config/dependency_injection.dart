@@ -8,6 +8,7 @@ import 'package:nuntium/core/internet_checker/internet_checker.dart';
 import 'package:nuntium/core/network/app_api.dart';
 import 'package:nuntium/core/network/dio_factory.dart';
 import 'package:nuntium/core/storage/local/app_settings_shared_preferences.dart';
+import 'package:nuntium/features/article/presentation/controller/select_favorite_topic_controller.dart';
 import 'package:nuntium/features/auth/data/data_source/remote_login_data_source.dart';
 import 'package:nuntium/features/auth/data/data_source/remote_register_data_source.dart';
 import 'package:nuntium/features/auth/data/repository/login_repository.dart';
@@ -16,6 +17,7 @@ import 'package:nuntium/features/auth/domain/use_case/login_use_case.dart';
 import 'package:nuntium/features/auth/domain/use_case/register_use_case.dart';
 import 'package:nuntium/features/auth/presentation/controller/login_controller.dart';
 import 'package:nuntium/features/auth/presentation/controller/register_controller.dart';
+import 'package:nuntium/features/category/presentation/controller/categories_controller.dart';
 import 'package:nuntium/features/favorite_topic/presentation/controller/select_favorite_topic_controller.dart';
 import 'package:nuntium/features/forget_password/data/data_source/remote_forget_password_data_source.dart';
 import 'package:nuntium/features/forget_password/data/repository/forget_password_repository.dart';
@@ -314,6 +316,10 @@ initSelectFavouriteModule() {
   Get.put<SelectFavoriteTopicController>(SelectFavoriteTopicController());
 }
 
+initCategoreisModule() {
+  Get.put(CategoriesController());
+}
+
 disposeSelectFavouriteModule() {
   Get.delete<SelectFavoriteTopicController>();
 }
@@ -332,4 +338,12 @@ initLanguageModule() {
 
 disposeLanguageModule() {
   Get.delete<LanguageController>();
+}
+
+initArticleModule() {
+  Get.put(ArticleController());
+}
+
+disposeArticleModule() {
+  Get.delete<ArticleController>();
 }

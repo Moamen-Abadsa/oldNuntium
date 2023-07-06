@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:nuntium/core/resorces/manager_strings.dart';
+import 'package:nuntium/features/article/presentation/view/article_view.dart';
 import 'package:nuntium/features/auth/presentation/view/login_view.dart';
 import 'package:nuntium/features/auth/presentation/view/register_view.dart';
+import 'package:nuntium/features/category/presentation/view/categories_view.dart';
 import 'package:nuntium/features/favorite_topic/presentation/view/select_favourite_view.dart';
 import 'package:nuntium/features/forget_password/presentation/view/forget_password.dart';
 import 'package:nuntium/features/forget_password/presentation/view/verification_view.dart';
@@ -22,8 +24,10 @@ class Routes {
   static const String mainView = '/main_view';
   static const String loginView = '/login_view';
   static const String welcome = '/welcome_view';
+  static const String categories = '/categories_view';
   static const String register = '/register';
   static const String forget = '/forget';
+  static const String article = '/article';
   static const String verification = '/verification';
   static const String favourite = '/favourite';
   static const String termsAndConditions = '/termsAndConditions';
@@ -51,6 +55,15 @@ class RouteGenerator {
       case Routes.welcome:
         initWelcome();
         return MaterialPageRoute(builder: (_) => const WelcomeScreen());
+
+      case Routes.article:
+        initArticleModule();
+        return MaterialPageRoute(builder: (_) => const ArticleView());
+
+      case Routes.categories:
+        initCategoreisModule();
+        return MaterialPageRoute(builder: (_) => const CategoriesView());
+
       case Routes.loginView:
         initLoginModule();
         return MaterialPageRoute(builder: (_) => const LoginView());

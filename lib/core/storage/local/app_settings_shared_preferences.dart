@@ -21,12 +21,20 @@ class AppSettingsSharedPreferences {
 
   //----------------------------------------------------------------------------
 
-  Future<void> setToken(String token) async {
-    await _preferences.setString(ConstantsPrefsKeys.tokenKey, token);
+  Future<void> setName(String name) async {
+    await _preferences.setString("name", name);
   }
 
-  String getToken() {
-    return _preferences.getString(ConstantsPrefsKeys.tokenKey).onNull();
+  Future<void> setEmail(String email) async {
+    await _preferences.setString("email", email);
+  }
+
+  String getName() {
+    return _preferences.getString("name").onNull();
+  }
+
+  String getEmail() {
+    return _preferences.getString("email").onNull();
   }
 
   void clear() {

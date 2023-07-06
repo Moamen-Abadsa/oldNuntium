@@ -3,6 +3,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:nuntium/core/resorces/manager_colors.dart';
 import 'package:nuntium/core/resorces/manager_sizes.dart';
+import 'package:nuntium/core/resorces/manager_styles.dart';
+import 'package:nuntium/features/category/presentation/view/categories_view.dart';
 import 'package:nuntium/features/home/presentation/view/home_view.dart';
 import 'package:nuntium/features/profile/presentation/view/profile_view.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
@@ -36,14 +38,16 @@ class MainController extends GetxController {
   Color color = ManagerColors.black;
   List<Widget> screens = [
     const HomeView(),
-    Container(
-      color: Colors.green,
+    const CategoriesView(),
+    Center(
+      child: Text(
+        'Under Development',
+        style: getBoldTextStyle(
+          fontSize: 30,
+          color: ManagerColors.greyDarker,
+        ),
+      ),
     ),
-    Container(
-      color: Colors.yellowAccent,
-    ),
-    // CategoryView(),
-    // AppointmentView(),
     const ProfileView()
   ];
 
