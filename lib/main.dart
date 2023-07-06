@@ -5,7 +5,6 @@ import 'package:nuntium/config/constants.dart';
 import 'package:nuntium/core/service/theme_service.dart';
 import 'package:nuntium/features/article/presentation/controller/select_favorite_topic_controller.dart';
 import 'package:nuntium/features/article/presentation/view/article_view.dart';
-import 'package:nuntium/routes/routes.dart';
 
 import 'config/dependency_injection.dart';
 
