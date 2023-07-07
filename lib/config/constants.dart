@@ -20,6 +20,8 @@ class ConstantsPrefsKeys {
   static const String FavouriteViewed = "FavouriteViewed";
   static const String Registered = "Registered";
   static const String locale = 'locale';
+  static const String email = 'email';
+  static const String name = 'name';
 }
 
 class FirestoreConstants {
