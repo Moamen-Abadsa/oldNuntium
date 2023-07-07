@@ -18,7 +18,7 @@ class ForgetPasswordController extends GetxController {
       (l) => {
         Get.rawSnackbar(message: l.message),
       },
-      (r) => {Get.offAllNamed(Routes.verification)},
+      (r) => {Get.offAllNamed(Routes.verify_code)},
     );
   }
 

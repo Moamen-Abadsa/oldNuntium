@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -19,6 +21,12 @@ import 'package:nuntium/features/auth/domain/use_case/register_use_case.dart';
 import 'package:nuntium/features/auth/presentation/controller/login_controller.dart';
 import 'package:nuntium/features/auth/presentation/controller/register_controller.dart';
 import 'package:nuntium/features/category/presentation/controller/categories_controller.dart';
+import 'package:nuntium/features/favorite_topic/data/data_source/local_favorite_topic_data_source.dart';
+import 'package:nuntium/features/favorite_topic/data/data_source/remote_topics_data_source.dart';
+import 'package:nuntium/features/favorite_topic/data/repository/favorite_topic_repository.dart';
+import 'package:nuntium/features/favorite_topic/data/repository/topics_repository.dart';
+import 'package:nuntium/features/favorite_topic/domain/use_case/select_favorite_topic_use_case.dart';
+import 'package:nuntium/features/favorite_topic/domain/use_case/topics_use_case.dart';
 import 'package:nuntium/features/favorite_topic/presentation/controller/select_favorite_topic_controller.dart';
 import 'package:nuntium/features/forget_password/data/data_source/remote_forget_password_data_source.dart';
 import 'package:nuntium/features/forget_password/data/repository/forget_password_repository.dart';
@@ -30,6 +38,7 @@ import 'package:nuntium/features/home/data/repository/home_repository.dart';
 import 'package:nuntium/features/home/domain/use_case/home_use_case.dart';
 import 'package:nuntium/features/home/presentation/controller/home_controller.dart';
 import 'package:nuntium/features/language/presentation/controller/language_controller.dart';
+import 'package:nuntium/features/main/presentation/controller/main_controller.dart';
 import 'package:nuntium/features/out_boarding/presentaion/controller/out_boarding_controller.dart';
 import 'package:nuntium/features/out_boarding/presentaion/controller/welcome_controller.dart';
 import 'package:nuntium/features/terms_and_conditions/presentation/controller/terms_and_conditions_controller.dart';
@@ -45,20 +54,15 @@ initModule() async {
 
   await Firebase.initializeApp();
 
-  final SharedPreferences sharedPreferences =
-      await SharedPreferences.getInstance();
+  final sharedPreferences = await SharedPreferences.getInstance();
 
   instance.registerLazySingleton<SharedPreferences>(
     () => sharedPreferences,
   );
 
   instance.registerLazySingleton<AppSettingsSharedPreferences>(
-      () => AppSettingsSharedPreferences(instance()));
-
-  //!!!!!!!!!!! ONLY FOR TEST !!!!!!!!!!!!!
-  // AppSettingsPreferences appSettingsPreferences =
-  //     instance<AppSettingsPreferences>();
-  // appSettingsSharedPreferences.clear();
+    () => AppSettingsSharedPreferences(instance()),
+  );
 
   //why ? you dont use generic type in bellow!
   instance.registerLazySingleton(() => DioFactory());
@@ -71,11 +75,12 @@ initModule() async {
   );
 
   instance.registerLazySingleton<NetworkInfo>(
-      () => NetworkInfoImpl(InternetConnectionCheckerPlus()));
+    () => NetworkInfoImpl(InternetConnectionCheckerPlus()),
+  );
 }
 
 initSplash() {
-  Get.put<SplashController>(SplashController());
+  Get.put(SplashController());
 }
 
 disposeSplash() {
@@ -84,7 +89,7 @@ disposeSplash() {
 
 initOutBoarding() {
   disposeSplash();
-  Get.put<OutBoardingController>(OutBoardingController());
+  Get.put(OutBoardingController());
 }
 
 disposeOutBoarding() {
@@ -92,11 +97,14 @@ disposeOutBoarding() {
 }
 
 initMainModule() {
-  // Get.put(MainController());
-  // initHome();
+  Get.put(MainController());
+  debugger();
+  initHome();
+  // initProfile();
 }
 
 initHome() {
+  debugger();
   disposeWelcome();
   if (!GetIt.I.isRegistered<RemoteHomeDataSource>()) {
     instance.registerLazySingleton<RemoteHomeDataSource>(
@@ -122,7 +130,7 @@ initHome() {
       ),
     );
   }
-  Get.put<HomeController>(HomeController());
+  Get.put(HomeController());
 }
 
 disposeHome() {
@@ -131,7 +139,7 @@ disposeHome() {
 
 initWelcome() {
   disposeOutBoarding();
-  Get.put<WelcomeController>(WelcomeController());
+  Get.put(WelcomeController());
 }
 
 initWelcomeModule() {
@@ -144,6 +152,7 @@ initWelcomeModule() {
 
 disposeWelcome() {
   disposeOutBoarding();
+  Get.delete<WelcomeController>();
 }
 
 initLoginModule() {
@@ -176,7 +185,7 @@ initLoginModule() {
     );
   }
 
-  Get.put<LoginController>(LoginController());
+  Get.put(LoginController());
 }
 
 disposeLoginModule() {
@@ -222,7 +231,7 @@ initRegisterModule() {
     );
   }
 
-  Get.put<RegisterController>(RegisterController());
+  Get.put(RegisterController());
 }
 
 disposeRegisterModule() {
@@ -317,7 +326,36 @@ initVerificationModule() {
 }
 
 initSelectFavouriteModule() {
-  Get.put<SelectFavoriteTopicController>(SelectFavoriteTopicController());
+  instance.safeRegisterLazySingleton<LocalFavoriteTopicDataSource>(
+    LocalFavoriteTopicDataSourceImplement(),
+  );
+
+  instance.safeRegisterLazySingleton<FavoriteTopicRepository>(
+    FavoriteTopicRepositoryImplement(
+      instance<LocalFavoriteTopicDataSource>(),
+      instance<NetworkInfo>(),
+    ),
+  );
+  instance.safeRegisterLazySingleton(
+    SelectFavoriteTopicUseCase(instance<FavoriteTopicRepository>()),
+  );
+
+  instance.safeRegisterLazySingleton<RemoteTopicsDataSource>(
+    RemoteTopicsDataSourceImplement(),
+  );
+
+  instance.safeRegisterLazySingleton<TopicsRepository>(
+    TopicsRepositoryImplement(
+      instance<RemoteTopicsDataSource>(),
+      instance<NetworkInfo>(),
+    ),
+  );
+
+  instance.safeRegisterLazySingleton(
+    TopicsUseCase(instance<TopicsRepository>()),
+  );
+
+  Get.put(SelectFavoriteTopicController());
 }
 
 initCategoreisModule() {
@@ -329,7 +367,7 @@ disposeSelectFavouriteModule() {
 }
 
 initTermsAndConditionsModule() {
-  Get.put<TermsAndConditionsController>(TermsAndConditionsController());
+  Get.put(TermsAndConditionsController());
 }
 
 disposeTermsAndConditionsModule() {
@@ -337,7 +375,7 @@ disposeTermsAndConditionsModule() {
 }
 
 initLanguageModule() {
-  Get.put<LanguageController>(LanguageController());
+  Get.put(LanguageController());
 }
 
 disposeLanguageModule() {
@@ -345,9 +383,22 @@ disposeLanguageModule() {
 }
 
 initArticleModule() {
-  Get.put<ArticleController>(ArticleController());
+  Get.put(ArticleController());
 }
 
 disposeArticleModule() {
   Get.delete<ArticleController>();
+}
+
+extension SafeDependencyInjection on GetIt {
+  void safeRegisterLazySingleton<T extends Object>(T dependency) {
+    if (!isRegistered<T>()) {
+      registerLazySingleton<T>(() => dependency);
+    } else {
+      log(
+        'The ${dependency.runtimeType} is Already registered !!',
+        name: 'Dependency Injection:',
+      );
+    }
+  }
 }
