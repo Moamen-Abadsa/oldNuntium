@@ -72,12 +72,12 @@ class AppSettingsSharedPreferences {
     _preferences.getBool(ConstantsPrefsKeys.Registered).onNull();
   }
 
-  Future<void> setTopicsSelected(NewsTopics topic, bool isChecked) async {
-    _preferences.setBool(topic.toString(), isChecked);
+  Future<void> setTopicSelected(String name, bool isChecked) async {
+    _preferences.setBool(name, isChecked);
   }
 
-  bool getTopicSelected(NewsTopics topic) {
-    return _preferences.getBool(topic.toString()).onNull();
+  bool getTopicSelected(String name) {
+    return _preferences.getBool(name).onNull();
   }
 }
 

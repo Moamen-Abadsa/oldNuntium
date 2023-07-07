@@ -317,11 +317,36 @@ initVerificationModule() {
 }
 
 initSelectFavouriteModule() {
+  // if (!GetIt.I.isRegistered<RemoteFavoriteTopicDataSource>()) {
+  //   instance.registerLazySingleton<RemoteFavoriteTopicDataSource>(
+  //     () => RemoteFavoriteTopicDataSourceImplement(
+  //       // instance<AppApi>(),
+  //     ),
+  //   );
+  // }
+
+  // if (!GetIt.I.isRegistered<TopicsRepository>()) {
+  //   instance.registerLazySingleton<TopicsRepository>(
+  //     () => TopicsRepositoryImplement(
+  //       instance<NetworkInfo>() as RemoteTopicsDataSource,
+  //       // instance<RemoteVerificationDataSource>(),
+  //     ),
+  //   );
+  // }
+
+  // if (!GetIt.I.isRegistered<TopicsUseCase>()) {
+  //   instance.registerLazySingleton<TopicsUseCase>(
+  //     () => TopicsUseCase(
+  //       instance<TopicsUseCase>(),
+  //     ),
+  //   );
+  // }
+
   Get.put<SelectFavoriteTopicController>(SelectFavoriteTopicController());
 }
 
 initCategoreisModule() {
-  Get.put(CategoriesController());
+  Get.put<CategoriesController>(CategoriesController());
 }
 
 disposeSelectFavouriteModule() {
