@@ -4,6 +4,7 @@ import 'package:nuntium/core/resorces/manager_colors.dart';
 import 'package:nuntium/core/resorces/manager_fonts.dart';
 import 'package:nuntium/core/resorces/manager_icons.dart';
 import 'package:nuntium/core/resorces/manager_sizes.dart';
+import 'package:nuntium/core/resorces/manager_strings.dart';
 import 'package:nuntium/core/resorces/manager_styles.dart';
 import 'package:nuntium/core/widgets/screen_header.dart';
 import 'package:nuntium/features/home/presentation/controller/home_controller.dart';
@@ -11,7 +12,7 @@ import 'package:nuntium/features/home/presentation/view/widgets/category.dart';
 import 'package:nuntium/features/home/presentation/view/widgets/news_card.dart';
 
 class HomeView extends StatelessWidget {
-  const HomeView({Key? key}) : super(key: key);
+  const HomeView({super.key}) ;
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +25,8 @@ class HomeView extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: ManagerWidth.w20),
                 child: header(
-                  title: 'Browse',
-                  paragraph: 'Discover things of this world',
+                  title: ManagerStrings.browse,
+                  paragraph: ManagerStrings.homeParagraph,
                 ),
               ),
               Padding(
