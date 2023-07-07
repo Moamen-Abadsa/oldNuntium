@@ -8,44 +8,39 @@ class AppSettingsSharedPreferences {
   AppSettingsSharedPreferences(this._preferences);
 
   Future<void> setOutBoardingViewed() async {
-    await _preferences.setBool("out_boarding_viewed", true);
+    await _preferences.setBool(ConstantsPrefsKeys.outBoardingViewedKey, true);
   }
 
   bool getOutBoardingViewed() {
-    return _preferences
-        .getBool(
-          ConstantsPrefsKeys.outBoardingViewedKey,
-        )
-        .onNull();
+    return _preferences.getBool(ConstantsPrefsKeys.outBoardingViewedKey).onNull();
   }
 
   //----------------------------------------------------------------------------
 
-  String get locale =>
-      _preferences.getString(ConstantsPrefsKeys.locale).parseToLocale();
+  String get locale => _preferences.getString(ConstantsPrefsKeys.locale).parseToLocale();
 
   Future<void> setLocale(String locale) async {
     await _preferences.setString(ConstantsPrefsKeys.locale, locale);
   }
 
   Future<void> setName(String name) async {
-    await _preferences.setString("name", name);
-  }
-
-  Future<void> setEmail(String email) async {
-    await _preferences.setString("email", email);
+    await _preferences.setString(ConstantsPrefsKeys.name, name);
   }
 
   String getName() {
-    return _preferences.getString("name").onNull();
+    return _preferences.getString(ConstantsPrefsKeys.name).onNull();
+  }
+
+  Future<void> setEmail(String email) async {
+    await _preferences.setString(ConstantsPrefsKeys.email, email);
   }
 
   String getEmail() {
-    return _preferences.getString("email").onNull();
+    return _preferences.getString(ConstantsPrefsKeys.email).onNull();
   }
 
-  void clear() {
-    _preferences.clear();
+  Future<void> clear() async {
+   await _preferences.clear();
   }
 
   Future<void> setLoggedIn() async {
@@ -62,14 +57,6 @@ class AppSettingsSharedPreferences {
 
   bool getFavouriteViewed() {
     return _preferences.getBool(ConstantsPrefsKeys.FavouriteViewed).onNull();
-  }
-
-  Future<void> setRegisterd() async {
-    await _preferences.setBool(ConstantsPrefsKeys.Registered, true);
-  }
-
-  Future<void> getRegistered() async {
-    _preferences.getBool(ConstantsPrefsKeys.Registered).onNull();
   }
 
   Future<void> setTopicsSelected(NewsTopics topic, bool isChecked) async {
