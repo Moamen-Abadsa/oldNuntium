@@ -69,7 +69,6 @@ class SelectFavoriteTopicController extends GetxController {
     _appSettingsSharedPreferences.setTopicSelected(name, !isSelected);
     await initializeVars();
     await initializeTopics();
-    update();
   }
 
   @override

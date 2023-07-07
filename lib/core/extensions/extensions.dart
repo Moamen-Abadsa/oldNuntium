@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:nuntium/config/constants.dart';
 import 'package:nuntium/core/resorces/manager_colors.dart';
-import 'package:nuntium/core/storage/local/app_settings_shared_preferences.dart';
 
 extension NonNullString on String? {
   String onNull() {
@@ -63,12 +62,12 @@ extension NonNullDouble on double? {
   }
 }
 
-extension NonNullNewsTopics on NewsTopics? {
-  NewsTopics onNull() {
-    if (this == null) {
-      return NewsTopics.none;
-    } else {
-      return this!;
-    }
-  }
-}
+// extension NonNullNewsTopics on NewsTopics? {
+//   NewsTopics onNull() {
+//     if (this == null) {
+//       return NewsTopics.none;
+//     } else {
+//       return this!;
+//     }
+//   }
+// }

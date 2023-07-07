@@ -8,14 +8,12 @@ class AppSettingsSharedPreferences {
   AppSettingsSharedPreferences(this._preferences);
 
   Future<void> setOutBoardingViewed() async {
-    await _preferences.setBool("out_boarding_viewed", true);
+    await _preferences.setBool(ConstantsPrefsKeys.outBoardingViewedKey, true);
   }
 
   bool getOutBoardingViewed() {
     return _preferences
-        .getBool(
-          ConstantsPrefsKeys.outBoardingViewedKey,
-        )
+        .getBool(ConstantsPrefsKeys.outBoardingViewedKey)
         .onNull();
   }
 
@@ -29,23 +27,23 @@ class AppSettingsSharedPreferences {
   }
 
   Future<void> setName(String name) async {
-    await _preferences.setString("name", name);
-  }
-
-  Future<void> setEmail(String email) async {
-    await _preferences.setString("email", email);
+    await _preferences.setString(ConstantsPrefsKeys.name, name);
   }
 
   String getName() {
-    return _preferences.getString("name").onNull();
+    return _preferences.getString(ConstantsPrefsKeys.name).onNull();
+  }
+
+  Future<void> setEmail(String email) async {
+    await _preferences.setString(ConstantsPrefsKeys.email, email);
   }
 
   String getEmail() {
-    return _preferences.getString("email").onNull();
+    return _preferences.getString(ConstantsPrefsKeys.email).onNull();
   }
 
-  void clear() {
-    _preferences.clear();
+  Future<void> clear() async {
+    await _preferences.clear();
   }
 
   Future<void> setLoggedIn() async {
@@ -80,19 +78,19 @@ class AppSettingsSharedPreferences {
     return _preferences.getBool(name).onNull();
   }
 }
-
-enum NewsTopics {
-  Sports,
-  Politics,
-  Life,
-  Gaming,
-  Animals,
-  Nature,
-  Food,
-  Art,
-  History,
-  Fashion,
-  Covid_19,
-  Middle_East,
-  none
-}
+//
+// enum NewsTopics {
+//   Sports,
+//   Politics,
+//   Life,
+//   Gaming,
+//   Animals,
+//   Nature,
+//   Food,
+//   Art,
+//   History,
+//   Fashion,
+//   Covid_19,
+//   Middle_East,
+//   none
+// }

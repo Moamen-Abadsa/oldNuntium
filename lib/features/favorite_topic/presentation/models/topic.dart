@@ -1,4 +1,5 @@
 class Topic {
   String name;
-  Topic({required this.name});
+  bool isSelected;
+  Topic({required this.name, this.isSelected = false});
 }

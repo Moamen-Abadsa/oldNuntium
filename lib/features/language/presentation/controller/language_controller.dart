@@ -16,18 +16,7 @@ class LanguageController extends GetxController {
     update();
   }
 
-  @override
-  void onInit() {
-    super.onInit();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  final AppSettingsSharedPreferences _appSettingsSharedPreferences =
-      instance<AppSettingsSharedPreferences>();
+  final AppSettingsSharedPreferences _appSettingsSharedPreferences = instance<AppSettingsSharedPreferences>();
   final languageList = LocaleSettings.languages;
 
   String get currentLanguage => _appSettingsSharedPreferences.locale;
