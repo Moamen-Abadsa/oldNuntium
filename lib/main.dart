@@ -6,12 +6,18 @@ import 'package:nuntium/config/constants.dart';
 import 'package:nuntium/config/localization/locale_settings.dart';
 import 'package:nuntium/core/resorces/manager_assets.dart';
 import 'package:nuntium/core/service/theme_service.dart';
+// ignore: unused_import
+import 'package:nuntium/core/storage/local/app_settings_shared_preferences.dart';
 import 'package:nuntium/routes/routes.dart';
 
 import 'config/dependency_injection.dart';
 
 void main() async {
   await initModule();
+
+  //!!!!!!!!!!! Delete app data (ONLY FOR TEST) !!!!!!!!!!!!!
+  // await instance<AppSettingsSharedPreferences>().clear();
+
   runApp(
     EasyLocalization(
       supportedLocales: localeSettings.supportedLocales,
@@ -44,7 +50,7 @@ class MyApp extends StatelessWidget {
           supportedLocales: context.supportedLocales,
           debugShowCheckedModeBanner: false,
           onGenerateRoute: RouteGenerator.getRoute,
-          initialRoute: Routes.loginView,
+          initialRoute: Routes.mainView,
           theme: _themeService.getThemeData(),
           themeMode: _themeService.getThemeMode(),
         );
