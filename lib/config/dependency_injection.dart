@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -19,6 +21,12 @@ import 'package:nuntium/features/auth/domain/use_case/register_use_case.dart';
 import 'package:nuntium/features/auth/presentation/controller/login_controller.dart';
 import 'package:nuntium/features/auth/presentation/controller/register_controller.dart';
 import 'package:nuntium/features/category/presentation/controller/categories_controller.dart';
+import 'package:nuntium/features/favorite_topic/data/data_source/remote_favorite_topic_data_source.dart';
+import 'package:nuntium/features/favorite_topic/data/data_source/remote_topics_data_source.dart';
+import 'package:nuntium/features/favorite_topic/data/repository/favorite_topic_repository.dart';
+import 'package:nuntium/features/favorite_topic/data/repository/topics_repository.dart';
+import 'package:nuntium/features/favorite_topic/domain/use_case/select_favorite_topic_use_case.dart';
+import 'package:nuntium/features/favorite_topic/domain/use_case/topics_use_case.dart';
 import 'package:nuntium/features/favorite_topic/presentation/controller/select_favorite_topic_controller.dart';
 import 'package:nuntium/features/forget_password/data/data_source/remote_forget_password_data_source.dart';
 import 'package:nuntium/features/forget_password/data/repository/forget_password_repository.dart';
@@ -45,15 +53,14 @@ initModule() async {
 
   await Firebase.initializeApp();
 
-  final SharedPreferences sharedPreferences =
-      await SharedPreferences.getInstance();
+  final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
 
   instance.registerLazySingleton<SharedPreferences>(
     () => sharedPreferences,
   );
 
-  instance.registerLazySingleton<AppSettingsSharedPreferences>(
-      () => AppSettingsSharedPreferences(instance()));
+  instance
+      .registerLazySingleton<AppSettingsSharedPreferences>(() => AppSettingsSharedPreferences(instance()));
 
   //!!!!!!!!!!! ONLY FOR TEST !!!!!!!!!!!!!
   // AppSettingsPreferences appSettingsPreferences =
@@ -70,8 +77,7 @@ initModule() async {
     () => AppApi(dio),
   );
 
-  instance.registerLazySingleton<NetworkInfo>(
-      () => NetworkInfoImpl(InternetConnectionCheckerPlus()));
+  instance.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(InternetConnectionCheckerPlus()));
 }
 
 initSplash() {
@@ -317,7 +323,36 @@ initVerificationModule() {
 }
 
 initSelectFavouriteModule() {
-  Get.put<SelectFavoriteTopicController>(SelectFavoriteTopicController());
+  instance.safeRegisterLazySingleton<RemoteFavoriteTopicDataSource>(
+    RemoteFavoriteTopicDataSourceImplement(),
+  );
+
+  instance.safeRegisterLazySingleton<FavoriteTopicRepository>(
+    FavoriteTopicRepositoryImplement(
+      instance<RemoteFavoriteTopicDataSource>(),
+      instance<NetworkInfo>(),
+    ),
+  );
+  instance.safeRegisterLazySingleton(
+    SelectFavoriteTopicUseCase(instance<FavoriteTopicRepository>()),
+  );
+
+  instance.safeRegisterLazySingleton<RemoteTopicsDataSource>(
+    RemoteTopicsDataSourceImplement(),
+  );
+
+  instance.safeRegisterLazySingleton<TopicsRepository>(
+    TopicsRepositoryImplement(
+      instance<RemoteTopicsDataSource>(),
+      instance<NetworkInfo>(),
+    ),
+  );
+
+  instance.safeRegisterLazySingleton(
+    TopicsUseCase(instance<TopicsRepository>()),
+  );
+
+  Get.put(SelectFavoriteTopicController());
 }
 
 initCategoreisModule() {
@@ -350,4 +385,17 @@ initArticleModule() {
 
 disposeArticleModule() {
   Get.delete<ArticleController>();
+}
+
+extension SafeDependencyInjection on GetIt {
+  void safeRegisterLazySingleton<T extends Object>(T dependency) {
+    if (!isRegistered<T>()) {
+      registerLazySingleton<T>(() => dependency);
+    } else {
+      log(
+        'The ${dependency.runtimeType} is Already registered !!',
+        name: 'Dependency Injection:',
+      );
+    }
+  }
 }
