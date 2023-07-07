@@ -2,14 +2,11 @@ import 'package:dartz/dartz.dart';
 import 'package:nuntium/core/error_handler/error_handler.dart';
 import 'package:nuntium/core/use_case/base_usecase.dart';
 import 'package:nuntium/features/favorite_topic/data/repository/favorite_topic_repository.dart';
-import 'package:nuntium/features/favorite_topic/data/request/favorite_topic_request.dart';
 
 class SelectFavoriteTopicUseCaseInput {
   List<String> topics;
 
-  SelectFavoriteTopicUseCaseInput({
-    required this.topics,
-  });
+  SelectFavoriteTopicUseCaseInput({required this.topics});
 }
 
 class SelectFavoriteTopicUseCase implements BaseInUseCase<SelectFavoriteTopicUseCaseInput> {
@@ -21,8 +18,6 @@ class SelectFavoriteTopicUseCase implements BaseInUseCase<SelectFavoriteTopicUse
   Future<Either<Failure, void>> execute(
     SelectFavoriteTopicUseCaseInput selectFavoriteTopicUseCaseInput,
   ) async {
-    return await _favoriteTopicRepository.selectFavoriteTopic(
-      SelectFavoriteTopicRequest(),
-    );
+    return await _favoriteTopicRepository.selectFavoriteTopic();
   }
 }
