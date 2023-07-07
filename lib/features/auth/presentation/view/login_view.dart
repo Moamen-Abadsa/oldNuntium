@@ -6,6 +6,8 @@ import 'package:nuntium/features/auth/presentation/view/widgets/auth_view.dart';
 import 'package:nuntium/features/auth/presentation/view/widgets/login_widget.dart';
 
 class LoginView extends StatelessWidget {
+  const LoginView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return GetBuilder<LoginController>(

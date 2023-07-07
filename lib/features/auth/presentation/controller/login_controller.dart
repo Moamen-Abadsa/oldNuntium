@@ -9,8 +9,7 @@ class LoginController extends GetxController {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final _loginUseCase = instance<LoginUseCase>();
-  final _appSettingsSharedPreferences =
-      instance<AppSettingsSharedPreferences>();
+  final _appSettingsSharedPreferences = instance<AppSettingsSharedPreferences>();
   var formKey = GlobalKey<FormState>();
 
   Future<void> login() async {
@@ -30,7 +29,7 @@ class LoginController extends GetxController {
         if (_appSettingsSharedPreferences.getFavouriteViewed()) {
           Get.offAllNamed(Routes.mainView);
         } else {
-          Get.offAllNamed(Routes.favourite);
+          Get.offAllNamed(Routes.select_favourite_topic);
         }
       },
     );
